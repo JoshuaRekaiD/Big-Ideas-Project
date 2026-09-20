@@ -659,30 +659,30 @@ img {
   opacity: 0.55;
 }
 
-/* Food items staggered at varied heights */
-.bag-contents {
+/* Food items stuck to the outside middle of the bag face */
+.bag-fruits {
   position: absolute;
-  top: -68px;
+  bottom: -28px;          /* hangs just below the bag's lower edge */
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   gap: 6px;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.22);
+  backdrop-filter: blur(4px);
+  border-radius: 40px;
+  padding: 6px 14px;
+  border: 1.5px solid rgba(255,255,255,0.45);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  white-space: nowrap;
 }
 
-.bag-item {
-  font-size: 48px;
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
-  animation: itemBob 2.5s ease-in-out infinite;
+.bag-fruits span {
+  font-size: 28px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.18));
   line-height: 1;
 }
-
-/* Varied vertical offset so items look naturally piled */
-.bi-bread  { animation-delay: 0s;    transform: translateY(0px);   font-size: 44px; }
-.bi-apple  { animation-delay: 0.25s; transform: translateY(-12px); font-size: 50px; }
-.bi-veg    { animation-delay: 0.5s;  transform: translateY(4px);   font-size: 52px; }
-.bi-tomato { animation-delay: 0.75s; transform: translateY(-8px);  font-size: 42px; }
-.bi-lemon  { animation-delay: 1s;    transform: translateY(6px);   font-size: 46px; }
 
 /* Deal tags — pill shape with icon */
 .bag-tag {
