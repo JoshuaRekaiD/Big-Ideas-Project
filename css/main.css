@@ -662,9 +662,9 @@ img {
 /* Food items stuck to the outside middle of the bag face */
 .bag-fruits {
   position: absolute;
-  bottom: -28px;          /* hangs just below the bag's lower edge */
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   display: flex;
   gap: 6px;
   align-items: center;
