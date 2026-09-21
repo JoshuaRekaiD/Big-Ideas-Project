@@ -426,7 +426,22 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 
 
 /* ─────────────────────────────────────────────
-   12. ACTIVE NAV LINK highlight based on page
+   12. CONTACT FORM (home page — demo)
+───────────────────────────────────────────── */
+(function initContactForm() {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    form.reset();
+    showToast("Thanks! We'll be in touch soon 💚", 'success');
+  });
+})();
+
+
+/* ─────────────────────────────────────────────
+   13. ACTIVE NAV LINK highlight based on page
 ───────────────────────────────────────────── */
 (function highlightNav() {
   const page = window.location.pathname.split('/').pop() || 'index.html';

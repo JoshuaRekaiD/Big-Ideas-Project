@@ -4,16 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Birp – Giving Food a New Birpose</title>
-  <link rel="stylesheet" href="css/main.css?v=7" />
-  <link rel="stylesheet" href="css/animations.css?v=4" />
+  <link rel="stylesheet" href="css/main.css?v=8" />
+  <link rel="stylesheet" href="css/animations.css?v=5" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,700&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300;1,700&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
 
   <!-- ───── NAV ───── -->
-  <nav class="navbar" id="navbar">
+  <nav class="navbar scrolled" id="navbar">
     <div class="nav-inner">
       <a href="index.html" class="logo">
         <span class="logo-leaf">🌿</span>
@@ -21,17 +21,11 @@
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="deals.html">Find Deals</a></li>
-        <li><a href="farms.html">Farm Surplus</a></li>
+        <li><a href="deals.html">Order Online</a></li>
         <li><a href="about.html">Our Story</a></li>
-        <li>
-          <div class="nav-search">
-            <span class="nav-search-icon">🔍</span>
-            <input type="text" placeholder="Search deals…" id="navSearchInput" autocomplete="off" />
-          </div>
-        </li>
-        <li><a href="#" class="btn-nav" id="openLogin">Log In</a></li>
-        <li><a href="#" class="btn-nav btn-nav-filled" id="openSignup">Sign Up</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#download" class="btn-nav btn-nav-filled">Download the App</a></li>
       </ul>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -40,366 +34,271 @@
   </nav>
 
   <!-- ───── HERO ───── -->
-  <section class="hero" id="hero">
+  <section class="hero home-hero" id="hero">
     <div class="hero-bg-blobs">
       <div class="blob blob-1"></div>
       <div class="blob blob-2"></div>
       <div class="blob blob-3"></div>
     </div>
 
-    <div class="hero-layout">
-      <!-- Left: text -->
-      <div class="hero-content reveal">
-        <span class="hero-badge">🌍 South Africa's Food Rescue App</span>
-        <h1 class="hero-title">Giving food<br><em>a new<br>birpose.</em></h1>
-        <p class="hero-sub">Surprise bundles from restaurants, cafés, bakeries and farms — rescued before they go to waste, at up to 70% off.</p>
-        <div class="hero-cta">
-          <a href="deals.html" class="btn-primary btn-large">Find Deals Near You</a>
-          <a href="about.html" class="btn-ghost">Our Story ↗</a>
-        </div>
-        <div class="hero-trust">
-          <span class="trust-dot"></span>
-          <span>Trusted by 180+ stores across South Africa</span>
-        </div>
-      </div>
+    <div class="home-hero-content reveal">
+      <!-- Prominent search bar at the very top -->
+      <form class="hero-search" id="heroSearch" action="deals.html" method="get" role="search">
+        <span class="hero-search-icon">🔍</span>
+        <input type="text" name="q" id="heroSearchInput" placeholder="Find surprise bags near you…" autocomplete="off" aria-label="Search for food near you" />
+        <button type="submit" class="hero-search-btn">Search</button>
+      </form>
 
-      <!-- Right: animated bag scene -->
-      <div class="hero-visual reveal-right">
-        <div class="bag-scene">
-          <!-- The grocery bag (CSS-drawn, brand coloured) -->
-          <div class="grocery-bag">
-            <div class="bag-body">
-              <div class="bag-fold"></div>
-              <div class="bag-handle bag-handle-left"></div>
-              <div class="bag-handle bag-handle-right"></div>
-              <div class="bag-logo-mark">birp</div>
-            </div>
-            <!-- Food items peeking out the top -->
-            <div class="bag-contents">
-              <div class="bag-item bi-bread">🥖</div>
-              <div class="bag-item bi-veg">🥦</div>
-              <div class="bag-item bi-tomato">🍅</div>
-              <div class="bag-item bi-apple">🍎</div>
-              <div class="bag-item bi-lemon">🍋</div>
-            </div>
-          </div>
-          <!-- Floating mini deal tags around the bag -->
-          <div class="bag-tag bt-1">
-            <span class="bt-discount">-67%</span>
-            <span class="bt-name">Bakery Bundle</span>
-          </div>
-          <div class="bag-tag bt-2">
-            <span class="bt-discount">-70%</span>
-            <span class="bt-name">Veg Box</span>
-          </div>
-          <div class="bag-tag bt-3">
-            <span class="bt-discount">-65%</span>
-            <span class="bt-name">Meal Pack</span>
-          </div>
-          <!-- Sparkle dots -->
-          <div class="sparkle sp-1">✦</div>
-          <div class="sparkle sp-2">✦</div>
-          <div class="sparkle sp-3">✧</div>
-        </div>
+      <h1 class="home-hero-title">Giving food<br><em>a new birpose.</em></h1>
+
+      <p class="home-hero-blurb">
+        We give surplus food a second chance. Discover delicious food from local
+        businesses at discounted prices, while helping reduce food waste — and
+        every cent we make goes to fighting food insecurity.
+      </p>
+
+      <!-- App download (placeholder — no real app yet) -->
+      <div class="app-download" id="downloadTop">
+        <a href="#" class="btn-download" aria-label="Download the Birp app (coming soon)">
+          <span class="btn-download-icon">📲</span>
+          <span class="btn-download-text">
+            <small>Coming soon</small>
+            <strong>Download the App</strong>
+          </span>
+        </a>
       </div>
     </div>
 
-    <div class="scroll-hint">
-      <div class="scroll-dot"></div>
-      <span>Scroll to explore</span>
-    </div>
-  </section>
-
-  <!-- ───── MARQUEE STRIP ───── -->
-  <div class="marquee-strip">
-    <div class="marquee-track">
-      <span>🥗 Restaurants</span>
-      <span>🍞 Bakeries</span>
-      <span>☕ Cafés</span>
-      <span>🛒 Grocery Stores</span>
-      <span>🌾 Farms</span>
-      <span>🥩 Delis</span>
-      <span>🧃 Juice Bars</span>
-      <span>🌿 Organic → Compost</span>
-      <span>🍕 Pizzerias</span>
-      <span>🥐 Patisseries</span>
-      <span>🥬 Market Stalls</span>
-      <span>🫙 Preserves</span>
-      <span>🥗 Restaurants</span>
-      <span>🍞 Bakeries</span>
-      <span>☕ Cafés</span>
-      <span>🛒 Grocery Stores</span>
-      <span>🌾 Farms</span>
-      <span>🥩 Delis</span>
-      <span>🧃 Juice Bars</span>
-      <span>🌿 Organic → Compost</span>
-      <span>🍕 Pizzerias</span>
-      <span>🥐 Patisseries</span>
-      <span>🥬 Market Stalls</span>
-      <span>🫙 Preserves</span>
-    </div>
-  </div>
-
-  <!-- ───── IMPACT STATS ───── -->
-  <section class="stats-section">
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat-card reveal">
-          <div class="stat-icon">🥡</div>
-          <div class="stat-number" data-target="2400">0</div>
-          <div class="stat-unit">kg</div>
-          <div class="stat-label">Food Rescued</div>
-        </div>
-        <div class="stat-card reveal">
-          <div class="stat-icon">🏪</div>
-          <div class="stat-number" data-target="180">0</div>
-          <div class="stat-unit">+</div>
-          <div class="stat-label">Partner Stores</div>
-        </div>
-        <div class="stat-card reveal">
-          <div class="stat-icon">😊</div>
-          <div class="stat-number" data-target="3200">0</div>
-          <div class="stat-unit">+</div>
-          <div class="stat-label">Happy Users</div>
-        </div>
-        <div class="stat-card reveal">
-          <div class="stat-icon">💸</div>
-          <div class="stat-number" data-target="68">0</div>
-          <div class="stat-unit">%</div>
-          <div class="stat-label">Average Savings</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ───── FOOD PHOTO SHOWCASE ───── -->
-  <section class="food-showcase">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">What's Inside</span>
-        <h2>Real food. Real value.</h2>
-        <p>Every bundle is packed with food that's perfectly good — just surplus. Here's the kind of thing you'll find.</p>
-      </div>
-      <div class="showcase-grid">
-        <div class="showcase-card sc-tall reveal">
-          <div class="sc-photo" style="background-image:url('https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=600&q=80')"></div>
-          <div class="sc-label">
-            <span class="sc-cat">🥗 Restaurant</span>
-            <strong>Chef's Surprise Meal</strong>
-          </div>
-        </div>
-        <div class="showcase-col">
-          <div class="showcase-card sc-short reveal">
-            <div class="sc-photo" style="background-image:url('https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80')"></div>
-            <div class="sc-label">
-              <span class="sc-cat">🍞 Bakery</span>
-              <strong>Fresh Bread Bundle</strong>
-            </div>
-          </div>
-          <div class="showcase-card sc-short reveal">
-            <div class="sc-photo" style="background-image:url('https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&q=80')"></div>
-            <div class="sc-label">
-              <span class="sc-cat">🥦 Farm</span>
-              <strong>Organic Veg Box</strong>
-            </div>
-          </div>
-        </div>
-        <div class="showcase-card sc-tall reveal">
-          <div class="sc-photo" style="background-image:url('https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80')"></div>
-          <div class="sc-label">
-            <span class="sc-cat">🥡 Meal Prep</span>
-            <strong>Prepared Meal Packs</strong>
-          </div>
-        </div>
-      </div>
-    </div>
   </section>
 
   <!-- ───── HOW IT WORKS ───── -->
   <section class="how-section" id="how">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-tag">Simple & Easy</span>
+        <span class="section-tag">Simple as 1 – 2 – 3 – 4</span>
         <h2>How Birp Works</h2>
-        <p>Three steps between you and a great deal on food that would otherwise go to waste.</p>
+        <p>Making sure every meal finds a home.</p>
       </div>
-      <div class="steps-grid">
-        <div class="step-card reveal">
-          <div class="step-visual step-v1">
-            <img src="https://images.unsplash.com/photo-1573246123716-6b1782bfc499?w=400&q=80" alt="Browse deals" loading="lazy" />
-          </div>
-          <div class="step-num">01</div>
-          <h3>Find Nearby Deals</h3>
-          <p>Browse available food bundles from restaurants, cafés, grocery stores and farms in your area.</p>
+      <div class="how-grid">
+        <div class="how-card reveal">
+          <span class="how-num">1</span>
+          <div class="how-icon">📱</div>
+          <h3>Get the App</h3>
+          <p>Download Birp on your phone. It takes under a minute and it's free.</p>
         </div>
-        <div class="step-card reveal">
-          <div class="step-visual step-v2">
-            <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80" alt="Reserve bundle" loading="lazy" />
-          </div>
-          <div class="step-num">02</div>
-          <h3>Reserve Your Bundle</h3>
-          <p>Pick your bundle and reserve it in seconds. You'll get a confirmation and pick-up window.</p>
+        <div class="how-card reveal">
+          <span class="how-num">2</span>
+          <div class="how-icon">📍</div>
+          <h3>Browse Near You</h3>
+          <p>Find surprise bags of surplus food from local restaurants, bakeries and shops.</p>
         </div>
-        <div class="step-card reveal">
-          <div class="step-visual step-v3">
-            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80" alt="Pick up food" loading="lazy" />
-          </div>
-          <div class="step-num">03</div>
-          <h3>Pick Up & Enjoy</h3>
-          <p>Head to the store, collect your bundle, and enjoy great food while knowing you helped the planet.</p>
+        <div class="how-card reveal">
+          <span class="how-num">3</span>
+          <div class="how-icon">🛍️</div>
+          <h3>Order &amp; Pay</h3>
+          <p>Reserve your bag at a discounted price. Quick, easy, and no surprises on the cost.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ───── FARM SECTION ───── -->
-  <section class="farm-banner">
-    <div class="farm-banner-photo"></div>
-    <div class="farm-banner-overlay"></div>
-    <div class="container">
-      <div class="farm-banner-content reveal">
-        <span class="section-tag section-tag-white">🌾 Farm Programme</span>
-        <h2>From the field<br>to your table.</h2>
-        <p>We work directly with local farms to rescue surplus produce and turn organic waste into compost — closing the loop on food in South Africa.</p>
-        <a href="farms.html" class="btn-white">Explore Farm Deals →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ───── CATEGORIES ───── -->
-  <section class="categories-section">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">What's Available</span>
-        <h2>Food for every taste</h2>
-      </div>
-      <div class="cat-grid">
-        <a href="deals.html?cat=restaurants" class="cat-card reveal">
-          <div class="cat-img cat-restaurant"></div>
-          <div class="cat-overlay">
-            <h3>🍽️ Restaurants</h3>
-            <p>End-of-day chef surprises</p>
-          </div>
-        </a>
-        <a href="deals.html?cat=bakeries" class="cat-card reveal">
-          <div class="cat-img cat-bakery"></div>
-          <div class="cat-overlay">
-            <h3>🍞 Bakeries & Cafés</h3>
-            <p>Fresh bread, pastries, coffee</p>
-          </div>
-        </a>
-        <a href="deals.html?cat=grocery" class="cat-card reveal">
-          <div class="cat-img cat-grocery"></div>
-          <div class="cat-overlay">
-            <h3>🛒 Grocery Stores</h3>
-            <p>Near-best-before bargains</p>
-          </div>
-        </a>
-        <a href="farms.html" class="cat-card reveal">
-          <div class="cat-img cat-farm"></div>
-          <div class="cat-overlay">
-            <h3>🌾 Farms & Organic</h3>
-            <p>Compost, fertiliser &amp; veg</p>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ───── WHY IT MATTERS ───── -->
-  <section class="impact-section">
-    <div class="container">
-      <div class="impact-inner">
-        <div class="impact-text reveal">
-          <span class="section-tag">Why It Matters</span>
-          <h2>South Africa wastes <em>10 million tonnes</em> of food every year.</h2>
-          <p>That's food that could feed millions of people. Most of it ends up in landfill, releasing methane and contributing to climate change. Birp connects that surplus food directly to people who want it — at prices that work for everyone.</p>
-          <ul class="impact-list">
-            <li>✅ Reduces greenhouse gas emissions</li>
-            <li>✅ Saves consumers up to 70% on meals</li>
-            <li>✅ Helps businesses recover costs on unsold stock</li>
-            <li>✅ Turns organic waste into compost &amp; fertiliser</li>
-          </ul>
-          <a href="about.html" class="btn-primary">Meet the Team</a>
-        </div>
-        <div class="impact-visual reveal-right">
-          <div class="impact-ring">
-            <div class="ring-label">
-              <div class="ring-num">10M</div>
-              <div class="ring-sub">tonnes wasted<br/>per year</div>
-            </div>
-          </div>
-          <div class="impact-badges">
-            <div class="i-badge">♻️ Zero Waste</div>
-            <div class="i-badge">💚 Eco Friendly</div>
-            <div class="i-badge">💸 Save Money</div>
-            <div class="i-badge">🤝 Community</div>
-          </div>
+        <div class="how-card reveal">
+          <span class="how-num">4</span>
+          <div class="how-icon">🎉</div>
+          <h3>Collect &amp; Enjoy</h3>
+          <p>Pick up your bag in the collection window, enjoy great food, and feel good doing it.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ───── TESTIMONIALS ───── -->
-  <section class="testimonials-section">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">What People Say</span>
-        <h2>Real stories, real impact</h2>
-      </div>
-      <div class="testi-grid">
-        <div class="testi-card reveal">
-          <div class="testi-stars">★★★★★</div>
-          <p>"I save over R300 a week just from the bakery bundles near my office. This app is a game changer."</p>
-          <div class="testi-author">
-            <div class="testi-avatar">SK</div>
-            <div>
-              <strong>Sipho K.</strong>
-              <span>Cape Town</span>
-            </div>
-          </div>
-        </div>
-        <div class="testi-card reveal">
-          <div class="testi-stars">★★★★★</div>
-          <p>"As a café owner, we used to throw away so much at closing. Birp helped us sell everything and feel good about it."</p>
-          <div class="testi-author">
-            <div class="testi-avatar">NV</div>
-            <div>
-              <strong>Naledi V.</strong>
-              <span>Store Partner, Joburg</span>
-            </div>
-          </div>
-        </div>
-        <div class="testi-card reveal">
-          <div class="testi-stars">★★★★★</div>
-          <p>"The farm compost programme helped our school garden grow so much produce this season. Amazing initiative!"</p>
-          <div class="testi-author">
-            <div class="testi-avatar">MJ</div>
-            <div>
-              <strong>Mr. J. Petersen</strong>
-              <span>School, Stellenbosch</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ───── CTA BANNER ───── -->
-  <section class="cta-banner">
-    <div class="cta-blobs">
+  <!-- ───── CHARITY BAND ───── -->
+  <section class="charity-band" id="charity">
+    <div class="charity-blobs">
       <div class="cta-blob cb-1"></div>
       <div class="cta-blob cb-2"></div>
     </div>
     <div class="container">
-      <div class="cta-inner reveal">
-        <div class="cta-bag-icon">🛍️</div>
-        <h2>Ready to rescue some food?</h2>
-        <p>Join thousands of South Africans saving food and money every day.</p>
-        <div class="cta-buttons">
-          <a href="#" class="btn-white" id="ctaSignup">Get Started Free</a>
-          <a href="deals.html" class="btn-ghost-white">Browse Deals →</a>
+      <div class="charity-inner reveal">
+        <div class="charity-icon">💚</div>
+        <span class="section-tag section-tag-white">Our Promise</span>
+        <h2>100% of Birp's proceeds go to charity.</h2>
+        <p>
+          Birp isn't here to make a profit. Every cent we earn goes directly to
+          organisations fighting food insecurity in South Africa. When you rescue
+          a meal with Birp, you're feeding someone who needs it too.
+        </p>
+        <div class="charity-stats">
+          <div class="charity-stat">
+            <span class="charity-stat-num">100%</span>
+            <span class="charity-stat-label">of proceeds donated</span>
+          </div>
+          <div class="charity-stat">
+            <span class="charity-stat-num">0</span>
+            <span class="charity-stat-label">profit kept by us</span>
+          </div>
+          <div class="charity-stat">
+            <span class="charity-stat-num">2x</span>
+            <span class="charity-stat-label">the impact per meal</span>
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── PARTNERS / PARTICIPATING STORES ───── -->
+  <section class="partners-section" id="partners">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Where to find us</span>
+        <h2>Our Partners &amp; Participating Stores</h2>
+        <p>We're starting small and growing carefully. Here are the local businesses working with Birp today.</p>
+      </div>
+      <div class="partners-grid">
+        <div class="partner-card reveal">
+          <div class="partner-logo">🥐</div>
+          <h3>Heritage Bakery</h3>
+          <span class="partner-type">Bakery</span>
+        </div>
+        <div class="partner-card reveal">
+          <div class="partner-logo">🥗</div>
+          <h3>The Green Bowl</h3>
+          <span class="partner-type">Restaurant</span>
+        </div>
+        <div class="partner-card reveal">
+          <div class="partner-logo">☕</div>
+          <h3>Sunrise Coffee Co.</h3>
+          <span class="partner-type">Café</span>
+        </div>
+        <div class="partner-card reveal">
+          <div class="partner-logo">🛒</div>
+          <h3>FreshMart Newlands</h3>
+          <span class="partner-type">Grocery</span>
+        </div>
+        <div class="partner-card reveal">
+          <div class="partner-logo">🥩</div>
+          <h3>The Deli Corner</h3>
+          <span class="partner-type">Deli</span>
+        </div>
+        <div class="partner-card partner-card-cta reveal">
+          <div class="partner-logo">➕</div>
+          <h3>Your Store Here</h3>
+          <span class="partner-type">Are you a local business? <a href="#contact">Get in touch</a></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── BENEFITS ───── -->
+  <section class="benefits-section" id="benefits">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Why Birp</span>
+        <h2>Good for you. Good for everyone.</h2>
+      </div>
+
+      <div class="benefits-band">
+        <div class="benefit-tile benefit-you reveal">
+          <h3>Good for you</h3>
+          <p>Great food at up to 70% off — from local businesses you already love.</p>
+        </div>
+        <div class="benefit-tile benefit-wallet reveal">
+          <h3>Good for your wallet</h3>
+          <p>Save hundreds of Rand every month without compromising on quality.</p>
+        </div>
+        <div class="benefit-tile benefit-planet reveal">
+          <h3>Good for the planet</h3>
+          <p>Every bag you rescue is one less meal going to waste — and a donation to charity.</p>
+        </div>
+      </div>
+
+      <div class="benefits-detail">
+        <div class="benefits-col reveal">
+          <h3>As a Birp customer you get…</h3>
+          <ul class="benefits-list">
+            <li>Surprise bags at up to 70% off retail</li>
+            <li>Great food from local stores you already know</li>
+            <li>The good feeling of reducing food waste</li>
+            <li>Knowing your money feeds someone in need</li>
+            <li>A quick, app-based way to order in under a minute</li>
+          </ul>
+        </div>
+        <div class="benefits-col reveal">
+          <h3>As a participating store you get…</h3>
+          <ul class="benefits-list benefits-list-alt">
+            <li>A new way to recover costs on surplus stock</li>
+            <li>Zero waste and zero guilt on unsold food</li>
+            <li>Exposure to new local customers</li>
+            <li>A simple setup — we handle the platform</li>
+            <li>A visible role in your community's food-security effort</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── APP DOWNLOAD BANNER ───── -->
+  <section class="app-banner" id="download">
+    <div class="container">
+      <div class="app-banner-inner">
+        <div class="app-banner-text reveal">
+          <h2>Get your first bag today.</h2>
+          <p class="app-banner-tag">rescue. save. give back.</p>
+          <div class="app-badges">
+            <a href="#" class="app-badge" aria-label="Download on the App Store (coming soon)">
+              <span class="app-badge-icon"></span>
+              <span class="app-badge-text"><small>Coming soon on the</small><strong>App Store</strong></span>
+            </a>
+            <a href="#" class="app-badge" aria-label="Get it on Google Play (coming soon)">
+              <span class="app-badge-icon">▶</span>
+              <span class="app-badge-text"><small>Coming soon on</small><strong>Google Play</strong></span>
+            </a>
+          </div>
+        </div>
+        <div class="app-banner-visual reveal-right">
+          <div class="app-phone">
+            <div class="app-phone-notch"></div>
+            <div class="app-phone-screen">
+              <div class="app-screen-logo">🌿 birp</div>
+              <div class="app-screen-bag">🛍️</div>
+              <div class="app-screen-line"></div>
+              <div class="app-screen-line short"></div>
+              <div class="app-screen-btn">Reserve · R 35</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── CONTACT ───── -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Get in touch</span>
+        <h2>Contact Us</h2>
+        <p>Questions, ideas, or a local business that wants to join Birp? We'd love to hear from you.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-cards reveal">
+          <a href="mailto:birp@bishops.org.za" class="contact-card">
+            <span class="contact-icon">✉️</span>
+            <strong>Email us</strong>
+            <span>birp@bishops.org.za</span>
+          </a>
+          <div class="contact-card">
+            <span class="contact-icon">🏪</span>
+            <strong>Become a store</strong>
+            <span>Local businesses can join by contacting us directly.</span>
+          </div>
+          <div class="contact-card">
+            <span class="contact-icon">🏫</span>
+            <strong>Find us</strong>
+            <span>Bishops (Diocesan College), Cape Town</span>
+          </div>
+        </div>
+        <form class="contact-form reveal-right" id="contactForm">
+          <label>Name<input type="text" placeholder="Your name" required /></label>
+          <label>Email<input type="email" placeholder="you@example.com" required /></label>
+          <label>Message<textarea placeholder="How can we help?" rows="4" required></textarea></label>
+          <button type="submit" class="btn-primary full-width">Send Message</button>
+        </form>
       </div>
     </div>
   </section>
@@ -413,30 +312,30 @@
             <span class="logo-leaf">🌿</span>
             <span class="logo-text">Birp</span>
           </div>
-          <p>A grade 9 philanthropy project by Bishops students — fighting food waste one bundle at a time.</p>
+          <p>Giving food a new birpose. A Grade 9 Bishops Big Ideas project fighting food waste and food insecurity in South Africa.</p>
         </div>
         <div class="footer-col">
-          <h4>Explore</h4>
+          <h4>Navigate</h4>
           <ul>
-            <li><a href="deals.html">Find Deals</a></li>
-            <li><a href="farms.html">Farm Surplus</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="deals.html">Order Online</a></li>
             <li><a href="about.html">Our Story</a></li>
+            <li><a href="#how">How It Works</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>For Businesses</h4>
+          <h4>For Stores</h4>
           <ul>
-            <li><a href="#">Partner With Us</a></li>
-            <li><a href="#">List Your Store</a></li>
-            <li><a href="#">FAQ</a></li>
+            <li><a href="#contact">Become a Partner</a></li>
+            <li><a href="#partners">Participating Stores</a></li>
+            <li><a href="#contact">Contact Us</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Contact</h4>
           <ul>
             <li><a href="mailto:birp@bishops.org.za">birp@bishops.org.za</a></li>
-            <li><a href="#">Instagram</a></li>
-            <li><a href="#">WhatsApp Community</a></li>
+            <li><a href="#download">Download the App</a></li>
           </ul>
         </div>
       </div>
@@ -470,161 +369,6 @@
           <label>Full Name<input type="text" placeholder="Your name" required /></label>
           <label>Email<input type="email" placeholder="you@example.com" required /></label>
           <label>Password<input type="password" placeholder="Create a password" required /></label>
-          <label class="account-type-label">I am a…
-            <div class="account-type-grid">
-              <label class="type-option"><input type="radio" name="accountType" value="user" checked /><span>🛒 User</span></label>
-              <label class="type-option"><input type="radio" name="accountType" value="store" /><span>🏪 Store</span></label>
-              <label class="type-option"><input type="radio" name="accountType" value="farm" /><span>🌾 Farm</span></label>
-            </div>
-          </label>
-          <button type="submit" class="btn-primary full-width">Create Account</button>
-          <p class="auth-switch">Already have an account? <a href="#" data-switch="login">Log in</a></p>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <script src="js/main.js"></script>
-</body>
-</html>           </div>
-          </div>
-        </div>
-        <div class="testi-card reveal">
-          <div class="testi-stars">★★★★★</div>
-          <p>"As a café owner, we used to throw away so much at closing. Birp helped us sell everything and feel good about it."</p>
-          <div class="testi-author">
-            <div class="testi-avatar">NV</div>
-            <div>
-              <strong>Naledi V.</strong>
-              <span>Store Partner, Joburg</span>
-            </div>
-          </div>
-        </div>
-        <div class="testi-card reveal">
-          <div class="testi-stars">★★★★★</div>
-          <p>"The farm compost programme helped our school garden grow so much produce this season. Amazing initiative!"</p>
-          <div class="testi-author">
-            <div class="testi-avatar">MJ</div>
-            <div>
-              <strong>Mr. J. Petersen</strong>
-              <span>School, Stellenbosch</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ───── CTA BANNER ───── -->
-  <section class="cta-banner">
-    <div class="cta-blobs">
-      <div class="cta-blob cb-1"></div>
-      <div class="cta-blob cb-2"></div>
-    </div>
-    <div class="container">
-      <div class="cta-inner reveal">
-        <h2>Ready to rescue some food?</h2>
-        <p>Join thousands of South Africans saving food and money every day.</p>
-        <div class="cta-buttons">
-          <a href="#" class="btn-white" id="ctaSignup">Get Started Free</a>
-          <a href="deals.html" class="btn-ghost-white">Browse Deals →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ───── FOOTER ───── -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="logo">
-            <span class="logo-leaf">🌿</span>
-            <span class="logo-text">Birp</span>
-        </div>
-        <div class="footer-col">
-          <h4>Explore</h4>
-          <ul>
-            <li><a href="deals.html">Find Deals</a></li>
-            <li><a href="farms.html">Farm Surplus</a></li>
-            <li><a href="about.html">Our Story</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>For Businesses</h4>
-          <ul>
-            <li><a href="#">Partner With Us</a></li>
-            <li><a href="#">List Your Store</a></li>
-            <li><a href="#">FAQ</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Contact</h4>
-          <ul>
-            <li><a href="mailto:birp@bishops.org.za">birp@bishops.org.za</a></li>
-            <li><a href="#">Instagram</a></li>
-            <li><a href="#">WhatsApp Community</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© 2026 Birp. A Bishops Big Ideas Project.</span>
-        <span>Made with 💚 by Grade 9</span>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ───── AUTH MODAL ───── -->
-  <div class="modal-overlay" id="authModal">
-    <div class="modal" id="authModalBox">
-      <button class="modal-close" id="closeModal">✕</button>
-      <div class="modal-tabs">
-        <button class="tab-btn active" data-tab="login">Log In</button>
-        <button class="tab-btn" data-tab="signup">Sign Up</button>
-      </div>
-      <!-- Login Form -->
-      <div class="tab-content active" id="tab-login">
-        <h3>Welcome back 👋</h3>
-        <form class="auth-form" id="loginForm">
-          <label>Email
-            <input type="email" placeholder="you@example.com" required />
-          </label>
-          <label>Password
-            <input type="password" placeholder="••••••••" required />
-          </label>
-          <button type="submit" class="btn-primary full-width">Log In</button>
-          <p class="auth-switch">Don't have an account? <a href="#" data-switch="signup">Sign up</a></p>
-        </form>
-      </div>
-      <!-- Signup Form -->
-      <div class="tab-content" id="tab-signup">
-        <h3>Join Birp 🌿</h3>
-        <form class="auth-form" id="signupForm">
-          <label>Full Name
-            <input type="text" placeholder="Your name" required />
-          </label>
-          <label>Email
-            <input type="email" placeholder="you@example.com" required />
-          </label>
-          <label>Password
-            <input type="password" placeholder="Create a password" required />
-          </label>
-          <label class="account-type-label">I am a…
-            <div class="account-type-grid">
-              <label class="type-option">
-                <input type="radio" name="accountType" value="user" checked />
-                <span>🛒 User</span>
-              </label>
-              <label class="type-option">
-                <input type="radio" name="accountType" value="store" />
-                <span>🏪 Store</span>
-              </label>
-              <label class="type-option">
-                <input type="radio" name="accountType" value="farm" />
-                <span>🌾 Farm</span>
-              </label>
-            </div>
-          </label>
           <button type="submit" class="btn-primary full-width">Create Account</button>
           <p class="auth-switch">Already have an account? <a href="#" data-switch="login">Log in</a></p>
         </form>

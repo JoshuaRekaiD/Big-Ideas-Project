@@ -14,17 +14,11 @@ Every page starts with the same `<nav class="navbar">`. The **correct** structur
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Home</a></li>
-      <li><a href="deals.html">Find Deals</a></li>
-      <li><a href="farms.html">Farm Surplus</a></li>
+      <li><a href="deals.html">Order Online</a></li>
       <li><a href="about.html">Our Story</a></li>
-      <li>
-        <div class="nav-search">
-          <span class="nav-search-icon">🔍</span>
-          <input type="text" placeholder="Search deals…" id="navSearchInput" autocomplete="off" />
-        </div>
-      </li>
-      <li><a href="#" class="btn-nav" id="openLogin">Log In</a></li>
-      <li><a href="#" class="btn-nav btn-nav-filled" id="openSignup">Sign Up</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#download" class="btn-nav btn-nav-filled">Download the App</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
       <span></span><span></span><span></span>
@@ -38,7 +32,11 @@ Rules for the navbar:
 - The `<a class="logo">` MUST be closed with `</a>` before the `<ul class="nav-links">` begins.
 - The nav `<li>` items live **inside** `<ul class="nav-links">`, never inside the logo anchor.
 
-> **KNOWN ISSUE — fix when touching these files:** `index.html` and `about.html` currently have a broken navbar — the logo `<a>` is not closed, the nav `<li>`s are nested inside it, there's a stray `</ul>` and no `.nav-links` wrapper or search bar. `deals.html` (shown above) is the correct reference. When editing those pages, repair the nav to match this structure so all four pages have an identical, working navbar.
+> **Two nav variants exist right now:**
+> - `index.html` uses the **new app-oriented nav** shown above (Home / Order Online / Our Story / How It Works / Contact / Download the App).
+> - `deals.html` and `about.html` still use the **older nav** (Home / Find Deals / Our Story + a `.nav-search` box + Log In / Sign Up buttons wired to the auth modal).
+>
+> Both are valid and working. If you want a single consistent navbar across all pages, align `deals.html` and `about.html` to the new home nav (or vice-versa). No page has the old malformed-markup bug anymore.
 
 ## Shared footer (bottom of every page)
 `<footer class="footer">` with a `.footer-grid` containing `.footer-brand` (logo + tagline) and `.footer-col` link columns, then a `.footer-bottom` copyright row. Keep it consistent across pages.
