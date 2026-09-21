@@ -361,46 +361,23 @@
     </div>
   </section>
 
-  <!-- ───── AUTH MODAL ───── -->
-  <div class="modal-overlay" id="authModal">
-    <div class="modal" id="authModalBox">
-      <button class="modal-close" id="closeModal">✕</button>
-      <div class="modal-tabs">
-        <button class="tab-btn active" data-tab="login">Log In</button>
-        <button class="tab-btn" data-tab="signup">Sign Up</button>
+  <!-- ───── TESTIMONIALS ───── -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">What People Say</span>
+        <h2>Real stories, real impact</h2>
       </div>
-      <div class="tab-content active" id="tab-login">
-        <h3>Welcome back 👋</h3>
-        <form class="auth-form" id="loginForm">
-          <label>Email<input type="email" placeholder="you@example.com" required /></label>
-          <label>Password<input type="password" placeholder="••••••••" required /></label>
-          <button type="submit" class="btn-primary full-width">Log In</button>
-          <p class="auth-switch">Don't have an account? <a href="#" data-switch="signup">Sign up</a></p>
-        </form>
-      </div>
-      <div class="tab-content" id="tab-signup">
-        <h3>Join Birp 🌿</h3>
-        <form class="auth-form" id="signupForm">
-          <label>Full Name<input type="text" placeholder="Your name" required /></label>
-          <label>Email<input type="email" placeholder="you@example.com" required /></label>
-          <label>Password<input type="password" placeholder="Create a password" required /></label>
-          <label class="account-type-label">I am a…
-            <div class="account-type-grid">
-              <label class="type-option"><input type="radio" name="accountType" value="user" checked /><span>🛒 User</span></label>
-              <label class="type-option"><input type="radio" name="accountType" value="store" /><span>🏪 Store</span></label>
-              <label class="type-option"><input type="radio" name="accountType" value="farm" /><span>🌾 Farm</span></label>
+      <div class="testi-grid">
+        <div class="testi-card reveal">
+          <div class="testi-stars">★★★★★</div>
+          <p>"I save over R300 a week just from the bakery bundles near my office. This app is a game changer."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">SK</div>
+            <div>
+              <strong>Sipho K.</strong>
+              <span>Cape Town</span>
             </div>
-          </label>
-          <button type="submit" class="btn-primary full-width">Create Account</button>
-          <p class="auth-switch">Already have an account? <a href="#" data-switch="login">Log in</a></p>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <script src="js/main.js"></script>
-</body>
-</html>           </div>
           </div>
         </div>
         <div class="testi-card reveal">
@@ -455,6 +432,8 @@
           <div class="logo">
             <span class="logo-leaf">🌿</span>
             <span class="logo-text">Birp</span>
+          </div>
+          <p>A grade 9 philanthropy project by Bishops students — fighting food waste one bundle at a time.</p>
         </div>
         <div class="footer-col">
           <h4>Explore</h4>
@@ -496,47 +475,27 @@
         <button class="tab-btn active" data-tab="login">Log In</button>
         <button class="tab-btn" data-tab="signup">Sign Up</button>
       </div>
-      <!-- Login Form -->
       <div class="tab-content active" id="tab-login">
         <h3>Welcome back 👋</h3>
         <form class="auth-form" id="loginForm">
-          <label>Email
-            <input type="email" placeholder="you@example.com" required />
-          </label>
-          <label>Password
-            <input type="password" placeholder="••••••••" required />
-          </label>
+          <label>Full Name<input type="text" placeholder="Your name" required /></label>
+          <label>Email<input type="email" placeholder="you@example.com" required /></label>
+          <label>Password<input type="password" placeholder="••••••••" required /></label>
           <button type="submit" class="btn-primary full-width">Log In</button>
           <p class="auth-switch">Don't have an account? <a href="#" data-switch="signup">Sign up</a></p>
         </form>
       </div>
-      <!-- Signup Form -->
       <div class="tab-content" id="tab-signup">
         <h3>Join Birp 🌿</h3>
         <form class="auth-form" id="signupForm">
-          <label>Full Name
-            <input type="text" placeholder="Your name" required />
-          </label>
-          <label>Email
-            <input type="email" placeholder="you@example.com" required />
-          </label>
-          <label>Password
-            <input type="password" placeholder="Create a password" required />
-          </label>
+          <label>Full Name<input type="text" placeholder="Your name" required /></label>
+          <label>Email<input type="email" placeholder="you@example.com" required /></label>
+          <label>Password<input type="password" placeholder="Create a password" required /></label>
           <label class="account-type-label">I am a…
             <div class="account-type-grid">
-              <label class="type-option">
-                <input type="radio" name="accountType" value="user" checked />
-                <span>🛒 User</span>
-              </label>
-              <label class="type-option">
-                <input type="radio" name="accountType" value="store" />
-                <span>🏪 Store</span>
-              </label>
-              <label class="type-option">
-                <input type="radio" name="accountType" value="farm" />
-                <span>🌾 Farm</span>
-              </label>
+              <label class="type-option"><input type="radio" name="accountType" value="user" checked /><span>🛒 User</span></label>
+              <label class="type-option"><input type="radio" name="accountType" value="store" /><span>🏪 Store</span></label>
+              <label class="type-option"><input type="radio" name="accountType" value="farm" /><span>🌾 Farm</span></label>
             </div>
           </label>
           <button type="submit" class="btn-primary full-width">Create Account</button>
