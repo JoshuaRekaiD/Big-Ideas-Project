@@ -541,143 +541,224 @@ img {
 
 .bag-scene {
   position: relative;
-  width: 420px;
-  height: 500px;
+  width: 440px;
+  height: 540px;
+}
+
+/* Soft radial glow behind the whole bag */
+.bag-glow-orb {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 340px;
+  height: 340px;
+  transform: translate(-50%, -45%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.55) 0%, rgba(178,209,79,0.25) 50%, transparent 75%);
+  filter: blur(24px);
+  z-index: 0;
+  pointer-events: none;
 }
 
 .grocery-bag {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -48%);
   animation: bagBob 3.5s ease-in-out infinite;
+  z-index: 2;
+}
+
+/* Elliptical drop shadow on the "floor" */
+.bag-shadow {
+  position: absolute;
+  bottom: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: 28px;
+  background: radial-gradient(ellipse, rgba(97,58,164,0.25) 0%, transparent 75%);
+  border-radius: 50%;
+  filter: blur(8px);
 }
 
 .bag-body {
   position: relative;
-  width: 280px;
-  height: 320px;
-  background: linear-gradient(135deg, var(--chartreuse) 0%, var(--turquoise) 100%);
-  border-radius: 16px 16px 32px 32px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  width: 260px;
+  height: 300px;
+  background: linear-gradient(160deg, #c8e460 0%, #91d4be 55%, #5ab5a2 100%);
+  border-radius: 14px 14px 40px 40px;
+  box-shadow:
+    0 24px 64px rgba(97,58,164,0.22),
+    0 6px 20px rgba(0,0,0,0.12),
+    inset 0 2px 4px rgba(255,255,255,0.55);
+}
+
+/* Subtle highlight shine stripe */
+.bag-shine {
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  width: 40px;
+  height: 120px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.55), transparent);
+  border-radius: 20px;
+  transform: rotate(-10deg);
+  pointer-events: none;
 }
 
 .bag-fold {
   position: absolute;
   top: 0;
-  left: 10%;
-  right: 10%;
-  height: 40px;
-  background: linear-gradient(135deg, var(--turquoise) 0%, var(--chartreuse) 100%);
-  border-radius: 8px 8px 0 0;
-  opacity: 0.6;
+  left: 8%;
+  right: 8%;
+  height: 44px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.05) 100%);
+  border-radius: 10px 10px 0 0;
+  border-bottom: 2px solid rgba(255,255,255,0.3);
 }
 
 .bag-handle {
   position: absolute;
-  top: -40px;
-  width: 90px;
+  top: -44px;
+  width: 82px;
   height: 80px;
-  border: 12px solid var(--indigo);
+  border: 11px solid var(--indigo);
   border-bottom: none;
   border-radius: 60px 60px 0 0;
+  box-shadow: 0 -4px 12px rgba(97,58,164,0.2);
 }
 
-.bag-handle-left {
-  left: 30px;
-}
-
-.bag-handle-right {
-  right: 30px;
-}
+.bag-handle-left  { left: 28px; }
+.bag-handle-right { right: 28px; }
 
 .bag-logo-mark {
   position: absolute;
-  bottom: 40px;
+  bottom: 36px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 52px;
+  font-size: 48px;
   font-weight: 900;
   color: white;
   font-family: 'Barlow Condensed', sans-serif;
   text-transform: lowercase;
-  opacity: 0.3;
+  opacity: 0.22;
+  letter-spacing: 2px;
+  user-select: none;
 }
 
-.bag-contents {
+/* Coloured accent stripe at the bottom of the bag */
+.bag-bottom-stripe {
   position: absolute;
-  top: -40px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 14px;
+  background: linear-gradient(90deg, var(--indigo), var(--violet), var(--indigo));
+  border-radius: 0 0 40px 40px;
+  opacity: 0.55;
+}
+
+/* Food items stuck to the outside middle of the bag face */
+.bag-fruits {
+  position: absolute;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   display: flex;
-  gap: 12px;
-  align-items: flex-end;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.22);
+  backdrop-filter: blur(4px);
+  border-radius: 40px;
+  padding: 6px 14px;
+  border: 1.5px solid rgba(255,255,255,0.45);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  white-space: nowrap;
 }
 
-.bag-item {
-  font-size: 46px;
-  animation: itemBob 2.5s ease-in-out infinite;
+.bag-fruits span {
+  font-size: 28px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.18));
+  line-height: 1;
 }
 
-.bi-bread { animation-delay: 0s; }
-.bi-veg { animation-delay: 0.3s; }
-.bi-tomato { animation-delay: 0.6s; }
-.bi-apple { animation-delay: 0.9s; }
-.bi-lemon { animation-delay: 1.2s; }
-
+/* Deal tags — pill shape with icon */
 .bag-tag {
   position: absolute;
-  background: white;
-  padding: 12px 20px;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  background: rgba(255,255,255,0.97);
+  padding: 10px 16px;
+  border-radius: 50px;
+  box-shadow: 0 8px 28px rgba(97,58,164,0.18), 0 2px 8px rgba(0,0,0,0.08);
   animation: tagFloat 3s ease-in-out infinite;
   display: flex;
+  align-items: center;
+  gap: 10px;
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(255,255,255,0.8);
+  z-index: 3;
+}
+
+.bt-icon {
+  font-size: 24px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.bt-text {
+  display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 1px;
 }
 
 .bt-discount {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 900;
   color: var(--violet);
   font-family: 'Barlow Condensed', sans-serif;
+  line-height: 1;
 }
 
 .bt-name {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--gray-mid);
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .bt-1 {
-  top: 20%;
-  left: -60px;
+  top: 18%;
+  left: -80px;
   animation-delay: 0s;
 }
 
 .bt-2 {
-  top: 50%;
-  right: -80px;
-  animation-delay: 0.5s;
+  top: 48%;
+  right: -90px;
+  animation-delay: 0.6s;
 }
 
 .bt-3 {
-  bottom: 15%;
-  left: -50px;
-  animation-delay: 1s;
+  bottom: 14%;
+  left: -70px;
+  animation-delay: 1.2s;
 }
 
+/* Sparkles */
 .sparkle {
   position: absolute;
-  font-size: 28px;
   color: var(--yellow);
   animation: sparklePulse 2s ease-in-out infinite;
+  z-index: 1;
+  pointer-events: none;
+  text-shadow: 0 0 8px rgba(255,236,150,0.8);
 }
 
-.sp-1 { top: 10%; right: 15%; animation-delay: 0s; }
-.sp-2 { bottom: 20%; left: 10%; animation-delay: 0.7s; }
-.sp-3 { top: 60%; right: 10%; animation-delay: 1.4s; }
+.sp-1 { font-size: 30px; top: 8%;   right: 12%; animation-delay: 0s; }
+.sp-2 { font-size: 20px; bottom: 22%; left: 8%;  animation-delay: 0.7s; }
+.sp-3 { font-size: 16px; top: 62%;  right: 8%;  animation-delay: 1.4s; }
+.sp-4 { font-size: 22px; top: 28%;  right: 4%;  animation-delay: 2.1s; }
 
 /* ───── HERO VISUAL: FLOATING CARDS (alternative) ───── */
 .floating-cards {

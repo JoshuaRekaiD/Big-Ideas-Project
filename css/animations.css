@@ -282,14 +282,10 @@ body { animation: fadeInUp 0.5s ease both; }
 
 /* ── BAG + FOOD ITEM ANIMATIONS ── */
 @keyframes bagBob {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-18px); }
+  0%, 100% { transform: translate(-50%, -48%) translateY(0px); }
+  50%       { transform: translate(-50%, -48%) translateY(-18px); }
 }
 
-@keyframes itemBob {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-6px); }
-}
 
 @keyframes tagFloat {
   0%, 100% { transform: translateY(0); }
