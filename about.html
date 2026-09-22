@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Our Story – Birp</title>
-  <link rel="stylesheet" href="css/main.css?v=8" />
-  <link rel="stylesheet" href="css/animations.css?v=5" />
+  <link rel="stylesheet" href="css/main.css?v=11" />
+  <link rel="stylesheet" href="css/animations.css?v=6" />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,700&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
@@ -14,7 +14,11 @@
   <nav class="navbar scrolled" id="navbar">
     <div class="nav-inner">
       <a href="index.html" class="logo">
-        <span class="logo-leaf">🌿</span>
+        <span class="logo-leaf">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M20 4C9 4 4 10 4 18c0 1 0 2 .5 2.5C10 14 15 12 20 11c-4 1.5-8 4-11.5 9C15 20 20 15 20 4z" fill="currentColor"/>
+          </svg>
+        </span>
         <span class="logo-text">Birp</span>
       </a>
       <ul class="nav-links" id="navLinks">
@@ -23,7 +27,12 @@
         <li><a href="about.html" class="active">Our Story</a></li>
         <li>
           <div class="nav-search">
-            <span class="nav-search-icon">🔍</span>
+            <span class="nav-search-icon">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2.2"/>
+                <path d="M20 20l-3.2-3.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+              </svg>
+            </span>
             <input type="text" placeholder="Search deals…" id="navSearchInput" autocomplete="off" />
           </div>
         </li>
@@ -44,7 +53,7 @@
     </div>
     <div class="container">
       <div class="about-hero-content reveal">
-        <span class="section-tag">🏫 Bishops Big Ideas</span>
+        <span class="section-tag">Bishops Big Ideas</span>
         <h1>A school project that became <em>a real mission.</em></h1>
         <p class="about-lead">We're a group of grade 9 students at Bishops (Diocesan College) in Cape Town. What started as a philanthropy assignment turned into something we genuinely care about — fighting food waste in South Africa.</p>
       </div>
@@ -92,22 +101,43 @@
       </div>
       <div class="values-grid">
         <div class="value-card reveal">
-          <div class="value-icon">🌍</div>
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M3.5 12h17M12 3.5c2.5 2.3 2.5 14.7 0 17M12 3.5c-2.5 2.3-2.5 14.7 0 17" stroke="currentColor" stroke-width="1.8"/>
+            </svg>
+          </div>
           <h3>Planet First</h3>
           <p>Every bundle saved is methane that didn't enter the atmosphere. We measure our success in kilograms rescued.</p>
         </div>
         <div class="value-card reveal">
-          <div class="value-icon">🤝</div>
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="8" cy="9" r="3" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="16" cy="9" r="3" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M3 19c0-2.8 2.2-5 5-5M21 19c0-2.8-2.2-5-5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
           <h3>Community Focused</h3>
           <p>We're built for South African communities — local stores, local farms, local people. Keeping value circulating here.</p>
         </div>
         <div class="value-card reveal">
-          <div class="value-icon">💸</div>
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M12 7v10M14.5 9.3c-.6-.8-1.5-1.1-2.5-1.1-1.4 0-2.3.8-2.3 1.8 0 2.4 5 1.3 5 3.9 0 1-1 1.9-2.7 1.9-1.1 0-2.1-.4-2.7-1.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </div>
           <h3>Accessible to All</h3>
           <p>Great food shouldn't cost a fortune. Our deals make quality meals reachable for everyone, not just the few.</p>
         </div>
         <div class="value-card reveal">
-          <div class="value-icon">🔬</div>
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 3L2 8l10 5 10-5-10-5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="M6 10.5V15c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5M22 8v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
           <h3>Student-Driven</h3>
           <p>We believe young people can design real solutions to real problems. This project is proof of that.</p>
         </div>
@@ -174,7 +204,12 @@
       </div>
       <div class="founders-note reveal">
         <div class="note-inner">
-          <span class="note-icon">🏫</span>
+          <span class="note-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 3L2 8l10 5 10-5-10-5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="M6 10.5V15c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5M22 8v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </span>
           <div>
             <strong>Bishops Diocesan College — Big Ideas Programme</strong>
             <p>This project is part of the Bishops philanthropy and outreach initiative, where students are challenged to design solutions to real social and environmental problems. BIRP our answer to food waste in South Africa.</p>
@@ -194,17 +229,31 @@
       </div>
       <div class="inspo-grid">
         <div class="inspo-card reveal">
-          <div class="inspo-icon">🇿🇦</div>
+          <div class="inspo-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 22s7-5.5 7-12a7 7 0 10-14 0c0 6.5 7 12 7 12z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              <circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.8"/>
+            </svg>
+          </div>
           <h3>Refreshi</h3>
           <p>Cape Town-based platform connecting consumers with surplus meals from local businesses. Our closest inspiration for the South African context.</p>
         </div>
         <div class="inspo-card reveal">
-          <div class="inspo-icon">🌍</div>
+          <div class="inspo-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M3.5 12h17M12 3.5c2.5 2.3 2.5 14.7 0 17M12 3.5c-2.5 2.3-2.5 14.7 0 17" stroke="currentColor" stroke-width="1.8"/>
+            </svg>
+          </div>
           <h3>Too Good To Go</h3>
           <p>Global leader in food waste reduction. Their surprise bag model — buy a mystery bundle at a fraction of retail — inspired our core offering.</p>
         </div>
         <div class="inspo-card reveal">
-          <div class="inspo-icon">💚</div>
+          <div class="inspo-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 20.5S3.5 15 3.5 8.8A4.8 4.8 0 0112 6a4.8 4.8 0 018.5 2.8C20.5 15 12 20.5 12 20.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            </svg>
+          </div>
           <h3>Food Forward SA</h3>
           <p>South African NPO tackling food insecurity by rescuing fresh produce and redirecting it to communities in need. Their charitable mission inspires ours.</p>
         </div>
@@ -263,7 +312,11 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="logo">
-            <span class="logo-leaf">🌿</span>
+            <span class="logo-leaf">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M20 4C9 4 4 10 4 18c0 1 0 2 .5 2.5C10 14 15 12 20 11c-4 1.5-8 4-11.5 9C15 20 20 15 20 4z" fill="currentColor"/>
+              </svg>
+            </span>
             <span class="logo-text">Birp</span>
           </div>
           <p>A grade 9 philanthropy project by Bishops students — fighting food waste one bundle at a time.</p>

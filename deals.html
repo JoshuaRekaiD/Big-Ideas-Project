@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Find Deals – Birp</title>
-  <link rel="stylesheet" href="css/main.css?v=8" />
-  <link rel="stylesheet" href="css/animations.css?v=5" />
+  <link rel="stylesheet" href="css/main.css?v=11" />
+  <link rel="stylesheet" href="css/animations.css?v=6" />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,700&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
@@ -14,7 +14,11 @@
   <nav class="navbar scrolled" id="navbar">
     <div class="nav-inner">
       <a href="index.html" class="logo">
-        <span class="logo-leaf">🌿</span>
+        <span class="logo-leaf">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M20 4C9 4 4 10 4 18c0 1 0 2 .5 2.5C10 14 15 12 20 11c-4 1.5-8 4-11.5 9C15 20 20 15 20 4z" fill="currentColor"/>
+          </svg>
+        </span>
         <span class="logo-text">Birp</span>
       </a>
       <ul class="nav-links" id="navLinks">
@@ -23,7 +27,12 @@
         <li><a href="about.html">Our Story</a></li>
         <li>
           <div class="nav-search">
-            <span class="nav-search-icon">🔍</span>
+            <span class="nav-search-icon">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2.2"/>
+                <path d="M20 20l-3.2-3.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+              </svg>
+            </span>
             <input type="text" placeholder="Search deals…" id="navSearchInput" autocomplete="off" />
           </div>
         </li>
@@ -48,7 +57,7 @@
         <h1>Find surplus food near you</h1>
         <p>Browse bundles from local businesses — reserved fresh, picked up today.</p>
         <div class="search-bar">
-          <input type="text" placeholder="🔍  Search by store, area or food type…" id="searchInput" />
+          <input type="text" placeholder="Search by store, area or food type…" id="searchInput" />
           <button class="btn-primary">Search</button>
         </div>
       </div>
@@ -60,11 +69,11 @@
     <div class="container">
       <div class="filters-row">
         <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="restaurant">🍽️ Restaurants</button>
-        <button class="filter-btn" data-filter="bakery">🍞 Bakeries</button>
-        <button class="filter-btn" data-filter="cafe">☕ Cafés</button>
-        <button class="filter-btn" data-filter="grocery">🛒 Grocery</button>
-        <button class="filter-btn" data-filter="deli">🥩 Delis</button>
+        <button class="filter-btn" data-filter="restaurant">Restaurants</button>
+        <button class="filter-btn" data-filter="bakery">Bakeries</button>
+        <button class="filter-btn" data-filter="cafe">Cafés</button>
+        <button class="filter-btn" data-filter="grocery">Grocery</button>
+        <button class="filter-btn" data-filter="deli">Delis</button>
       </div>
     </div>
   </section>
@@ -77,13 +86,13 @@
 
         <!-- Deal Card 1 -->
         <div class="deal-card reveal" data-category="bakery">
-          <div class="deal-badge">🔥 Almost Gone</div>
+          <div class="deal-badge">Almost Gone</div>
           <div class="deal-img deal-img-bakery"></div>
           <div class="deal-body">
-            <div class="deal-cat-tag">🍞 Bakery</div>
+            <div class="deal-cat-tag">Bakery</div>
             <h3>Heritage Bakery</h3>
             <p class="deal-desc">End-of-day bread, rolls &amp; pastries. Contents vary — always delicious.</p>
-            <div class="deal-time">⏰ Pick up: 4:00 PM – 5:30 PM</div>
+            <div class="deal-time"><svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Pick up: 4:00 PM – 5:30 PM</div>
             <div class="deal-footer">
               <div class="deal-price">
                 <span class="price-now">R 25</span>
@@ -98,10 +107,10 @@
         <div class="deal-card reveal" data-category="restaurant">
           <div class="deal-img deal-img-restaurant"></div>
           <div class="deal-body">
-            <div class="deal-cat-tag">🍽️ Restaurant</div>
+            <div class="deal-cat-tag">Restaurant</div>
             <h3>The Green Bowl</h3>
             <p class="deal-desc">Surprise salad &amp; warm meal bundle — chef's choice from today's menu.</p>
-            <div class="deal-time">⏰ Pick up: 7:00 PM – 8:30 PM</div>
+            <div class="deal-time"><svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Pick up: 7:00 PM – 8:30 PM</div>
             <div class="deal-footer">
               <div class="deal-price">
                 <span class="price-now">R 35</span>
@@ -114,13 +123,13 @@
 
         <!-- Deal Card 3 -->
         <div class="deal-card reveal" data-category="cafe">
-          <div class="deal-badge">⚡ New</div>
+          <div class="deal-badge">New</div>
           <div class="deal-img deal-img-cafe"></div>
           <div class="deal-body">
-            <div class="deal-cat-tag">☕ Café</div>
+            <div class="deal-cat-tag">Café</div>
             <h3>Sunrise Coffee Co.</h3>
             <p class="deal-desc">Leftover pastries, muffins and a drink voucher. Perfect afternoon snack.</p>
-            <div class="deal-time">⏰ Pick up: 3:00 PM – 4:30 PM</div>
+            <div class="deal-time"><svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Pick up: 3:00 PM – 4:30 PM</div>
             <div class="deal-footer">
               <div class="deal-price">
                 <span class="price-now">R 30</span>
@@ -135,10 +144,10 @@
         <div class="deal-card reveal" data-category="grocery">
           <div class="deal-img deal-img-grocery"></div>
           <div class="deal-body">
-            <div class="deal-cat-tag">🛒 Grocery</div>
+            <div class="deal-cat-tag">Grocery</div>
             <h3>FreshMart Newlands</h3>
             <p class="deal-desc">Near-best-before pantry bundle — dry goods, snacks &amp; condiments.</p>
-            <div class="deal-time">⏰ Pick up: 5:00 PM – 7:00 PM</div>
+            <div class="deal-time"><svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Pick up: 5:00 PM – 7:00 PM</div>
             <div class="deal-footer">
               <div class="deal-price">
                 <span class="price-now">R 55</span>
@@ -151,13 +160,13 @@
 
         <!-- Deal Card 5 -->
         <div class="deal-card reveal" data-category="deli">
-          <div class="deal-badge">🔥 Popular</div>
+          <div class="deal-badge">Popular</div>
           <div class="deal-img deal-img-deli"></div>
           <div class="deal-body">
-            <div class="deal-cat-tag">🥩 Deli</div>
+            <div class="deal-cat-tag">Deli</div>
             <h3>The Deli Corner</h3>
             <p class="deal-desc">Charcuterie, cheese &amp; prepared salads — restaurant quality at half the price.</p>
-            <div class="deal-time">⏰ Pick up: 6:00 PM – 7:30 PM</div>
+            <div class="deal-time"><svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Pick up: 6:00 PM – 7:30 PM</div>
             <div class="deal-footer">
               <div class="deal-price">
                 <span class="price-now">R 45</span>
@@ -172,10 +181,10 @@
         <div class="deal-card reveal" data-category="restaurant">
           <div class="deal-img deal-img-restaurant2"></div>
           <div class="deal-body">
-            <div class="deal-cat-tag">🍽️ Restaurant</div>
+            <div class="deal-cat-tag">Restaurant</div>
             <h3>Nando's Claremont</h3>
             <p class="deal-desc">End-of-night peri-peri chicken bundle. Includes sides &amp; pitas.</p>
-            <div class="deal-time">⏰ Pick up: 9:00 PM – 10:00 PM</div>
+            <div class="deal-time"><svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Pick up: 9:00 PM – 10:00 PM</div>
             <div class="deal-footer">
               <div class="deal-price">
                 <span class="price-now">R 40</span>
@@ -190,10 +199,10 @@
         <div class="deal-card reveal" data-category="bakery">
           <div class="deal-img deal-img-bakery2"></div>
           <div class="deal-body">
-            <div class="deal-cat-tag">🍞 Bakery</div>
+            <div class="deal-cat-tag">Bakery</div>
             <h3>Olympia Bakery</h3>
             <p class="deal-desc">Sourdough, ciabatta &amp; croissants from this morning's bake — fresh &amp; amazing.</p>
-            <div class="deal-time">⏰ Pick up: 4:30 PM – 6:00 PM</div>
+            <div class="deal-time"><svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Pick up: 4:30 PM – 6:00 PM</div>
             <div class="deal-footer">
               <div class="deal-price">
                 <span class="price-now">R 30</span>
@@ -206,13 +215,13 @@
 
         <!-- Deal Card 8 -->
         <div class="deal-card reveal" data-category="grocery">
-          <div class="deal-badge">⚡ New</div>
+          <div class="deal-badge">New</div>
           <div class="deal-img deal-img-grocery2"></div>
           <div class="deal-body">
-            <div class="deal-cat-tag">🛒 Grocery</div>
+            <div class="deal-cat-tag">Grocery</div>
             <h3>Woolworths Food</h3>
             <p class="deal-desc">Premium prepared meals &amp; salads nearing sell-by. Quality you know.</p>
-            <div class="deal-time">⏰ Pick up: 6:00 PM – 8:00 PM</div>
+            <div class="deal-time"><svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Pick up: 6:00 PM – 8:00 PM</div>
             <div class="deal-footer">
               <div class="deal-price">
                 <span class="price-now">R 65</span>
@@ -227,10 +236,10 @@
         <div class="deal-card reveal" data-category="cafe">
           <div class="deal-img deal-img-cafe2"></div>
           <div class="deal-body">
-            <div class="deal-cat-tag">☕ Café</div>
+            <div class="deal-cat-tag">Café</div>
             <h3>Truth Coffee</h3>
             <p class="deal-desc">Baked goods, granola jars &amp; cold brew surprise pack from the day's leftovers.</p>
-            <div class="deal-time">⏰ Pick up: 4:00 PM – 5:00 PM</div>
+            <div class="deal-time"><svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Pick up: 4:00 PM – 5:00 PM</div>
             <div class="deal-footer">
               <div class="deal-price">
                 <span class="price-now">R 40</span>
@@ -245,10 +254,10 @@
         <div class="deal-card reveal" data-category="deli">
           <div class="deal-img deal-img-deli2"></div>
           <div class="deal-body">
-            <div class="deal-cat-tag">🥩 Deli</div>
+            <div class="deal-cat-tag">Deli</div>
             <h3>Melissa's Food Shop</h3>
             <p class="deal-desc">Gourmet sandwich fillings, quiches &amp; soups. Take-home dinner sorted.</p>
-            <div class="deal-time">⏰ Pick up: 5:30 PM – 7:00 PM</div>
+            <div class="deal-time"><svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Pick up: 5:30 PM – 7:00 PM</div>
             <div class="deal-footer">
               <div class="deal-price">
                 <span class="price-now">R 50</span>
@@ -263,10 +272,10 @@
         <div class="deal-card reveal" data-category="restaurant">
           <div class="deal-img deal-img-restaurant3"></div>
           <div class="deal-body">
-            <div class="deal-cat-tag">🍽️ Restaurant</div>
+            <div class="deal-cat-tag">Restaurant</div>
             <h3>Cape Malay Kitchen</h3>
             <p class="deal-desc">Traditional Cape Malay stews, rotis &amp; desserts — end of service bundle.</p>
-            <div class="deal-time">⏰ Pick up: 8:30 PM – 9:30 PM</div>
+            <div class="deal-time"><svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Pick up: 8:30 PM – 9:30 PM</div>
             <div class="deal-footer">
               <div class="deal-price">
                 <span class="price-now">R 45</span>
@@ -281,10 +290,10 @@
         <div class="deal-card reveal" data-category="bakery">
           <div class="deal-img deal-img-bakery3"></div>
           <div class="deal-body">
-            <div class="deal-cat-tag">🍞 Bakery</div>
+            <div class="deal-cat-tag">Bakery</div>
             <h3>Knead Woodstock</h3>
             <p class="deal-desc">Stone-baked breads, flavoured rolls &amp; cakes — a baker's dozen surprise.</p>
-            <div class="deal-time">⏰ Pick up: 5:00 PM – 6:30 PM</div>
+            <div class="deal-time"><svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Pick up: 5:00 PM – 6:30 PM</div>
             <div class="deal-footer">
               <div class="deal-price">
                 <span class="price-now">R 28</span>
