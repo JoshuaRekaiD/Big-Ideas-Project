@@ -452,3 +452,300 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     }
   });
 })();
+
+
+/* ─────────────────────────────────────────────
+   14. AREA FILTER (deals.html)
+───────────────────────────────────────────── */
+(function initAreaFilter() {
+  const areaBtns = document.querySelectorAll('.area-btn');
+  if (!areaBtns.length) return;
+
+  areaBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      areaBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyDealFilters();
+    });
+  });
+})();
+
+
+/* ─────────────────────────────────────────────
+   15. COMBINED FILTER + SEARCH + EMPTY STATE
+       Overrides the basic filter/search IIFEs
+       on pages that have both category + area.
+───────────────────────────────────────────── */
+(function initDealsPage() {
+  const grid       = document.getElementById('dealsGrid');
+  const emptyState = document.getElementById('dealsEmpty');
+  const countEl    = document.getElementById('resultsCount');
+  const searchInput = document.getElementById('searchInput');
+  const clearBtn   = document.getElementById('clearSearch');
+  const resetBtn   = document.getElementById('resetFilters');
+
+  if (!grid) return;
+
+  // Expose so area filter IIFE can call it
+  window.applyDealFilters = function() {
+    const activeCat  = (document.querySelector('.filter-btn.active') || {}).dataset?.filter || 'all';
+    const activeArea = (document.querySelector('.area-btn.active') || {}).dataset?.area  || 'all';
+    const query      = searchInput ? searchInput.value.toLowerCase().trim() : '';
+
+    const cards = grid.querySelectorAll('.deal-card');
+    let visible = 0;
+
+    cards.forEach(card => {
+      const catMatch  = activeCat  === 'all' || card.dataset.category === activeCat;
+      const areaMatch = activeArea === 'all' || card.dataset.area     === activeArea;
+      const text      = card.textContent.toLowerCase();
+      const txtMatch  = !query || text.includes(query);
+      const show = catMatch && areaMatch && txtMatch;
+      card.classList.toggle('hidden', !show);
+      if (show) visible++;
+    });
+
+    if (countEl) {
+      countEl.innerHTML = `Showing <strong>${visible}</strong> deal${visible !== 1 ? 's' : ''}`;
+    }
+
+    if (emptyState) {
+      emptyState.classList.toggle('hidden', visible > 0);
+      grid.classList.toggle('hidden', visible === 0);
+    }
+
+    if (clearBtn) {
+      clearBtn.style.display = query ? 'block' : 'none';
+    }
+  };
+
+  // Patch category filter buttons to use combined filter
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      window.applyDealFilters();
+    });
+  });
+
+  // Search input
+  if (searchInput) {
+    searchInput.addEventListener('input', () => window.applyDealFilters());
+  }
+
+  // Clear search
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      if (searchInput) { searchInput.value = ''; }
+      window.applyDealFilters();
+    });
+  }
+
+  // Reset all filters button (in empty state)
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach((b, i) => b.classList.toggle('active', i === 0));
+      document.querySelectorAll('.area-btn').forEach((b, i)  => b.classList.toggle('active', i === 0));
+      if (searchInput) { searchInput.value = ''; }
+      window.applyDealFilters();
+    });
+  }
+})();
+
+
+/* ─────────────────────────────────────────────
+   16. DEAL DETAIL MODAL
+───────────────────────────────────────────── */
+function openDealDetail(btn) {
+  const card = btn.closest('.deal-card');
+  if (!card) return;
+
+  const modal = document.getElementById('dealDetailModal');
+  if (!modal) return;
+
+  // Pull data from card
+  const store     = card.querySelector('h3')?.textContent || '';
+  const cat       = card.querySelector('.deal-cat-tag')?.textContent || '';
+  const suburb    = card.querySelector('.deal-suburb')?.textContent || '';
+  const desc      = card.querySelector('.deal-desc')?.textContent || '';
+  const priceNow  = card.querySelector('.price-now')?.textContent || '';
+  const priceWas  = card.querySelector('.price-was')?.textContent || '';
+  const timeEl    = card.querySelector('.deal-time')?.textContent?.replace('Pick up:', 'Pick up:').trim() || '';
+  const address   = card.dataset.address  || 'Address not listed';
+  const allergens = card.dataset.allergens || 'Not specified';
+  const contents  = card.dataset.contents || 'Surprise selection of surplus food';
+  const bags      = parseInt(card.dataset.bags ?? '1', 10);
+  const imgClass  = card.querySelector('.deal-img')?.className?.replace('deal-img', '').trim() || '';
+  const badge     = card.querySelector('.deal-badge')?.textContent || '';
+
+  // Populate modal
+  const detailImg = document.getElementById('detailImg');
+  if (detailImg) {
+    detailImg.className = 'detail-img ' + imgClass;
+  }
+
+  const detailBadges = document.getElementById('detailBadges');
+  if (detailBadges) {
+    detailBadges.innerHTML = badge
+      ? `<span class="detail-badge">${badge}</span>`
+      : '';
+  }
+
+  document.getElementById('detailCat').textContent       = cat;
+  document.getElementById('detailSuburb').textContent    = suburb;
+  document.getElementById('detailStoreName').textContent = store;
+  document.getElementById('detailContents').textContent  = contents;
+  document.getElementById('detailAllergens').textContent = allergens;
+  document.getElementById('detailTime').textContent      = timeEl.replace(/.*Pick up:/, 'Pick up:');
+  document.getElementById('detailAddress').textContent   = address;
+  document.getElementById('detailPriceNow').textContent  = priceNow;
+  document.getElementById('detailPriceWas').textContent  = priceWas;
+
+  const bagsEl = document.getElementById('detailBagsCount');
+  if (bagsEl) {
+    if (bags === 0) {
+      bagsEl.textContent = 'Sold out today';
+      bagsEl.className   = 'detail-bags-count detail-bags-none';
+    } else {
+      bagsEl.textContent = `${bags} bag${bags !== 1 ? 's' : ''} left`;
+      bagsEl.className   = bags <= 3 ? 'detail-bags-count detail-bags-urgent' : 'detail-bags-count';
+    }
+  }
+
+  // Wire the Reserve button inside the detail modal
+  const reserveBtn = document.getElementById('detailReserveBtn');
+  if (reserveBtn) {
+    const reserveBtnOnCard = card.querySelector('.btn-reserve');
+    if (bags === 0) {
+      reserveBtn.textContent = 'Sold Out';
+      reserveBtn.disabled    = true;
+    } else {
+      reserveBtn.textContent = 'Reserve This Bag';
+      reserveBtn.disabled    = false;
+      reserveBtn.onclick = () => {
+        closeModal('dealDetailModal');
+        if (reserveBtnOnCard) {
+          openReserveModal(reserveBtnOnCard);
+        }
+      };
+    }
+  }
+
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+(function initDealDetailModal() {
+  const modal    = document.getElementById('dealDetailModal');
+  const closeBtn = document.getElementById('closeDealDetail');
+  if (!modal) return;
+
+  function closeModal(id) {
+    const m = document.getElementById(id || 'dealDetailModal');
+    if (m) { m.classList.remove('active'); document.body.style.overflow = ''; }
+  }
+  // Expose so Reserve btn inside detail can close it
+  window.closeModal = closeModal;
+
+  if (closeBtn) closeBtn.addEventListener('click', () => closeModal());
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+})();
+
+
+/* ─────────────────────────────────────────────
+   17. UPGRADED RESERVE MODAL
+       Populates time + address, shows full
+       confirmation screen with pickup code.
+───────────────────────────────────────────── */
+(function initUpgradedReserve() {
+  // Patch openReserveModal to also pull time + address from the card
+  const originalOpen = window.openReserveModal;
+  window.openReserveModal = function(btn) {
+    const card = btn?.closest?.('.deal-card');
+    const modal = document.getElementById('reserveModal');
+    if (!modal) return;
+
+    // Show step 1, hide success
+    const step1   = document.getElementById('reserveStep1');
+    const success = document.getElementById('reserveSuccess');
+    if (step1)   step1.classList.remove('hidden');
+    if (success) success.classList.add('hidden');
+
+    // Populate
+    const store   = btn.dataset.store  || 'Store';
+    const item    = btn.dataset.item   || 'Bundle';
+    const price   = btn.dataset.price  || 'R--';
+    const timeEl  = card?.querySelector('.deal-time')?.textContent?.replace(/Pick up:/, 'Pick up:').trim() || '';
+    const address = card?.dataset.address || '';
+
+    const storeEl   = document.getElementById('reserveStoreName');
+    const itemEl    = document.getElementById('reserveItemName');
+    const priceEl   = document.getElementById('reservePriceDisplay');
+    const timeField = document.getElementById('reserveTime');
+    const addrField = document.getElementById('reserveAddress');
+
+    if (storeEl)   storeEl.textContent = store;
+    if (itemEl)    itemEl.textContent  = item;
+    if (priceEl)   priceEl.textContent = price;
+    if (timeField) timeField.textContent = timeEl.replace(/.*Pick up:/, 'Pick up:') || 'See store for details';
+    if (addrField) addrField.textContent = address || 'See store for details';
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  // Confirm button → show success screen
+  const confirmBtn = document.getElementById('confirmReserve');
+  if (confirmBtn) {
+    confirmBtn.addEventListener('click', () => {
+      const code   = 'BIRP-' + Math.floor(1000 + Math.random() * 9000);
+      const store  = document.getElementById('reserveStoreName')?.textContent || '';
+      const time   = document.getElementById('reserveTime')?.textContent || '';
+      const addr   = document.getElementById('reserveAddress')?.textContent || '';
+
+      const codeEl    = document.getElementById('reserveCode');
+      const storeEl   = document.getElementById('successStoreName');
+      const timeEl2   = document.getElementById('successTime');
+      const addrEl2   = document.getElementById('successAddress');
+      const step1     = document.getElementById('reserveStep1');
+      const success   = document.getElementById('reserveSuccess');
+
+      if (codeEl)  codeEl.textContent  = code;
+      if (storeEl) storeEl.textContent = store;
+      if (timeEl2) timeEl2.textContent = time;
+      if (addrEl2) addrEl2.textContent = addr;
+
+      if (step1)   step1.classList.add('hidden');
+      if (success) success.classList.remove('hidden');
+
+      showToast(`Reserved! Your code is ${code}`, 'success');
+    });
+  }
+
+  // Done button closes modal
+  const doneBtn = document.getElementById('closeAfterReserve');
+  if (doneBtn) {
+    doneBtn.addEventListener('click', () => {
+      const modal = document.getElementById('reserveModal');
+      if (modal) { modal.classList.remove('active'); document.body.style.overflow = ''; }
+    });
+  }
+})();
+
+
+/* ─────────────────────────────────────────────
+   18. FAQ ACCORDION (index.html)
+───────────────────────────────────────────── */
+(function initFaqAccordion() {
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const trigger = item.querySelector('.faq-question');
+    if (!trigger) return;
+    trigger.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      // close all
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      // open clicked if it was closed
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+})();

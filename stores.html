@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Stores – Birp</title>
+  <link rel="stylesheet" href="css/main.css?v=13" />
+  <link rel="stylesheet" href="css/animations.css?v=6" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,700&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-leaf">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M20 4C9 4 4 10 4 18c0 1 0 2 .5 2.5C10 14 15 12 20 11c-4 1.5-8 4-11.5 9C15 20 20 15 20 4z" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="logo-text">Birp</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="deals.html">Find Deals</a></li>
+        <li><a href="stores.html" class="active">For Stores</a></li>
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="index.html#contact" class="btn-nav btn-nav-filled">Become a Partner</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="page-hero stores-hero">
+    <div class="page-hero-blobs">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+    </div>
+    <div class="container">
+      <div class="page-hero-content reveal">
+        <span class="section-tag">Partner With Us</span>
+        <h1>Turn your surplus into impact.</h1>
+        <p>Join Birp and sell your end-of-day surplus food to local customers at a discount — reducing waste, recovering costs, and doing good in your community. It's free to join.</p>
+        <div class="hero-cta">
+          <a href="index.html#contact" class="btn-primary">Get in Touch</a>
+          <a href="#how-it-works" class="btn-ghost-white">See How It Works ↓</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT STORES GET -->
+  <section class="stores-benefits" id="benefits">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Why Join</span>
+        <h2>What you get as a Birp partner</h2>
+      </div>
+      <div class="stores-benefits-grid">
+        <div class="store-benefit-card reveal">
+          <div class="store-benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M12 7v10M14.5 9.3c-.6-.8-1.5-1.1-2.5-1.1-1.4 0-2.3.8-2.3 1.8 0 2.4 5 1.3 5 3.9 0 1-1 1.9-2.7 1.9-1.1 0-2.1-.4-2.7-1.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Recover lost revenue</h3>
+          <p>Food you'd otherwise throw away becomes income. Every bag sold is money back from stock that would have cost you to discard.</p>
+        </div>
+        <div class="store-benefit-card reveal">
+          <div class="store-benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 20.5S3.5 15 3.5 8.8A4.8 4.8 0 0112 6a4.8 4.8 0 018.5 2.8C20.5 15 12 20.5 12 20.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Zero waste, zero guilt</h3>
+          <p>Stop throwing away perfectly good food at the end of every day. Your surplus goes to someone who wants it instead of a landfill.</p>
+        </div>
+        <div class="store-benefit-card reveal">
+          <div class="store-benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="8" cy="9" r="3" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="16" cy="9" r="3" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M3 19c0-2.8 2.2-5 5-5M21 19c0-2.8-2.2-5-5-5M8 19a4 4 0 018 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>New customers</h3>
+          <p>Birp users discover your store through the app. Many become regular customers after their first surprise bag experience.</p>
+        </div>
+        <div class="store-benefit-card reveal">
+          <div class="store-benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M8 12h8M8 8h8M8 16h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Simple setup</h3>
+          <p>We handle the platform, the payments, and the customer communications. You just prepare the bag and confirm collections.</p>
+        </div>
+        <div class="store-benefit-card reveal">
+          <div class="store-benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3L2 8l10 5 10-5-10-5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="M6 10.5V15c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Community standing</h3>
+          <p>Being a Birp partner signals to your community that you care about sustainability and food security — not just the bottom line.</p>
+        </div>
+        <div class="store-benefit-card reveal">
+          <div class="store-benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M7 12l3.5 3.5L17 8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>No upfront cost</h3>
+          <p>Joining Birp is completely free. There are no setup fees, no monthly fees, and no obligation. You list when you have surplus — that's it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS FOR STORES -->
+  <section class="stores-how" id="how-it-works">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">The Process</span>
+        <h2>How it works for your store</h2>
+        <p>From application to your first bag sold — here's what to expect.</p>
+      </div>
+      <div class="stores-steps">
+        <div class="store-step reveal">
+          <div class="store-step-num">1</div>
+          <div class="store-step-content">
+            <h3>Apply</h3>
+            <p>Get in touch via our contact form or email. Tell us about your store and the type of surplus you typically have.</p>
+          </div>
+        </div>
+        <div class="store-step-arrow" aria-hidden="true">→</div>
+        <div class="store-step reveal">
+          <div class="store-step-num">2</div>
+          <div class="store-step-content">
+            <h3>We review &amp; onboard</h3>
+            <p>We'll be in touch within a few days. We'll agree on your bag type, pricing, and collection window, then set up your store profile.</p>
+          </div>
+        </div>
+        <div class="store-step-arrow" aria-hidden="true">→</div>
+        <div class="store-step reveal">
+          <div class="store-step-num">3</div>
+          <div class="store-step-content">
+            <h3>Test listing</h3>
+            <p>Before going live, we'll run a test to make sure the flow works smoothly — listing, reservation, and collection.</p>
+          </div>
+        </div>
+        <div class="store-step-arrow" aria-hidden="true">→</div>
+        <div class="store-step reveal">
+          <div class="store-step-num">4</div>
+          <div class="store-step-content">
+            <h3>Go live</h3>
+            <p>Your store appears on Birp. Customers start finding and reserving your bags. You prepare the bags, confirm pickups, and we handle the rest.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IS A SURPRISE BAG -->
+  <section class="surprise-bag-section">
+    <div class="container">
+      <div class="surprise-bag-inner">
+        <div class="surprise-bag-text reveal">
+          <span class="section-tag">The Product</span>
+          <h2>What is a Birp surprise bag?</h2>
+          <p>A surprise bag is a selection of your end-of-day surplus food, packaged and listed at a discounted price. Customers know the general type of food they're getting, but not the exact contents — that's part of the experience.</p>
+          <ul class="surprise-bag-list">
+            <li>You set the price and collection window</li>
+            <li>You decide how many bags to list each day</li>
+            <li>Contents vary — that's expected and clearly communicated to customers</li>
+            <li>You provide basic allergen information for the bag type</li>
+            <li>You remain responsible for the food you supply</li>
+          </ul>
+        </div>
+        <div class="surprise-bag-example reveal-right">
+          <div class="bag-example-card">
+            <div class="bag-example-header">
+              <span class="deal-cat-tag">Bakery</span>
+              <span class="deal-suburb">Example</span>
+            </div>
+            <h3>Bakery Surprise Bag</h3>
+            <p class="bag-example-desc">End-of-day bread, rolls &amp; pastries. Contents vary — always delicious.</p>
+            <div class="bag-example-meta">
+              <div class="bag-example-row">
+                <strong>Usually contains:</strong>
+                <span>2–4 bread or pastry items</span>
+              </div>
+              <div class="bag-example-row">
+                <strong>Estimated value:</strong>
+                <span>R80+</span>
+              </div>
+              <div class="bag-example-row">
+                <strong>Birp price:</strong>
+                <span class="price-now">R 25</span>
+              </div>
+              <div class="bag-example-row">
+                <strong>Allergens:</strong>
+                <span class="detail-allergens" style="font-size:13px;">Wheat, Dairy, Eggs</span>
+              </div>
+              <div class="bag-example-row">
+                <strong>Collection:</strong>
+                <span>4:00 PM – 5:30 PM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESPONSIBILITIES -->
+  <section class="responsibilities-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Responsibilities</span>
+        <h2>What we expect from partners</h2>
+        <p>Birp is built on trust — between stores, customers, and our community. Here's what being a good partner means.</p>
+      </div>
+      <div class="responsibilities-grid">
+        <div class="responsibility-card reveal">
+          <h3>Food safety</h3>
+          <p>All food listed on Birp must comply with South African food safety regulations. Stores are responsible for the preparation, storage, and packaging of food they supply. Birp does not handle food directly.</p>
+        </div>
+        <div class="responsibility-card reveal">
+          <h3>Accurate allergen information</h3>
+          <p>You must provide honest allergen information for your bag type. Customers rely on this to make safe choices. If contents change significantly, update the listing.</p>
+        </div>
+        <div class="responsibility-card reveal">
+          <h3>Reliable collection windows</h3>
+          <p>Customers plan their day around your pickup time. Stick to the window you set, or notify us in advance if you need to change it. Consistency builds customer trust.</p>
+        </div>
+        <div class="responsibility-card reveal">
+          <h3>Honest bag value</h3>
+          <p>A surprise bag should represent genuine value — the contents should be worth meaningfully more than the Birp price. Don't pad bags with items you'd discard anyway.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DASHBOARD PREVIEW -->
+  <section class="dashboard-preview-section">
+    <div class="container">
+      <div class="dashboard-preview-inner">
+        <div class="dashboard-preview-text reveal">
+          <span class="section-tag">Store Tools</span>
+          <h2>Your partner dashboard</h2>
+          <p>Once you're live, you'll have access to your Birp partner dashboard — a simple interface to manage your listings, track orders, and monitor your impact.</p>
+          <ul class="dashboard-feature-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/><path d="M7 12l3.5 3.5L17 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Manage today's bag listings
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/><path d="M7 12l3.5 3.5L17 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              See live orders and pickup codes
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/><path d="M7 12l3.5 3.5L17 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Mark bags as collected
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/><path d="M7 12l3.5 3.5L17 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Track bags sold and food rescued
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/><path d="M7 12l3.5 3.5L17 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              View monthly impact reports
+            </li>
+          </ul>
+          <a href="store-dashboard.html" class="btn-primary">Preview the Dashboard</a>
+        </div>
+        <div class="dashboard-preview-visual reveal-right">
+          <div class="dashboard-mockup">
+            <div class="dm-header">
+              <div class="logo"><span class="logo-leaf"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 4C9 4 4 10 4 18c0 1 0 2 .5 2.5C10 14 15 12 20 11c-4 1.5-8 4-11.5 9C15 20 20 15 20 4z" fill="currentColor"/></svg></span><span class="logo-text">Birp</span></div>
+              <span class="dm-tag">Partner Dashboard</span>
+            </div>
+            <div class="dm-stat-row">
+              <div class="dm-stat"><span class="dm-stat-num">7</span><span class="dm-stat-label">Bags today</span></div>
+              <div class="dm-stat"><span class="dm-stat-num">5</span><span class="dm-stat-label">Reserved</span></div>
+              <div class="dm-stat"><span class="dm-stat-num">84 kg</span><span class="dm-stat-label">Rescued this month</span></div>
+            </div>
+            <div class="dm-order">
+              <span class="dm-order-code">BIRP-1024</span>
+              <span class="dm-order-name">J. Smith · R40</span>
+              <span class="dm-order-status collected">Collected</span>
+            </div>
+            <div class="dm-order">
+              <span class="dm-order-code">BIRP-1025</span>
+              <span class="dm-order-name">T. Nkosi · R40</span>
+              <span class="dm-order-status pending">Awaiting</span>
+            </div>
+            <div class="dm-order">
+              <span class="dm-order-code">BIRP-1026</span>
+              <span class="dm-order-name">A. Petersen · R40</span>
+              <span class="dm-order-status pending">Awaiting</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="cta-blobs">
+      <div class="cta-blob cb-1"></div>
+      <div class="cta-blob cb-2"></div>
+    </div>
+    <div class="container">
+      <div class="cta-inner reveal">
+        <h2>Ready to join Birp?</h2>
+        <p>Get in touch and we'll have you listed within a few days — at no cost.</p>
+        <div class="cta-buttons">
+          <a href="index.html#contact" class="btn-white">Contact Us</a>
+          <a href="index.html#faq" class="btn-ghost-white">Read the FAQ →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <span class="logo-leaf"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 4C9 4 4 10 4 18c0 1 0 2 .5 2.5C10 14 15 12 20 11c-4 1.5-8 4-11.5 9C15 20 20 15 20 4z" fill="currentColor"/></svg></span>
+            <span class="logo-text">Birp</span>
+          </a>
+          <p>Giving food a new birpose. A Bishops Big Ideas project.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="deals.html">Find Deals</a></li>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="index.html#how">How It Works</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>For Stores</h4>
+          <ul>
+            <li><a href="stores.html">Become a Partner</a></li>
+            <li><a href="store-dashboard.html">Partner Dashboard</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="index.html#contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="terms.html">Terms &amp; Privacy</a></li>
+            <li><a href="mailto:birp@bishops.org.za">birp@bishops.org.za</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Birp. A Bishops Big Ideas Project.</span>
+        <span>Made with 💚 by Grade 9</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

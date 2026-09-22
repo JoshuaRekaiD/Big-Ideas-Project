@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Find Deals – Birp</title>
-  <link rel="stylesheet" href="css/main.css?v=11" />
+  <link rel="stylesheet" href="css/main.css?v=13" />
   <link rel="stylesheet" href="css/animations.css?v=6" />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,700&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 </head>
@@ -15,7 +15,7 @@
     <div class="nav-inner">
       <a href="index.html" class="logo">
         <span class="logo-leaf">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M20 4C9 4 4 10 4 18c0 1 0 2 .5 2.5C10 14 15 12 20 11c-4 1.5-8 4-11.5 9C15 20 20 15 20 4z" fill="currentColor"/>
           </svg>
         </span>
@@ -24,18 +24,8 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Home</a></li>
         <li><a href="deals.html" class="active">Find Deals</a></li>
+        <li><a href="stores.html">For Stores</a></li>
         <li><a href="about.html">Our Story</a></li>
-        <li>
-          <div class="nav-search">
-            <span class="nav-search-icon">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2.2"/>
-                <path d="M20 20l-3.2-3.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-              </svg>
-            </span>
-            <input type="text" placeholder="Search deals…" id="navSearchInput" autocomplete="off" />
-          </div>
-        </li>
         <li><a href="#" class="btn-nav" id="openLogin">Log In</a></li>
         <li><a href="#" class="btn-nav btn-nav-filled" id="openSignup">Sign Up</a></li>
       </ul>
@@ -55,25 +45,47 @@
       <div class="page-hero-content reveal">
         <span class="section-tag">Today's Deals</span>
         <h1>Find surplus food near you</h1>
-        <p>Browse bundles from local businesses — reserved fresh, picked up today.</p>
-        <div class="search-bar">
-          <input type="text" placeholder="Search by store, area or food type…" id="searchInput" />
-          <button class="btn-primary">Search</button>
-        </div>
+        <p>Browse surprise bags from local businesses — reserved fresh, picked up today.</p>
       </div>
     </div>
   </section>
 
+  <!-- STICKY SEARCH -->
+  <div class="sticky-search" id="stickySearch">
+    <div class="container">
+      <div class="search-bar">
+        <span class="search-bar-icon">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2.2"/>
+            <path d="M20 20l-3.2-3.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <input type="text" placeholder="Search by store, area or food type…" id="searchInput" autocomplete="off" />
+        <button class="btn-primary" id="clearSearch" style="display:none;">Clear</button>
+      </div>
+    </div>
+  </div>
+
   <!-- FILTERS -->
   <section class="filters-section">
     <div class="container">
-      <div class="filters-row">
+      <div class="filters-row" id="categoryFilters">
+        <span class="filter-label">Type:</span>
         <button class="filter-btn active" data-filter="all">All</button>
         <button class="filter-btn" data-filter="restaurant">Restaurants</button>
         <button class="filter-btn" data-filter="bakery">Bakeries</button>
         <button class="filter-btn" data-filter="cafe">Cafés</button>
         <button class="filter-btn" data-filter="grocery">Grocery</button>
         <button class="filter-btn" data-filter="deli">Delis</button>
+      </div>
+      <div class="filters-row filters-row-area" id="areaFilters">
+        <span class="filter-label">Area:</span>
+        <button class="area-btn active" data-area="all">All Areas</button>
+        <button class="area-btn" data-area="claremont">Claremont</button>
+        <button class="area-btn" data-area="woodstock">Woodstock</button>
+        <button class="area-btn" data-area="observatory">Observatory</button>
+        <button class="area-btn" data-area="seapoint">Sea Point</button>
+        <button class="area-btn" data-area="gardens">Gardens</button>
       </div>
     </div>
   </section>
@@ -82,249 +94,522 @@
   <section class="deals-section">
     <div class="container">
       <p class="results-count" id="resultsCount">Showing <strong>12</strong> deals</p>
+
+      <!-- EMPTY STATE -->
+      <div class="deals-empty hidden" id="dealsEmpty">
+        <div class="deals-empty-icon">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 8h14l-1 12a2 2 0 01-2 1.8H8A2 2 0 016 20L5 8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M9 8a3 3 0 016 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M10 13h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>No deals found</h3>
+        <p>Try a different filter, area, or search term — new bags are added throughout the day.</p>
+        <button class="btn-primary" id="resetFilters">Show All Deals</button>
+      </div>
+
       <div class="deals-grid" id="dealsGrid">
 
-        <!-- Deal Card 1 -->
-        <div class="deal-card reveal" data-category="bakery">
-          <div class="deal-badge">Almost Gone</div>
+        <!-- Card 1 -->
+        <div class="deal-card reveal" data-category="bakery" data-area="claremont"
+             data-address="14 Cavendish St, Claremont"
+             data-allergens="Wheat, Gluten, Dairy, Eggs"
+             data-contents="2–4 bread loaves or rolls, 1–3 pastries or croissants"
+             data-bags="3">
+          <div class="deal-badge deal-badge-urgent">Almost Gone</div>
           <div class="deal-img deal-img-bakery"></div>
           <div class="deal-body">
-            <div class="deal-cat-tag">Bakery</div>
+            <div class="deal-meta-top">
+              <span class="deal-cat-tag">Bakery</span>
+              <span class="deal-suburb">Claremont</span>
+            </div>
             <h3>Heritage Bakery</h3>
             <p class="deal-desc">End-of-day bread, rolls &amp; pastries. Contents vary — always delicious.</p>
-            <div class="deal-time"><svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Pick up: 4:00 PM – 5:30 PM</div>
+            <div class="deal-time">
+              <svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Pick up: 4:00 PM – 5:30 PM
+            </div>
             <div class="deal-footer">
-              <div class="deal-price">
+              <div class="deal-price-block">
                 <span class="price-now">R 25</span>
                 <span class="price-was">R 80</span>
+                <span class="deal-bags-left">3 bags left</span>
               </div>
-              <button class="btn-reserve" onclick="openReserveModal(this)" data-store="Heritage Bakery" data-item="End-of-Day Bread Bag" data-price="R25">Reserve</button>
+              <div class="deal-actions">
+                <button class="btn-detail" onclick="openDealDetail(this)">Details</button>
+                <button class="btn-reserve" onclick="openReserveModal(this)"
+                  data-store="Heritage Bakery" data-item="End-of-Day Bread Bag" data-price="R25">Reserve</button>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Deal Card 2 -->
-        <div class="deal-card reveal" data-category="restaurant">
+        <!-- Card 2 -->
+        <div class="deal-card reveal" data-category="restaurant" data-area="gardens"
+             data-address="12 Mill St, Gardens, Cape Town"
+             data-allergens="May contain: Nuts, Dairy, Gluten"
+             data-contents="1 warm main meal + side salad, chef's choice"
+             data-bags="5">
           <div class="deal-img deal-img-restaurant"></div>
           <div class="deal-body">
-            <div class="deal-cat-tag">Restaurant</div>
+            <div class="deal-meta-top">
+              <span class="deal-cat-tag">Restaurant</span>
+              <span class="deal-suburb">Gardens</span>
+            </div>
             <h3>The Green Bowl</h3>
             <p class="deal-desc">Surprise salad &amp; warm meal bundle — chef's choice from today's menu.</p>
-            <div class="deal-time"><svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Pick up: 7:00 PM – 8:30 PM</div>
+            <div class="deal-time">
+              <svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Pick up: 7:00 PM – 8:30 PM
+            </div>
             <div class="deal-footer">
-              <div class="deal-price">
+              <div class="deal-price-block">
                 <span class="price-now">R 35</span>
                 <span class="price-was">R 120</span>
+                <span class="deal-bags-left">5 bags left</span>
               </div>
-              <button class="btn-reserve" onclick="openReserveModal(this)" data-store="The Green Bowl" data-item="Surprise Salad Bundle" data-price="R35">Reserve</button>
+              <div class="deal-actions">
+                <button class="btn-detail" onclick="openDealDetail(this)">Details</button>
+                <button class="btn-reserve" onclick="openReserveModal(this)"
+                  data-store="The Green Bowl" data-item="Surprise Salad Bundle" data-price="R35">Reserve</button>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Deal Card 3 -->
-        <div class="deal-card reveal" data-category="cafe">
-          <div class="deal-badge">New</div>
+        <!-- Card 3 -->
+        <div class="deal-card reveal" data-category="cafe" data-area="seapoint"
+             data-address="88 Main Rd, Sea Point"
+             data-allergens="Wheat, Dairy, Eggs, Soy"
+             data-contents="2–3 pastries or muffins, 1 drink voucher"
+             data-bags="7">
+          <div class="deal-badge deal-badge-new">New</div>
           <div class="deal-img deal-img-cafe"></div>
           <div class="deal-body">
-            <div class="deal-cat-tag">Café</div>
+            <div class="deal-meta-top">
+              <span class="deal-cat-tag">Café</span>
+              <span class="deal-suburb">Sea Point</span>
+            </div>
             <h3>Sunrise Coffee Co.</h3>
             <p class="deal-desc">Leftover pastries, muffins and a drink voucher. Perfect afternoon snack.</p>
-            <div class="deal-time"><svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Pick up: 3:00 PM – 4:30 PM</div>
+            <div class="deal-time">
+              <svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Pick up: 3:00 PM – 4:30 PM
+            </div>
             <div class="deal-footer">
-              <div class="deal-price">
+              <div class="deal-price-block">
                 <span class="price-now">R 30</span>
                 <span class="price-was">R 90</span>
+                <span class="deal-bags-left">7 bags left</span>
               </div>
-              <button class="btn-reserve" onclick="openReserveModal(this)" data-store="Sunrise Coffee Co." data-item="Afternoon Snack Bundle" data-price="R30">Reserve</button>
+              <div class="deal-actions">
+                <button class="btn-detail" onclick="openDealDetail(this)">Details</button>
+                <button class="btn-reserve" onclick="openReserveModal(this)"
+                  data-store="Sunrise Coffee Co." data-item="Afternoon Snack Bundle" data-price="R30">Reserve</button>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Deal Card 4 -->
-        <div class="deal-card reveal" data-category="grocery">
+        <!-- Card 4 -->
+        <div class="deal-card reveal" data-category="grocery" data-area="claremont"
+             data-address="Cavendish Square, Claremont"
+             data-allergens="Varies by product — check labels at collection"
+             data-contents="4–6 near-best-before dry goods, snacks or condiments"
+             data-bags="8">
           <div class="deal-img deal-img-grocery"></div>
           <div class="deal-body">
-            <div class="deal-cat-tag">Grocery</div>
+            <div class="deal-meta-top">
+              <span class="deal-cat-tag">Grocery</span>
+              <span class="deal-suburb">Claremont</span>
+            </div>
             <h3>FreshMart Newlands</h3>
             <p class="deal-desc">Near-best-before pantry bundle — dry goods, snacks &amp; condiments.</p>
-            <div class="deal-time"><svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Pick up: 5:00 PM – 7:00 PM</div>
+            <div class="deal-time">
+              <svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Pick up: 5:00 PM – 7:00 PM
+            </div>
             <div class="deal-footer">
-              <div class="deal-price">
+              <div class="deal-price-block">
                 <span class="price-now">R 55</span>
                 <span class="price-was">R 160</span>
+                <span class="deal-bags-left">8 bags left</span>
               </div>
-              <button class="btn-reserve" onclick="openReserveModal(this)" data-store="FreshMart Newlands" data-item="Pantry Bundle" data-price="R55">Reserve</button>
+              <div class="deal-actions">
+                <button class="btn-detail" onclick="openDealDetail(this)">Details</button>
+                <button class="btn-reserve" onclick="openReserveModal(this)"
+                  data-store="FreshMart Newlands" data-item="Pantry Bundle" data-price="R55">Reserve</button>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Deal Card 5 -->
-        <div class="deal-card reveal" data-category="deli">
-          <div class="deal-badge">Popular</div>
+        <!-- Card 5 -->
+        <div class="deal-card reveal" data-category="deli" data-area="gardens"
+             data-address="Lifestyles on Kloof, Gardens"
+             data-allergens="Dairy, Eggs, Gluten, Sulphites"
+             data-contents="Charcuterie selection, 1–2 cheeses, prepared salad"
+             data-bags="4">
+          <div class="deal-badge deal-badge-popular">Popular</div>
           <div class="deal-img deal-img-deli"></div>
           <div class="deal-body">
-            <div class="deal-cat-tag">Deli</div>
+            <div class="deal-meta-top">
+              <span class="deal-cat-tag">Deli</span>
+              <span class="deal-suburb">Gardens</span>
+            </div>
             <h3>The Deli Corner</h3>
             <p class="deal-desc">Charcuterie, cheese &amp; prepared salads — restaurant quality at half the price.</p>
-            <div class="deal-time"><svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Pick up: 6:00 PM – 7:30 PM</div>
+            <div class="deal-time">
+              <svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Pick up: 6:00 PM – 7:30 PM
+            </div>
             <div class="deal-footer">
-              <div class="deal-price">
+              <div class="deal-price-block">
                 <span class="price-now">R 45</span>
                 <span class="price-was">R 130</span>
+                <span class="deal-bags-left">4 bags left</span>
               </div>
-              <button class="btn-reserve" onclick="openReserveModal(this)" data-store="The Deli Corner" data-item="Chef's Surplus Pack" data-price="R45">Reserve</button>
+              <div class="deal-actions">
+                <button class="btn-detail" onclick="openDealDetail(this)">Details</button>
+                <button class="btn-reserve" onclick="openReserveModal(this)"
+                  data-store="The Deli Corner" data-item="Chef's Surplus Pack" data-price="R45">Reserve</button>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Deal Card 6 -->
-        <div class="deal-card reveal" data-category="restaurant">
+        <!-- Card 6 -->
+        <div class="deal-card reveal deal-card-soldout" data-category="restaurant" data-area="claremont"
+             data-address="Vineyard Hotel Rd, Claremont"
+             data-allergens="Gluten, Dairy, Chilli"
+             data-contents="Peri-peri chicken pieces, pita bread, side of choice"
+             data-bags="0">
+          <div class="deal-badge deal-badge-soldout">Sold Out</div>
           <div class="deal-img deal-img-restaurant2"></div>
           <div class="deal-body">
-            <div class="deal-cat-tag">Restaurant</div>
+            <div class="deal-meta-top">
+              <span class="deal-cat-tag">Restaurant</span>
+              <span class="deal-suburb">Claremont</span>
+            </div>
             <h3>Nando's Claremont</h3>
             <p class="deal-desc">End-of-night peri-peri chicken bundle. Includes sides &amp; pitas.</p>
-            <div class="deal-time"><svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Pick up: 9:00 PM – 10:00 PM</div>
+            <div class="deal-time">
+              <svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Pick up: 9:00 PM – 10:00 PM
+            </div>
             <div class="deal-footer">
-              <div class="deal-price">
+              <div class="deal-price-block">
                 <span class="price-now">R 40</span>
                 <span class="price-was">R 140</span>
+                <span class="deal-bags-left deal-bags-none">Sold out</span>
               </div>
-              <button class="btn-reserve" onclick="openReserveModal(this)" data-store="Nando's Claremont" data-item="Peri-Peri Bundle" data-price="R40">Reserve</button>
+              <div class="deal-actions">
+                <button class="btn-detail" onclick="openDealDetail(this)">Details</button>
+                <button class="btn-reserve" disabled>Sold Out</button>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Deal Card 7 -->
-        <div class="deal-card reveal" data-category="bakery">
+        <!-- Card 7 -->
+        <div class="deal-card reveal" data-category="bakery" data-area="observatory"
+             data-address="134 Lower Main Rd, Observatory"
+             data-allergens="Wheat, Gluten, Dairy, Eggs, Sesame"
+             data-contents="1–2 sourdough or ciabatta loaves, 2–3 croissants or pastries"
+             data-bags="6">
           <div class="deal-img deal-img-bakery2"></div>
           <div class="deal-body">
-            <div class="deal-cat-tag">Bakery</div>
+            <div class="deal-meta-top">
+              <span class="deal-cat-tag">Bakery</span>
+              <span class="deal-suburb">Observatory</span>
+            </div>
             <h3>Olympia Bakery</h3>
             <p class="deal-desc">Sourdough, ciabatta &amp; croissants from this morning's bake — fresh &amp; amazing.</p>
-            <div class="deal-time"><svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Pick up: 4:30 PM – 6:00 PM</div>
+            <div class="deal-time">
+              <svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Pick up: 4:30 PM – 6:00 PM
+            </div>
             <div class="deal-footer">
-              <div class="deal-price">
+              <div class="deal-price-block">
                 <span class="price-now">R 30</span>
                 <span class="price-was">R 100</span>
+                <span class="deal-bags-left">6 bags left</span>
               </div>
-              <button class="btn-reserve" onclick="openReserveModal(this)" data-store="Olympia Bakery" data-item="Artisan Bread Bundle" data-price="R30">Reserve</button>
+              <div class="deal-actions">
+                <button class="btn-detail" onclick="openDealDetail(this)">Details</button>
+                <button class="btn-reserve" onclick="openReserveModal(this)"
+                  data-store="Olympia Bakery" data-item="Artisan Bread Bundle" data-price="R30">Reserve</button>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Deal Card 8 -->
-        <div class="deal-card reveal" data-category="grocery">
-          <div class="deal-badge">New</div>
+        <!-- Card 8 -->
+        <div class="deal-card reveal" data-category="grocery" data-area="claremont"
+             data-address="Cavendish Square, Claremont"
+             data-allergens="Varies — prepared meals may contain Dairy, Gluten, Eggs"
+             data-contents="2–3 premium prepared meals or salads nearing sell-by date"
+             data-bags="4">
+          <div class="deal-badge deal-badge-new">New</div>
           <div class="deal-img deal-img-grocery2"></div>
           <div class="deal-body">
-            <div class="deal-cat-tag">Grocery</div>
+            <div class="deal-meta-top">
+              <span class="deal-cat-tag">Grocery</span>
+              <span class="deal-suburb">Claremont</span>
+            </div>
             <h3>Woolworths Food</h3>
             <p class="deal-desc">Premium prepared meals &amp; salads nearing sell-by. Quality you know.</p>
-            <div class="deal-time"><svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Pick up: 6:00 PM – 8:00 PM</div>
+            <div class="deal-time">
+              <svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Pick up: 6:00 PM – 8:00 PM
+            </div>
             <div class="deal-footer">
-              <div class="deal-price">
+              <div class="deal-price-block">
                 <span class="price-now">R 65</span>
                 <span class="price-was">R 200</span>
+                <span class="deal-bags-left">4 bags left</span>
               </div>
-              <button class="btn-reserve" onclick="openReserveModal(this)" data-store="Woolworths Food" data-item="Premium Prepared Meals Bundle" data-price="R65">Reserve</button>
+              <div class="deal-actions">
+                <button class="btn-detail" onclick="openDealDetail(this)">Details</button>
+                <button class="btn-reserve" onclick="openReserveModal(this)"
+                  data-store="Woolworths Food" data-item="Premium Prepared Meals Bundle" data-price="R65">Reserve</button>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Deal Card 9 -->
-        <div class="deal-card reveal" data-category="cafe">
+        <!-- Card 9 -->
+        <div class="deal-card reveal" data-category="cafe" data-area="woodstock"
+             data-address="36 Buitenkant St, Woodstock"
+             data-allergens="Wheat, Dairy, Eggs, Oats"
+             data-contents="2–3 baked goods, 1 granola jar, cold brew or filter coffee"
+             data-bags="5">
           <div class="deal-img deal-img-cafe2"></div>
           <div class="deal-body">
-            <div class="deal-cat-tag">Café</div>
+            <div class="deal-meta-top">
+              <span class="deal-cat-tag">Café</span>
+              <span class="deal-suburb">Woodstock</span>
+            </div>
             <h3>Truth Coffee</h3>
             <p class="deal-desc">Baked goods, granola jars &amp; cold brew surprise pack from the day's leftovers.</p>
-            <div class="deal-time"><svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Pick up: 4:00 PM – 5:00 PM</div>
+            <div class="deal-time">
+              <svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Pick up: 4:00 PM – 5:00 PM
+            </div>
             <div class="deal-footer">
-              <div class="deal-price">
+              <div class="deal-price-block">
                 <span class="price-now">R 40</span>
                 <span class="price-was">R 110</span>
+                <span class="deal-bags-left">5 bags left</span>
               </div>
-              <button class="btn-reserve" onclick="openReserveModal(this)" data-store="Truth Coffee" data-item="Coffee Shop Bundle" data-price="R40">Reserve</button>
+              <div class="deal-actions">
+                <button class="btn-detail" onclick="openDealDetail(this)">Details</button>
+                <button class="btn-reserve" onclick="openReserveModal(this)"
+                  data-store="Truth Coffee" data-item="Coffee Shop Bundle" data-price="R40">Reserve</button>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Deal Card 10 -->
-        <div class="deal-card reveal" data-category="deli">
+        <!-- Card 10 -->
+        <div class="deal-card reveal" data-category="deli" data-area="gardens"
+             data-address="Lifestyles on Kloof, Gardens"
+             data-allergens="Gluten, Dairy, Eggs, Celery"
+             data-contents="2 sandwich fillings, 1 quiche slice, 1 soup portion"
+             data-bags="3">
           <div class="deal-img deal-img-deli2"></div>
           <div class="deal-body">
-            <div class="deal-cat-tag">Deli</div>
+            <div class="deal-meta-top">
+              <span class="deal-cat-tag">Deli</span>
+              <span class="deal-suburb">Gardens</span>
+            </div>
             <h3>Melissa's Food Shop</h3>
             <p class="deal-desc">Gourmet sandwich fillings, quiches &amp; soups. Take-home dinner sorted.</p>
-            <div class="deal-time"><svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Pick up: 5:30 PM – 7:00 PM</div>
+            <div class="deal-time">
+              <svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Pick up: 5:30 PM – 7:00 PM
+            </div>
             <div class="deal-footer">
-              <div class="deal-price">
+              <div class="deal-price-block">
                 <span class="price-now">R 50</span>
                 <span class="price-was">R 145</span>
+                <span class="deal-bags-left">3 bags left</span>
               </div>
-              <button class="btn-reserve" onclick="openReserveModal(this)" data-store="Melissa's Food Shop" data-item="Gourmet Deli Bundle" data-price="R50">Reserve</button>
+              <div class="deal-actions">
+                <button class="btn-detail" onclick="openDealDetail(this)">Details</button>
+                <button class="btn-reserve" onclick="openReserveModal(this)"
+                  data-store="Melissa's Food Shop" data-item="Gourmet Deli Bundle" data-price="R50">Reserve</button>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Deal Card 11 -->
-        <div class="deal-card reveal" data-category="restaurant">
+        <!-- Card 11 -->
+        <div class="deal-card reveal" data-category="restaurant" data-area="woodstock"
+             data-address="71 Buitenkant St, Woodstock"
+             data-allergens="Gluten, Dairy, Spices — halaal certified"
+             data-contents="1–2 Cape Malay stews with roti or rice, 1 dessert"
+             data-bags="6">
           <div class="deal-img deal-img-restaurant3"></div>
           <div class="deal-body">
-            <div class="deal-cat-tag">Restaurant</div>
+            <div class="deal-meta-top">
+              <span class="deal-cat-tag">Restaurant</span>
+              <span class="deal-suburb">Woodstock</span>
+            </div>
             <h3>Cape Malay Kitchen</h3>
             <p class="deal-desc">Traditional Cape Malay stews, rotis &amp; desserts — end of service bundle.</p>
-            <div class="deal-time"><svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Pick up: 8:30 PM – 9:30 PM</div>
+            <div class="deal-time">
+              <svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Pick up: 8:30 PM – 9:30 PM
+            </div>
             <div class="deal-footer">
-              <div class="deal-price">
+              <div class="deal-price-block">
                 <span class="price-now">R 45</span>
                 <span class="price-was">R 135</span>
+                <span class="deal-bags-left">6 bags left</span>
               </div>
-              <button class="btn-reserve" onclick="openReserveModal(this)" data-store="Cape Malay Kitchen" data-item="Cape Malay Bundle" data-price="R45">Reserve</button>
+              <div class="deal-actions">
+                <button class="btn-detail" onclick="openDealDetail(this)">Details</button>
+                <button class="btn-reserve" onclick="openReserveModal(this)"
+                  data-store="Cape Malay Kitchen" data-item="Cape Malay Bundle" data-price="R45">Reserve</button>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Deal Card 12 -->
-        <div class="deal-card reveal" data-category="bakery">
+        <!-- Card 12 -->
+        <div class="deal-card reveal" data-category="bakery" data-area="woodstock"
+             data-address="450 Albert Rd, Woodstock"
+             data-allergens="Wheat, Gluten, Dairy, Eggs, Seeds"
+             data-contents="2–3 stone-baked breads or rolls, flavoured butter, 1 cake slice"
+             data-bags="9">
           <div class="deal-img deal-img-bakery3"></div>
           <div class="deal-body">
-            <div class="deal-cat-tag">Bakery</div>
+            <div class="deal-meta-top">
+              <span class="deal-cat-tag">Bakery</span>
+              <span class="deal-suburb">Woodstock</span>
+            </div>
             <h3>Knead Woodstock</h3>
             <p class="deal-desc">Stone-baked breads, flavoured rolls &amp; cakes — a baker's dozen surprise.</p>
-            <div class="deal-time"><svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Pick up: 5:00 PM – 6:30 PM</div>
+            <div class="deal-time">
+              <svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Pick up: 5:00 PM – 6:30 PM
+            </div>
             <div class="deal-footer">
-              <div class="deal-price">
+              <div class="deal-price-block">
                 <span class="price-now">R 28</span>
                 <span class="price-was">R 95</span>
+                <span class="deal-bags-left">9 bags left</span>
               </div>
-              <button class="btn-reserve" onclick="openReserveModal(this)" data-store="Knead Woodstock" data-item="Baker's Dozen Bundle" data-price="R28">Reserve</button>
+              <div class="deal-actions">
+                <button class="btn-detail" onclick="openDealDetail(this)">Details</button>
+                <button class="btn-reserve" onclick="openReserveModal(this)"
+                  data-store="Knead Woodstock" data-item="Baker's Dozen Bundle" data-price="R28">Reserve</button>
+              </div>
             </div>
           </div>
         </div>
 
-      </div>
+      </div><!-- /.deals-grid -->
     </div>
   </section>
 
-  <!-- RESERVE MODAL -->
+  <!-- DEAL DETAIL MODAL -->
+  <div class="modal-overlay" id="dealDetailModal">
+    <div class="modal modal-detail" id="dealDetailBox">
+      <button class="modal-close" id="closeDealDetail" aria-label="Close">✕</button>
+      <div class="detail-img-wrap">
+        <div class="detail-img" id="detailImg"></div>
+        <div class="detail-badges" id="detailBadges"></div>
+      </div>
+      <div class="detail-body">
+        <div class="detail-meta-top">
+          <span class="deal-cat-tag" id="detailCat"></span>
+          <span class="deal-suburb" id="detailSuburb"></span>
+        </div>
+        <h2 id="detailStoreName"></h2>
+        <div class="detail-section">
+          <h4>What's inside</h4>
+          <p id="detailContents"></p>
+        </div>
+        <div class="detail-section">
+          <h4>Allergens</h4>
+          <p class="detail-allergens" id="detailAllergens"></p>
+        </div>
+        <div class="detail-section detail-info-row">
+          <div>
+            <h4>Collection window</h4>
+            <p id="detailTime"></p>
+          </div>
+          <div>
+            <h4>Address</h4>
+            <p id="detailAddress"></p>
+          </div>
+        </div>
+        <div class="detail-footer">
+          <div class="detail-price-block">
+            <span class="price-now" id="detailPriceNow"></span>
+            <span class="price-was" id="detailPriceWas"></span>
+          </div>
+          <div class="detail-bags-count" id="detailBagsCount"></div>
+          <button class="btn-reserve btn-reserve-large" id="detailReserveBtn">Reserve This Bag</button>
+        </div>
+        <p class="detail-disclaimer">Birp facilitates this transaction. The participating business is responsible for the food it supplies. Contents are approximate — always a surprise!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESERVE MODAL (upgraded) -->
   <div class="modal-overlay" id="reserveModal">
     <div class="modal" id="reserveModalBox">
-      <button class="modal-close" id="closeReserveModal">✕</button>
-      <div class="reserve-content">
-        <div class="reserve-icon">🛒</div>
-        <h3 id="reserveStoreName">Store Name</h3>
-        <p id="reserveItemName">Item Description</p>
-        <div class="reserve-price-display" id="reservePriceDisplay">R --</div>
-        <div class="reserve-note">You'll receive a confirmation code to show at pick-up.</div>
-        <button class="btn-primary full-width" id="confirmReserve">Confirm Reservation</button>
-        <div class="reserve-success hidden" id="reserveSuccess">
-          <div class="success-icon">✅</div>
-          <strong>Reserved!</strong>
-          <p>Your code: <strong id="reserveCode">FF-0000</strong></p>
-          <p>Show this at the store during your pick-up window.</p>
+      <button class="modal-close" id="closeReserveModal" aria-label="Close">✕</button>
+      <div class="reserve-content" id="reserveStep1">
+        <div class="reserve-header">
+          <div class="reserve-icon">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 8h14l-1 12a2 2 0 01-2 1.8H8A2 2 0 016 20L5 8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M9 8a3 3 0 016 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <h3 id="reserveStoreName">Store Name</h3>
+            <p id="reserveItemName" class="reserve-item-name">Item Description</p>
+          </div>
         </div>
+        <div class="reserve-price-display" id="reservePriceDisplay">R --</div>
+        <div class="reserve-info-rows">
+          <div class="reserve-info-row">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span id="reserveTime">Collection window</span>
+          </div>
+          <div class="reserve-info-row">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s7-5.5 7-12a7 7 0 10-14 0c0 6.5 7 12 7 12z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.8"/></svg>
+            <span id="reserveAddress">Address</span>
+          </div>
+        </div>
+        <div class="reserve-note">You'll receive a pickup code to show at the store. This is a demo — no payment is charged.</div>
+        <button class="btn-primary full-width" id="confirmReserve">Confirm Reservation</button>
+      </div>
+      <div class="reserve-success hidden" id="reserveSuccess">
+        <div class="reserve-success-icon">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+            <path d="M7 12l3.5 3.5L17 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>You're all set!</h3>
+        <p class="reserve-success-store" id="successStoreName"></p>
+        <div class="pickup-code-block">
+          <p class="pickup-code-label">Your pickup code</p>
+          <div class="pickup-code" id="reserveCode">BIRP-0000</div>
+          <p class="pickup-code-note">Show this code at the store during your collection window.</p>
+        </div>
+        <div class="reserve-success-details">
+          <span id="successTime"></span>
+          <span id="successAddress"></span>
+        </div>
+        <button class="btn-primary full-width" id="closeAfterReserve">Done</button>
       </div>
     </div>
   </div>
@@ -332,14 +617,14 @@
   <!-- AUTH MODAL -->
   <div class="modal-overlay" id="authModal">
     <div class="modal" id="authModalBox">
-      <button class="modal-close" id="closeModal">✕</button>
+      <button class="modal-close" id="closeModal" aria-label="Close">✕</button>
       <div class="modal-tabs">
         <button class="tab-btn active" data-tab="login">Log In</button>
         <button class="tab-btn" data-tab="signup">Sign Up</button>
       </div>
       <div class="tab-content active" id="tab-login">
-        <h3>Welcome back 👋</h3>
-        <form class="auth-form">
+        <h3>Welcome back</h3>
+        <form class="auth-form" id="loginForm">
           <label>Email<input type="email" placeholder="you@example.com" required /></label>
           <label>Password<input type="password" placeholder="••••••••" required /></label>
           <button type="submit" class="btn-primary full-width">Log In</button>
@@ -347,8 +632,8 @@
         </form>
       </div>
       <div class="tab-content" id="tab-signup">
-        <h3>Join Birp 🌿</h3>
-        <form class="auth-form">
+        <h3>Join Birp</h3>
+        <form class="auth-form" id="signupForm">
           <label>Full Name<input type="text" placeholder="Your name" required /></label>
           <label>Email<input type="email" placeholder="you@example.com" required /></label>
           <label>Password<input type="password" placeholder="Create a password" required /></label>
@@ -362,6 +647,43 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <span class="logo-leaf">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M20 4C9 4 4 10 4 18c0 1 0 2 .5 2.5C10 14 15 12 20 11c-4 1.5-8 4-11.5 9C15 20 20 15 20 4z" fill="currentColor"/>
+              </svg>
+            </span>
+            <span class="logo-text">Birp</span>
+          </a>
+          <p>Giving food a new birpose. A Bishops Big Ideas project.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="deals.html">Find Deals</a></li>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="index.html#how">How It Works</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>For Stores</h4>
+          <ul>
+            <li><a href="stores.html">Become a Partner</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="index.html#contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="terms.html">Terms &amp; Privacy</a></li>
+            <li><a href="mailto:birp@bishops.org.za">birp@bishops.org.za</a></li>
+          </ul>
+        </div>
+      </div>
       <div class="footer-bottom">
         <span>© 2026 Birp. A Bishops Big Ideas Project.</span>
         <span>Made with 💚 by Grade 9</span>
