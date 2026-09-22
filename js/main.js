@@ -5,6 +5,16 @@
 'use strict';
 
 /* ─────────────────────────────────────────────
+   0. PWA — Register service worker
+───────────────────────────────────────────── */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/Big-Ideas-Project/sw.js')
+      .catch(() => { /* silently fail in local file:// context */ });
+  });
+}
+
+/* ─────────────────────────────────────────────
    1. NAVBAR — scroll behaviour & mobile toggle
 ───────────────────────────────────────────── */
 (function initNavbar() {

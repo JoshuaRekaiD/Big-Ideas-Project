@@ -1,0 +1,37 @@
+{
+  "name": "Birp – Giving Food a New Birpose",
+  "short_name": "Birp",
+  "description": "Find surplus food from local businesses at discounted prices. Every purchase helps fight food insecurity in South Africa.",
+  "start_url": "/Big-Ideas-Project/",
+  "scope": "/Big-Ideas-Project/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#613aa4",
+  "categories": ["food", "shopping", "lifestyle"],
+  "icons": [
+    {
+      "src": "assets/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Find Deals",
+      "short_name": "Deals",
+      "description": "Browse today's surplus food deals",
+      "url": "/Big-Ideas-Project/deals.html",
+      "icons": [{ "src": "assets/icons/icon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "For Stores",
+      "short_name": "Stores",
+      "description": "Become a Birp partner store",
+      "url": "/Big-Ideas-Project/stores.html",
+      "icons": [{ "src": "assets/icons/icon.svg", "sizes": "any" }]
+    }
+  ]
+}

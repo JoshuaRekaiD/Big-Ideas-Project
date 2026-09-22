@@ -4,7 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Birp – Giving Food a New Birpose</title>
-  <link rel="stylesheet" href="css/main.css?v=13" />
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#613aa4" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Birp" />
+  <link rel="apple-touch-icon" href="assets/icons/icon.svg" />
+  <link rel="stylesheet" href="css/main.css?v=14" />
   <link rel="stylesheet" href="css/animations.css?v=6" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -29,7 +37,6 @@
         <li><a href="stores.html">For Stores</a></li>
         <li><a href="about.html">Our Story</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="#download" class="btn-nav btn-nav-filled">Download the App</a></li>
       </ul>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -66,21 +73,6 @@
         every cent we make goes to fighting food insecurity.
       </p>
 
-      <!-- App download (placeholder — no real app yet) -->
-      <div class="app-download" id="downloadTop">
-        <a href="#" class="btn-download" aria-label="Download the Birp app (coming soon)">
-          <span class="btn-download-icon">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect x="6" y="2" width="12" height="20" rx="3" stroke="currentColor" stroke-width="2"/>
-              <path d="M12 6v7m0 0l-2.5-2.5M12 13l2.5-2.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
-          <span class="btn-download-text">
-            <small>Coming soon</small>
-            <strong>Download the App</strong>
-          </span>
-        </a>
-      </div>
     </div>
 
   </section>
@@ -467,53 +459,6 @@
     </div>
   </section>
 
-  <!-- ───── APP DOWNLOAD BANNER ───── -->
-  <section class="app-banner" id="download">
-    <div class="container">
-      <div class="app-banner-inner">
-        <div class="app-banner-text reveal">
-          <h2>Get your first bag today.</h2>
-          <p class="app-banner-tag">rescue. save. give back.</p>
-          <div class="app-badges">
-            <a href="#" class="app-badge" aria-label="Download on the App Store (coming soon)">
-              <span class="app-badge-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M16.4 12.6c0-2 1.6-3 1.7-3-1-1.4-2.4-1.6-2.9-1.6-1.2-.1-2.4.7-3 .7-.6 0-1.6-.7-2.6-.7-1.3 0-2.6.8-3.2 2-1.4 2.4-.4 6 1 8 .7 1 1.4 2 2.4 2 1 0 1.3-.6 2.5-.6s1.5.6 2.5.6 1.7-1 2.3-2c.5-.7.8-1.5.8-1.5s-1.5-.6-1.5-2.4zM14.5 6.2c.5-.7.9-1.6.8-2.5-.8 0-1.7.5-2.3 1.2-.5.6-.9 1.5-.8 2.4.9.1 1.8-.4 2.3-1.1z"/>
-                </svg>
-              </span>
-              <span class="app-badge-text"><small>Coming soon on the</small><strong>App Store</strong></span>
-            </a>
-            <a href="#" class="app-badge" aria-label="Get it on Google Play (coming soon)">
-              <span class="app-badge-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M4 3.5l9.5 8.5L4 20.5c-.3-.2-.5-.6-.5-1V4.5c0-.4.2-.8.5-1zM15 13.5l2.7 2.4-9 5 6.3-7.4zM15 10.5L8.7 3l9 5-2.7 2.5zM16.3 12l3-1.6c.5.4.7 1 .7 1.6s-.2 1.2-.7 1.6l-3-1.6z"/>
-                </svg>
-              </span>
-              <span class="app-badge-text"><small>Coming soon on</small><strong>Google Play</strong></span>
-            </a>
-          </div>
-        </div>
-        <div class="app-banner-visual reveal-right">
-          <div class="app-phone">
-            <div class="app-phone-notch"></div>
-            <div class="app-phone-screen">
-              <div class="app-screen-logo">birp</div>
-              <div class="app-screen-bag">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M5 8h14l-1 12a2 2 0 01-2 1.8H8A2 2 0 016 20L5 8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                  <path d="M9 8a3 3 0 016 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <div class="app-screen-line"></div>
-              <div class="app-screen-line short"></div>
-              <div class="app-screen-btn">Reserve · R 35</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ───── CONTACT ───── -->
   <section class="contact-section" id="contact">
     <div class="container">
@@ -603,13 +548,11 @@
           <ul>
             <li><a href="terms.html">Terms &amp; Privacy</a></li>
             <li><a href="mailto:birp@bishops.org.za">birp@bishops.org.za</a></li>
-            <li><a href="#download">Download the App</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
         <span>© 2026 Birp. A Bishops Big Ideas Project.</span>
-        <span>Made with 💚 by Grade 9</span>
       </div>
     </div>
   </footer>

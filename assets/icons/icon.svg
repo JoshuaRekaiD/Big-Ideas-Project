@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background -->
+  <rect width="512" height="512" rx="115" fill="#613aa4"/>
+  <!-- Leaf mark -->
+  <path d="M380 80C200 80 100 180 100 330c0 20 0 40 10 50C200 260 290 220 380 200c-80 30-160 80-230 180C260 380 380 280 380 80z" fill="#b2d14f"/>
+  <!-- Wordmark -->
+  <text x="256" y="430" text-anchor="middle" font-family="sans-serif" font-weight="900" font-size="160" fill="white" letter-spacing="-4">birp</text>
+</svg>
