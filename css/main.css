@@ -2198,8 +2198,8 @@ img {
 /* Search bar on the deals hero */
 .search-bar {
   display: flex;
+  align-items: center;
   gap: 12px;
-  max-width: 560px;
   margin: 0 auto;
   background: white;
   padding: 8px;
