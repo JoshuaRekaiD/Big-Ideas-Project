@@ -30,7 +30,7 @@ html {
 }
 
 body {
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   color: var(--black);
   line-height: 1.6;
   overflow-x: hidden;
@@ -38,10 +38,9 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.2px;
 }
 
 a {
@@ -105,7 +104,7 @@ img {
 }
 
 .logo-text {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   color: var(--indigo);
   -webkit-text-stroke: 2.5px var(--turquoise);
   paint-order: stroke fill;
@@ -309,7 +308,7 @@ img {
   transition: all 0.3s ease;
   border: none;
   cursor: pointer;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 .btn-primary {
@@ -640,7 +639,7 @@ img {
   font-size: 48px;
   font-weight: 900;
   color: white;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   text-transform: lowercase;
   opacity: 0.22;
   letter-spacing: 2px;
@@ -716,7 +715,7 @@ img {
   font-size: 18px;
   font-weight: 900;
   color: var(--violet);
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   line-height: 1;
 }
 
@@ -813,7 +812,7 @@ img {
   font-size: 18px;
   font-weight: 900;
   color: var(--indigo);
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 .fc-price s {
@@ -930,7 +929,7 @@ img {
   font-size: 64px;
   font-weight: 900;
   color: var(--indigo);
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   line-height: 1;
 }
 
@@ -938,7 +937,7 @@ img {
   font-size: 32px;
   font-weight: 700;
   color: var(--turquoise);
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   margin-bottom: 8px;
 }
 
@@ -1059,7 +1058,7 @@ img {
 
 .sc-label strong {
   font-size: 20px;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   text-transform: uppercase;
 }
 
@@ -1120,7 +1119,7 @@ img {
   font-weight: 900;
   line-height: 56px;
   margin-bottom: 20px;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 .step-card h3 {
@@ -1332,7 +1331,7 @@ img {
 .ring-num {
   font-size: 68px;
   font-weight: 900;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   line-height: 1;
 }
 
@@ -1417,7 +1416,7 @@ img {
   justify-content: center;
   font-size: 18px;
   font-weight: 700;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 .testi-author strong {
@@ -1630,7 +1629,7 @@ img {
   transition: all 0.3s ease;
   border-bottom: 3px solid transparent;
   margin-bottom: -2px;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   text-transform: uppercase;
 }
 
@@ -1781,7 +1780,7 @@ img {
   font-weight: 600;
   transition: all 0.3s ease;
   cursor: pointer;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   text-transform: uppercase;
 }
 
@@ -1838,7 +1837,7 @@ img {
   font-size: 22px;
   color: var(--indigo);
   margin-bottom: 12px;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   text-transform: uppercase;
 }
 
@@ -1867,7 +1866,7 @@ img {
   font-size: 28px;
   font-weight: 900;
   color: var(--indigo);
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 .deal-price-old {
@@ -2354,7 +2353,7 @@ img {
   font-size: 28px;
   font-weight: 900;
   color: var(--indigo);
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 .price-was {
@@ -2372,7 +2371,7 @@ img {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   transition: all 0.3s ease;
 }
 
@@ -2493,7 +2492,7 @@ img {
   padding: 14px 32px;
   font-size: 16px;
   font-weight: 700;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
@@ -2572,7 +2571,7 @@ img {
 
 .btn-download-text strong {
   font-size: 20px;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -2607,7 +2606,7 @@ img {
   right: 20px;
   font-size: 90px;
   font-weight: 900;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   color: rgba(97, 58, 164, 0.08);
   line-height: 1;
 }
@@ -2687,7 +2686,7 @@ img {
 .charity-stat-num {
   font-size: 56px;
   font-weight: 900;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   color: var(--chartreuse);
   line-height: 1;
 }
@@ -2936,7 +2935,7 @@ img {
 
 .app-badge-text strong {
   font-size: 18px;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 /* Phone mockup */
@@ -2984,7 +2983,7 @@ img {
 .app-screen-logo {
   font-size: 26px;
   font-weight: 900;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   color: var(--indigo);
 }
 
@@ -3010,7 +3009,7 @@ img {
   padding: 12px 28px;
   border-radius: 24px;
   font-weight: 700;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   text-transform: uppercase;
 }
 
@@ -3057,7 +3056,7 @@ a.contact-card:hover {
 .contact-card strong {
   font-size: 18px;
   color: var(--indigo);
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -3464,7 +3463,7 @@ a.contact-card:hover {
   display: block;
   font-size: 40px;
   font-weight: 900;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   color: var(--indigo);
   line-height: 1;
   margin-bottom: 6px;
@@ -3529,7 +3528,7 @@ a.contact-card:hover {
 .avatar-initials {
   font-size: 40px;
   font-weight: 900;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   color: white;
 }
 
@@ -3590,7 +3589,7 @@ a.contact-card:hover {
   display: block;
   font-size: 18px;
   color: var(--indigo);
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 8px;
@@ -3709,7 +3708,7 @@ a.contact-card:hover {
   font-weight: 600;
   transition: all 0.3s ease;
   cursor: pointer;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   text-transform: uppercase;
 }
 
@@ -3782,7 +3781,7 @@ a.contact-card:hover {
   border-radius: 24px;
   font-size: 13px;
   font-weight: 700;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -3899,7 +3898,7 @@ a.contact-card:hover {
   letter-spacing: 0.5px;
   color: var(--gray-mid);
   margin-bottom: 6px;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 .detail-section p {
@@ -4003,7 +4002,7 @@ a.contact-card:hover {
   font-size: 48px;
   font-weight: 900;
   color: var(--indigo);
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   text-align: center;
   margin: 16px 0;
   line-height: 1;
@@ -4098,7 +4097,7 @@ a.contact-card:hover {
 .pickup-code {
   font-size: 42px;
   font-weight: 900;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   color: var(--indigo);
   letter-spacing: 4px;
   margin-bottom: 8px;
@@ -4366,7 +4365,7 @@ a.contact-card:hover {
   color: white;
   font-size: 26px;
   font-weight: 900;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4547,7 +4546,7 @@ a.contact-card:hover {
   font-size: 28px;
   font-weight: 900;
   color: var(--indigo);
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 .dm-stat-label {
@@ -4614,7 +4613,7 @@ a.contact-card:hover {
   font-size: 18px;
   font-weight: 700;
   color: var(--indigo);
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   text-transform: uppercase;
 }
 
@@ -4808,7 +4807,7 @@ a.contact-card:hover {
   border-radius: 20px;
   font-size: 13px;
   font-weight: 700;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -4824,7 +4823,7 @@ a.contact-card:hover {
   border-radius: 20px;
   font-size: 13px;
   font-weight: 700;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -4878,7 +4877,7 @@ a.contact-card:hover {
 }
 
 .dot-row:hover { background: var(--gray-light); border-radius: 10px; }
-.dot-code { font-weight: 700; color: var(--indigo); font-family: 'Barlow Condensed', sans-serif; letter-spacing: 0.5px; }
+.dot-code { font-weight: 700; color: var(--indigo); font-family: 'Nunito', sans-serif; letter-spacing: 0.5px; }
 .dot-customer { font-weight: 600; color: var(--black); }
 .dot-item { color: var(--gray-mid); }
 .dot-amount { font-weight: 700; color: var(--indigo); }
@@ -4893,7 +4892,7 @@ a.contact-card:hover {
   font-size: 12px;
   font-weight: 700;
   cursor: pointer;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   transition: all 0.2s ease;
@@ -5059,7 +5058,7 @@ a.contact-card:hover {
   letter-spacing: 0.5px;
   color: var(--gray-mid);
   margin-bottom: 16px;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 .terms-toc ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
@@ -5211,5 +5210,203 @@ a.contact-card:hover {
   .sticky-search {
     top: 64px;
     padding: 12px 0;
+  }
+}
+
+/* ═══════════════════════════════════════
+   FONT OVERRIDES — Nunito + Quicksand
+   Remove uppercase from headings (Nunito
+   reads better in natural case).
+   ═══════════════════════════════════════ */
+
+/* Remove forced uppercase from all headings */
+h1, h2, h3, h4, h5, h6,
+.section-header h2,
+.how-card h3,
+.partner-card h3,
+.benefit-tile h3,
+.benefits-col h3,
+.faq-col-title,
+.store-benefit-card h3,
+.store-step-content h3,
+.dash-section-header h2,
+.inspo-card h3,
+.value-card h3,
+.founder-card h3,
+.story-text h2,
+.about-hero-content h1 {
+  text-transform: none;
+  letter-spacing: -0.3px;
+}
+
+/* Buttons and tags that used Barlow Condensed — keep them with Nunito but slightly tighter */
+.btn-primary, .btn-ghost, .btn-white, .btn-ghost-white,
+.btn-reserve, .filter-btn, .area-btn,
+.section-tag, .deal-cat-tag, .deal-suburb,
+.hero-search-btn, .btn-nav, .btn-outline-sm,
+.tab-btn, .dash-nav-item, .dlc-status {
+  font-family: 'Nunito', sans-serif;
+  letter-spacing: 0;
+}
+
+/* Keep the stat numbers punchy */
+.stat-number, .ring-num, .charity-stat-num,
+.pickup-code, .reserve-price-display,
+.price-now, .mini-num {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+}
+
+/* Image logo — replace text-based logo */
+.logo-img {
+  height: 44px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.logo {
+  padding: 0;
+}
+
+/* Footer logo slightly smaller */
+.footer .logo-img {
+  height: 36px;
+}
+
+/* ═══════════════════════════════════════
+   BENEFITS — new horizontal layout
+   (bullet list left, bubbles right)
+   ═══════════════════════════════════════ */
+.benefits-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 48px;
+  align-items: center;
+  padding: 48px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.benefits-row:last-child {
+  border-bottom: none;
+}
+
+.benefits-row-alt {
+  grid-template-columns: auto 1fr;
+}
+
+.benefits-col-content h3 {
+  font-size: 26px;
+  color: var(--indigo);
+  margin-bottom: 20px;
+}
+
+.benefits-bubbles {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.benefit-bubble {
+  border-radius: 24px;
+  padding: 18px 28px;
+  font-size: 16px;
+  font-weight: 800;
+  font-family: 'Nunito', sans-serif;
+  text-align: center;
+  white-space: nowrap;
+  min-width: 200px;
+  transition: transform 0.3s ease;
+}
+
+.benefit-bubble:hover {
+  transform: scale(1.04);
+}
+
+.bubble-you       { background: var(--violet);     color: white; }
+.bubble-wallet    { background: var(--indigo);     color: white; }
+.bubble-planet    { background: var(--chartreuse); color: var(--indigo); }
+.bubble-community { background: var(--turquoise);  color: white; }
+
+@media (max-width: 768px) {
+  .benefits-row,
+  .benefits-row-alt {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .benefits-bubbles {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .benefit-bubble {
+    white-space: normal;
+    min-width: 0;
+    flex: 1;
+  }
+}
+
+/* ═══════════════════════════════════════
+   PARTNERS — single CTA block
+   ═══════════════════════════════════════ */
+.partners-cta-block {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.partners-cta-card {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  background: var(--gray-light);
+  border: 2px dashed var(--turquoise);
+  border-radius: 24px;
+  padding: 40px 48px;
+  transition: all 0.3s ease;
+}
+
+.partners-cta-card:hover {
+  background: white;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.08);
+}
+
+.partners-cta-icon {
+  width: 64px;
+  height: 64px;
+  background: rgba(115,196,174,0.15);
+  color: var(--turquoise);
+  border-radius: 50%;
+  padding: 16px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.partners-cta-icon svg { width: 100%; height: 100%; }
+
+.partners-cta-text {
+  flex: 1;
+}
+
+.partners-cta-text h3 {
+  font-size: 24px;
+  color: var(--indigo);
+  margin-bottom: 8px;
+}
+
+.partners-cta-text p {
+  font-size: 15px;
+  color: var(--gray-mid);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .partners-cta-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 32px 24px;
   }
 }

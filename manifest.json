@@ -11,9 +11,9 @@
   "categories": ["food", "shopping", "lifestyle"],
   "icons": [
     {
-      "src": "assets/icons/icon.svg",
+      "src": "assets/images/hippo.png",
       "sizes": "any",
-      "type": "image/svg+xml",
+      "type": "image/png",
       "purpose": "any maskable"
     }
   ],
