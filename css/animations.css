@@ -267,7 +267,7 @@
 }
 
 /* ── PAGE ENTRANCE ── */
-body { animation: fadeInUp 0.5s ease both; }
+/* body animation removed — it created a stacking context that broke fixed modals */
 
 /* ── MARQUEE PAUSE ON HOVER ── */
 .marquee-strip:hover .marquee-track { animation-play-state: paused; }
