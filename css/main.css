@@ -2702,7 +2702,7 @@ img {
 /* ───── PARTNERS ───── */
 .partners-section {
   padding: 100px 0;
-  background: white;
+  background: var(--yellow-tint);
 }
 
 .partners-grid {
@@ -5361,7 +5361,7 @@ h1, h2, h3, h4, h5, h6,
   display: flex;
   align-items: center;
   gap: 28px;
-  background: var(--gray-light);
+  background: white;
   border: 2px dashed var(--turquoise);
   border-radius: 24px;
   padding: 40px 48px;
