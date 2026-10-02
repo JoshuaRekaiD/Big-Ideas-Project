@@ -77,7 +77,7 @@ img {
 .nav-inner {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 16px 40px;
+  padding: 8px 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -5259,7 +5259,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* Image logo — replace text-based logo */
 .logo-img {
-  height: 56px;
+  height: 120px;
   width: auto;
   display: block;
   object-fit: contain;
@@ -5269,9 +5269,9 @@ h1, h2, h3, h4, h5, h6,
   padding: 0;
 }
 
-/* Footer logo slightly smaller */
+/* Footer logo */
 .footer .logo-img {
-  height: 48px;
+  height: 100px;
 }
 
 /* ═══════════════════════════════════════
