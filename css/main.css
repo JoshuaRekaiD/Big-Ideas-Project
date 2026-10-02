@@ -15,6 +15,7 @@
   --chartreuse: #b2d14f;
   --turquoise: #73c4ae;
   --yellow: #ffec96;
+  --yellow-tint: #fffbe6;
   --violet: #af58cb;
   --indigo: #613aa4;
   --white: #ffffff;
@@ -1065,7 +1066,7 @@ img {
 /* ───── HOW IT WORKS ───── */
 .how-section {
   padding: 100px 0;
-  background: white;
+  background: var(--yellow-tint);
 }
 
 .steps-grid {
@@ -2587,7 +2588,7 @@ img {
 
 .how-card {
   position: relative;
-  background: var(--gray-light);
+  background: white;
   border-radius: 24px;
   padding: 40px 28px 32px;
   transition: all 0.3s ease;
@@ -3016,7 +3017,7 @@ img {
 /* ───── CONTACT ───── */
 .contact-section {
   padding: 100px 0;
-  background: white;
+  background: var(--yellow-tint);
 }
 
 .contact-grid {
@@ -3070,7 +3071,7 @@ a.contact-card:hover {
   display: flex;
   flex-direction: column;
   gap: 18px;
-  background: var(--gray-light);
+  background: white;
   padding: 36px;
   border-radius: 24px;
 }
