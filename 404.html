@@ -12,7 +12,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="Birp" />
   <link rel="apple-touch-icon" href="assets/images/hippo.png" />
-  <link rel="stylesheet" href="css/main.css?v=26" />
+  <link rel="stylesheet" href="css/main.css?v=27" />
   <link rel="stylesheet" href="css/animations.css?v=7" />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
@@ -21,13 +21,21 @@
   <nav class="navbar scrolled" id="navbar">
     <div class="nav-inner">
       <a href="index.html" class="logo">
-        <span class="logo-leaf">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M20 4C9 4 4 10 4 18c0 1 0 2 .5 2.5C10 14 15 12 20 11c-4 1.5-8 4-11.5 9C15 20 20 15 20 4z" fill="currentColor"/>
-          </svg>
-        </span>
-        <span class="logo-text">Birp</span>
+        <img src="assets/images/logo.png" alt="Birp" class="logo-img" />
       </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="deals.html">Order Online</a></li>
+        <li><a href="stores.html">For Stores</a></li>
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="#" class="btn-nav" id="openLogin">Log In</a></li>
+        <li><a href="#" class="btn-nav btn-nav-filled" id="openSignup">Sign Up</a></li>
+        <li><a href="store-dashboard.html" class="btn-nav">My Store Login</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
@@ -40,7 +48,7 @@
             <rect x="15" y="40" width="90" height="90" rx="16" stroke="var(--indigo)" stroke-width="4"/>
             <path d="M40 40 Q40 20 60 20 Q80 20 80 40" stroke="var(--indigo)" stroke-width="4" fill="none" stroke-linecap="round"/>
             <path d="M45 85 L55 95 L75 72" stroke="var(--violet)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-            <text x="60" y="72" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="900" font-size="28" fill="var(--indigo)" opacity="0.15">?</text>
+            <text x="60" y="72" text-anchor="middle" font-family="Nunito, sans-serif" font-weight="900" font-size="28" fill="var(--indigo)" opacity="0.15">?</text>
           </svg>
         </div>
         <h1 class="notfound-title">Lost your bag?</h1>

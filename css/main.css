@@ -1743,26 +1743,6 @@ img {
 }
 
 /* ───── DEALS PAGE ───── */
-.deals-hero {
-  padding: 140px 40px 80px;
-  text-align: center;
-  background: linear-gradient(135deg, var(--violet), var(--indigo));
-  color: white;
-}
-
-.deals-hero h1 {
-  font-size: 64px;
-  margin-bottom: 20px;
-  color: white;
-}
-
-.deals-hero p {
-  font-size: 20px;
-  max-width: 700px;
-  margin: 0 auto;
-  opacity: 0.95;
-}
-
 .deals-filters {
   max-width: 1400px;
   margin: -40px auto 40px;
@@ -1884,89 +1864,6 @@ img {
   display: flex;
   align-items: center;
   gap: 4px;
-}
-
-/* ───── FARMS PAGE ───── */
-.farms-hero {
-  padding: 140px 40px 80px;
-  text-align: center;
-  background: linear-gradient(rgba(178, 209, 79, 0.9), rgba(178, 209, 79, 0.9)),
-    url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80') center/cover;
-}
-
-.farms-hero h1 {
-  font-size: 64px;
-  margin-bottom: 20px;
-  color: var(--indigo);
-}
-
-.farms-hero p {
-  font-size: 20px;
-  max-width: 700px;
-  margin: 0 auto;
-  font-weight: 600;
-  color: var(--black);
-}
-
-.farms-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 80px 40px;
-}
-
-.farm-section {
-  margin-bottom: 80px;
-}
-
-.farm-section h2 {
-  font-size: 42px;
-  color: var(--indigo);
-  margin-bottom: 24px;
-}
-
-.farm-section p {
-  font-size: 18px;
-  line-height: 1.8;
-  color: var(--black);
-  margin-bottom: 16px;
-}
-
-.farm-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 32px;
-  margin-top: 40px;
-}
-
-.farm-card {
-  background: white;
-  padding: 36px 32px;
-  border-radius: 20px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-.farm-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.15);
-}
-
-.farm-card-icon {
-  font-size: 56px;
-  margin-bottom: 16px;
-}
-
-.farm-card h3 {
-  font-size: 24px;
-  color: var(--indigo);
-  margin-bottom: 12px;
-}
-
-.farm-card p {
-  font-size: 16px;
-  color: var(--gray-mid);
-  line-height: 1.6;
 }
 
 /* ───── ABOUT PAGE ───── */
@@ -2122,7 +2019,6 @@ img {
   }
 
   .deals-hero h1,
-  .farms-hero h1,
   .about-hero h1 {
     font-size: 48px;
   }
@@ -2150,7 +2046,7 @@ img {
 /* ═══════════════════════════════════════
    DEALS & FARMS — page hero, filters, cards
    (matches the actual class names used in
-    deals.html and farms.html)
+    deals.html)
    ═══════════════════════════════════════ */
 
 /* ───── PAGE HERO (deals / farms) ───── */
