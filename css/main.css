@@ -2767,7 +2767,7 @@ img {
 /* ───── BENEFITS ───── */
 .benefits-section {
   padding: 100px 0;
-  background: var(--gray-light);
+  background: var(--yellow-tint);
 }
 
 .benefits-band {
@@ -4162,7 +4162,7 @@ a.contact-card:hover {
    ═══════════════════════════════════════ */
 .faq-section {
   padding: 100px 0;
-  background: white;
+  background: var(--yellow-tint);
 }
 
 .faq-grid {
