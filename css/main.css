@@ -4602,8 +4602,14 @@ a.contact-card:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 32px;
+  padding: 10px 32px;
   gap: 20px;
+  height: 72px;
+}
+
+/* Keep the logo compact inside the dashboard topbar */
+.dash-topbar .logo-img {
+  height: 48px;
 }
 
 .dash-topbar-center {
