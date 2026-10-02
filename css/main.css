@@ -5410,3 +5410,7 @@ h1, h2, h3, h4, h5, h6,
     padding: 32px 24px;
   }
 }
+
+.home-hero-title em {
+  font-weight: 900;
+}
