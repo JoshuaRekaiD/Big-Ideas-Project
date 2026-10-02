@@ -5259,7 +5259,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* Image logo — replace text-based logo */
 .logo-img {
-  height: 44px;
+  height: 56px;
   width: auto;
   display: block;
   object-fit: contain;
@@ -5271,7 +5271,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* Footer logo slightly smaller */
 .footer .logo-img {
-  height: 36px;
+  height: 48px;
 }
 
 /* ═══════════════════════════════════════
