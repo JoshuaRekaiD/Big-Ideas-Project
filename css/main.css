@@ -5186,7 +5186,7 @@ h1, h2, h3, h4, h5, h6,
    ═══════════════════════════════════════ */
 .benefits-row {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr auto auto;
   gap: 48px;
   align-items: center;
   padding: 48px 0;
@@ -5198,7 +5198,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .benefits-row-alt {
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto auto 1fr;
 }
 
 .benefits-col-content h3 {
@@ -5319,4 +5319,26 @@ h1, h2, h3, h4, h5, h6,
 
 .home-hero-title em {
   font-weight: 900;
+}
+
+/* ── Benefits section mascot images ── */
+.benefits-mascot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.benefits-mascot-img {
+  width: 220px;
+  height: auto;
+  object-fit: contain;
+  /* Blend white background into the yellow section */
+  mix-blend-mode: multiply;
+}
+
+@media (max-width: 768px) {
+  .benefits-mascot {
+    display: none;
+  }
 }
