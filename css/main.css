@@ -5181,48 +5181,48 @@ h1, h2, h3, h4, h5, h6,
 }
 
 /* ═══════════════════════════════════════
-   BENEFITS — new horizontal layout
-   (bullet list left, bubbles right)
+   BENEFITS — clean 2×2 grid
    ═══════════════════════════════════════ */
-.benefits-row {
+.benefits-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 64px;
-  align-items: center;
-  padding: 48px 0;
-  border-bottom: 1px solid #eee;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
 }
 
-.benefits-row:last-child {
-  border-bottom: none;
+/* Each quadrant */
+.benefits-quad {
+  background: white;
+  border-radius: 24px;
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 260px;
 }
 
-.benefits-row-alt {
-  grid-template-columns: 1fr 1fr 1fr;
-}
-
-.benefits-col-content h3 {
-  font-size: 26px;
+.benefits-quad h3 {
+  font-size: 24px;
   color: var(--indigo);
   margin-bottom: 20px;
 }
 
-.benefits-bubbles {
+/* Bubble quadrants — no white card bg, just stacked bubbles */
+.benefits-quad-bubbles {
+  background: transparent;
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  flex-shrink: 0;
+  gap: 16px;
+  justify-content: center;
+  padding: 32px 0;
 }
 
 .benefit-bubble {
   border-radius: 24px;
-  padding: 18px 28px;
-  font-size: 16px;
+  padding: 22px 32px;
+  font-size: 18px;
   font-weight: 800;
   font-family: 'Nunito', sans-serif;
   text-align: center;
-  white-space: nowrap;
-  min-width: 200px;
   transition: transform 0.3s ease;
 }
 
@@ -5236,21 +5236,8 @@ h1, h2, h3, h4, h5, h6,
 .bubble-community { background: var(--turquoise);  color: white; }
 
 @media (max-width: 768px) {
-  .benefits-row,
-  .benefits-row-alt {
+  .benefits-grid {
     grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .benefits-bubbles {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .benefit-bubble {
-    white-space: normal;
-    min-width: 0;
-    flex: 1;
   }
 }
 
@@ -5319,29 +5306,4 @@ h1, h2, h3, h4, h5, h6,
 
 .home-hero-title em {
   font-weight: 900;
-}
-
-/* ── Benefits section mascot images ── */
-.benefits-mascot {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  flex: 1;
-}
-
-.benefits-mascot-img {
-  width: 100%;
-  max-width: 340px;
-  min-width: 240px;
-  height: auto;
-  object-fit: contain;
-  /* Blend white background into the yellow section */
-  mix-blend-mode: multiply;
-}
-
-@media (max-width: 768px) {
-  .benefits-mascot {
-    display: none;
-  }
 }
