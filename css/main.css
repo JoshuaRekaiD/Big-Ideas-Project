@@ -1669,6 +1669,7 @@ img {
   font-size: 14px;
   font-weight: 600;
   color: var(--black);
+  cursor: default;
 }
 
 .auth-form input[type="text"],
@@ -1681,6 +1682,11 @@ img {
   font-size: 15px;
   transition: border-color 0.3s ease;
   font-family: inherit;
+  cursor: text;
+  user-select: text;
+  -webkit-user-select: text;
+  position: relative;
+  z-index: 1;
 }
 
 .auth-form input:focus {
