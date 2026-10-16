@@ -1126,20 +1126,10 @@ document.addEventListener('click', async (e) => {
    22. FORGOT PASSWORD
 ───────────────────────────────────────────── */
 (function initForgotPassword() {
-  // Wire the "Forgot your password?" link to show the forgot view
-  document.addEventListener('click', (e) => {
-    if (e.target.id === 'forgotPasswordLink') {
-      e.preventDefault();
-      // Hide all tab contents, show forgot
-      document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-      const forgot = document.getElementById('tab-forgot');
-      if (forgot) forgot.classList.add('active');
-      // Deactivate tab buttons
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    }
-  });
+  // "Forgot your password?" uses data-switch="forgot" which is handled
+  // by the existing switchTab mechanism in IIFE 4.
+  // We only need to handle the form submission here.
 
-  // Handle forgot password form submission
   document.addEventListener('submit', async (e) => {
     if (e.target.id !== 'forgotForm') return;
     e.preventDefault();
