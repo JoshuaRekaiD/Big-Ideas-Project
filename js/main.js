@@ -871,3 +871,252 @@ function openDealDetail(btn) {
     });
   });
 })();
+
+
+/* ─────────────────────────────────────────────
+   19. DEALS PAGE — load bags from Supabase
+       Replaces hardcoded HTML cards with live
+       data. Falls back to a "no deals" state
+       when no bags exist for today.
+───────────────────────────────────────────── */
+(function initSupabaseDeals() {
+  const grid    = document.getElementById('dealsGrid');
+  const countEl = document.getElementById('resultsCount');
+  if (!grid || typeof _supabase === 'undefined') return;
+
+  async function loadBags() {
+    const today = new Date().toISOString().split('T')[0];
+
+    const { data: bags, error } = await _supabase
+      .from('bags')
+      .select(`
+        *,
+        stores (name, area, address, category)
+      `)
+      .eq('is_active', true)
+      .eq('available_date', today)
+      .gt('quantity_remaining', 0);
+
+    if (error) {
+      console.error('Error loading bags:', error.message);
+      return;
+    }
+
+    // Clear existing hardcoded cards
+    grid.innerHTML = '';
+
+    if (!bags || bags.length === 0) {
+      // Show empty state
+      const empty = document.getElementById('dealsEmpty');
+      if (empty) empty.classList.remove('hidden');
+      if (countEl) countEl.innerHTML = 'Showing <strong>0</strong> deals';
+      return;
+    }
+
+    // Render each bag as a card
+    bags.forEach(bag => {
+      const store = bag.stores || {};
+      const urgentClass = bag.quantity_remaining <= 3 ? 'deal-bags-urgent' : '';
+      const soldOut     = bag.quantity_remaining === 0;
+
+      const card = document.createElement('div');
+      card.className = `deal-card reveal${soldOut ? ' deal-card-soldout' : ''}`;
+      card.dataset.category = store.category || 'other';
+      card.dataset.area      = (store.area || '').toLowerCase().replace(/\s+/g, '');
+      card.dataset.address   = store.address || '';
+      card.dataset.allergens = bag.allergens || 'Not specified';
+      card.dataset.contents  = bag.description || 'Surprise selection of surplus food';
+      card.dataset.bags      = bag.quantity_remaining;
+      card.dataset.bagId     = bag.id;
+      card.dataset.storeId   = bag.store_id;
+
+      card.innerHTML = `
+        <div class="deal-img deal-img-${store.category || 'bakery'}"></div>
+        <div class="deal-body">
+          <div class="deal-meta-top">
+            <span class="deal-cat-tag">${capitalise(store.category || 'Store')}</span>
+            <span class="deal-suburb">${store.area || ''}</span>
+          </div>
+          <h3>${store.name || 'Local Store'}</h3>
+          <p class="deal-desc">${bag.name}</p>
+          <div class="deal-time">
+            <svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            Pick up: ${bag.pickup_start || ''} – ${bag.pickup_end || ''}
+          </div>
+          <div class="deal-footer">
+            <div class="deal-price-block">
+              <span class="price-now">R ${bag.price}</span>
+              ${bag.original_price ? `<span class="price-was">R ${bag.original_price}</span>` : ''}
+              <span class="deal-bags-left ${urgentClass}">
+                ${soldOut ? 'Sold out' : `${bag.quantity_remaining} bag${bag.quantity_remaining !== 1 ? 's' : ''} left`}
+              </span>
+            </div>
+            <div class="deal-actions">
+              <button class="btn-detail" onclick="openDealDetail(this)">Details</button>
+              <button class="btn-reserve"
+                onclick="openReserveModal(this)"
+                data-store="${store.name || ''}"
+                data-item="${bag.name}"
+                data-price="R${bag.price}"
+                data-bag-id="${bag.id}"
+                data-store-id="${bag.store_id}"
+                ${soldOut ? 'disabled' : ''}>
+                ${soldOut ? 'Sold Out' : 'Reserve'}
+              </button>
+            </div>
+          </div>
+        </div>`;
+
+      grid.appendChild(card);
+    });
+
+    if (countEl) {
+      countEl.innerHTML = `Showing <strong>${bags.length}</strong> deal${bags.length !== 1 ? 's' : ''}`;
+    }
+
+    // Re-run scroll reveal on new cards
+    document.querySelectorAll('.reveal').forEach(el => {
+      el.classList.add('visible');
+    });
+  }
+
+  function capitalise(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+  loadBags();
+})();
+
+
+/* ─────────────────────────────────────────────
+   20. RESERVE — gate behind login + write to
+       Supabase reservations table
+───────────────────────────────────────────── */
+(function initRealReserve() {
+  const confirmBtn = document.getElementById('confirmReserve');
+  if (!confirmBtn || typeof _supabase === 'undefined') return;
+
+  // Replace the confirm button handler
+  const newBtn = confirmBtn.cloneNode(true);
+  confirmBtn.parentNode.replaceChild(newBtn, confirmBtn);
+
+  newBtn.addEventListener('click', async () => {
+    // Check login
+    const { data: { session } } = await _supabase.auth.getSession();
+    if (!session) {
+      // Close reserve modal, open login
+      const reserveModal = document.getElementById('reserveModal');
+      if (reserveModal) { reserveModal.classList.remove('active'); document.body.style.overflow = ''; }
+      showToast('Please log in to reserve a bag', 'info');
+      const authModal = document.getElementById('authModal');
+      if (authModal) { authModal.classList.add('active'); document.body.style.overflow = 'hidden'; }
+      return;
+    }
+
+    // Get bag details from the modal's current state
+    const bagId   = document.querySelector('.btn-reserve[data-bag-id]')?.dataset.bagId;
+    const storeId = document.querySelector('.btn-reserve[data-store-id]')?.dataset.storeId;
+
+    if (!bagId || !storeId) {
+      // No Supabase bag ID — demo mode fallback
+      showDemoReserveSuccess();
+      return;
+    }
+
+    newBtn.textContent = 'Reserving…';
+    newBtn.disabled    = true;
+
+    // Check quantity still available
+    const { data: bag } = await _supabase
+      .from('bags')
+      .select('quantity_remaining')
+      .eq('id', bagId)
+      .single();
+
+    if (!bag || bag.quantity_remaining <= 0) {
+      showToast('Sorry — this bag just sold out', 'error');
+      newBtn.textContent = 'Confirm Reservation';
+      newBtn.disabled    = false;
+      return;
+    }
+
+    // Create reservation
+    const { data: reservation, error } = await _supabase
+      .from('reservations')
+      .insert({
+        bag_id:      bagId,
+        store_id:    storeId,
+        customer_id: session.user.id,
+        status:      'reserved'
+      })
+      .select()
+      .single();
+
+    if (error) {
+      showToast('Something went wrong. Please try again.', 'error');
+      console.error(error);
+      newBtn.textContent = 'Confirm Reservation';
+      newBtn.disabled    = false;
+      return;
+    }
+
+    // Decrement quantity
+    await _supabase.rpc('decrement_bag_quantity', { bag_id: bagId });
+
+    // Show success screen
+    const code = reservation.pickup_code;
+    showReserveSuccess(code);
+    newBtn.textContent = 'Confirm Reservation';
+    newBtn.disabled    = false;
+  });
+
+  function showReserveSuccess(code) {
+    const step1   = document.getElementById('reserveStep1');
+    const success = document.getElementById('reserveSuccess');
+    const codeEl  = document.getElementById('reserveCode');
+    const storeEl = document.getElementById('successStoreName');
+    const store   = document.getElementById('reserveStoreName')?.textContent || '';
+
+    if (codeEl)  codeEl.textContent  = code;
+    if (storeEl) storeEl.textContent = store;
+    if (step1)   step1.classList.add('hidden');
+    if (success) success.classList.remove('hidden');
+    showToast(`Reserved! Your code is ${code}`, 'success');
+  }
+
+  function showDemoReserveSuccess() {
+    // Fallback for hardcoded demo cards with no Supabase bag ID
+    const code = 'BIRP-' + Math.floor(1000 + Math.random() * 9000);
+    showReserveSuccess(code);
+  }
+})();
+
+
+/* ─────────────────────────────────────────────
+   21. RESERVE BUTTON — gate behind login
+       If user not logged in, show login modal
+───────────────────────────────────────────── */
+document.addEventListener('click', async (e) => {
+  const btn = e.target.closest('.btn-reserve');
+  if (!btn || btn.disabled) return;
+
+  // Check if logged in
+  const { data: { session } } = await _supabase.auth.getSession().catch(() => ({ data: { session: null } }));
+
+  if (!session) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    showToast('Please log in to reserve a bag', 'info');
+    const authModal = document.getElementById('authModal');
+    if (authModal) {
+      authModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      // Switch to login tab
+      authModal.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === 'login'));
+      authModal.querySelectorAll('.tab-content').forEach(c => c.classList.toggle('active', c.id === 'tab-login'));
+    }
+  }
+}, true); // capture phase so this fires before onclick
