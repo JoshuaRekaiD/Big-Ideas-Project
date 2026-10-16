@@ -123,10 +123,10 @@ if ('serviceWorker' in navigator) {
 
 
 /* ─────────────────────────────────────────────
-   4. AUTH MODAL
+   4. AUTH MODAL — real Supabase auth
 ───────────────────────────────────────────── */
 (function initAuthModal() {
-  const overlay = document.getElementById('authModal');
+  const overlay  = document.getElementById('authModal');
   if (!overlay) return;
 
   const openLogin  = document.getElementById('openLogin');
@@ -159,12 +159,10 @@ if ('serviceWorker' in navigator) {
   if (ctaSignup)  ctaSignup.addEventListener('click',  (e) => { e.preventDefault(); openModal('signup'); });
   if (closeBtn)   closeBtn.addEventListener('click', closeModal);
 
-  // Tab switches inside the form
   overlay.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => switchTab(btn.dataset.tab));
   });
 
-  // "Switch" links inside form text
   overlay.querySelectorAll('[data-switch]').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
@@ -172,31 +170,121 @@ if ('serviceWorker' in navigator) {
     });
   });
 
-  // Close on overlay click
   overlay.addEventListener('click', (e) => {
     if (e.target === overlay) closeModal();
   });
 
-  // Handle form submissions (demo)
-  const loginForm  = overlay.querySelector('#tab-login form');
-  const signupForm = overlay.querySelector('#tab-signup form');
-
+  // ── LOGIN ──
+  const loginForm = overlay.querySelector('#loginForm');
   if (loginForm) {
-    loginForm.addEventListener('submit', (e) => {
+    loginForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      showToast('Welcome back! 👋', 'success');
-      closeModal();
+      const email    = loginForm.querySelector('input[type="email"]').value;
+      const password = loginForm.querySelector('input[type="password"]').value;
+      const btn      = loginForm.querySelector('button[type="submit"]');
+
+      btn.textContent = 'Logging in…';
+      btn.disabled = true;
+
+      const { data, error } = await _supabase.auth.signInWithPassword({ email, password });
+
+      btn.textContent = 'Log In';
+      btn.disabled = false;
+
+      if (error) {
+        showToast(error.message, 'error');
+      } else {
+        showToast('Welcome back! 👋', 'success');
+        closeModal();
+        updateNavForUser(data.user);
+      }
     });
   }
 
+  // ── SIGN UP ──
+  const signupForm = overlay.querySelector('#signupForm');
   if (signupForm) {
-    signupForm.addEventListener('submit', (e) => {
+    signupForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      showToast('Account created! Welcome to Birp 🌿', 'success');
-      closeModal();
+      const name     = signupForm.querySelector('input[type="text"]').value;
+      const email    = signupForm.querySelector('input[type="email"]').value;
+      const password = signupForm.querySelector('input[type="password"]').value;
+      const btn      = signupForm.querySelector('button[type="submit"]');
+
+      btn.textContent = 'Creating account…';
+      btn.disabled = true;
+
+      const { error } = await _supabase.auth.signUp({
+        email,
+        password,
+        options: { data: { full_name: name } }
+      });
+
+      btn.textContent = 'Create Account';
+      btn.disabled = false;
+
+      if (error) {
+        showToast(error.message, 'error');
+      } else {
+        showToast('Check your email to confirm your account 📧', 'info');
+        closeModal();
+      }
     });
   }
+
+  // ── CHECK SESSION ON LOAD ──
+  _supabase.auth.getSession().then(({ data: { session } }) => {
+    if (session) updateNavForUser(session.user);
+  });
+
+  // ── LISTEN FOR AUTH CHANGES ──
+  _supabase.auth.onAuthStateChange((_event, session) => {
+    if (session) {
+      updateNavForUser(session.user);
+    } else {
+      resetNav();
+    }
+  });
 })();
+
+
+/* ─────────────────────────────────────────────
+   4b. NAV — update for logged-in user
+───────────────────────────────────────────── */
+function updateNavForUser(user) {
+  const loginBtn  = document.getElementById('openLogin');
+  const signupBtn = document.getElementById('openSignup');
+  if (!loginBtn || !signupBtn) return;
+
+  const name = user.user_metadata?.full_name || user.email.split('@')[0];
+
+  loginBtn.style.display  = 'none';
+  signupBtn.textContent   = name;
+  signupBtn.classList.remove('btn-nav-filled');
+  signupBtn.removeAttribute('id'); // prevent re-triggering signup
+
+  // Add logout button
+  if (!document.getElementById('logoutBtn')) {
+    const li  = document.createElement('li');
+    const btn = document.createElement('a');
+    btn.href        = '#';
+    btn.className   = 'btn-nav';
+    btn.id          = 'logoutBtn';
+    btn.textContent = 'Log Out';
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      await _supabase.auth.signOut();
+      showToast('Logged out', 'info');
+      location.reload();
+    });
+    li.appendChild(btn);
+    signupBtn.closest('ul')?.appendChild(li);
+  }
+}
+
+function resetNav() {
+  location.reload();
+}
 
 
 /* ─────────────────────────────────────────────
@@ -436,16 +524,41 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 
 
 /* ─────────────────────────────────────────────
-   12. CONTACT FORM (home page — demo)
+   12. CONTACT FORM — sends via Formspree
+       Replace YOUR_FORM_ID with your Formspree
+       endpoint ID from formspree.io
 ───────────────────────────────────────────── */
 (function initContactForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
 
-  form.addEventListener('submit', (e) => {
+  const FORMSPREE_URL = 'https://formspree.io/f/YOUR_FORM_ID';
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    form.reset();
-    showToast("Thanks! We'll be in touch soon 💚", 'success');
+    const btn = form.querySelector('button[type="submit"]');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        form.reset();
+        showToast("Message sent! We'll be in touch soon.", 'success');
+      } else {
+        showToast('Something went wrong. Email us directly at birp@bishops.org.za', 'error');
+      }
+    } catch {
+      showToast('Something went wrong. Email us directly.', 'error');
+    }
+
+    btn.textContent = 'Send Message';
+    btn.disabled = false;
   });
 })();
 
