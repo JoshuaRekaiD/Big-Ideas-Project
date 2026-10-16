@@ -2342,7 +2342,10 @@ img {
 /* ───── HERO ───── */
 .home-hero {
   min-height: 92vh;
-  padding: 140px 24px 80px;
+  padding: 120px 24px 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .home-hero-content {
