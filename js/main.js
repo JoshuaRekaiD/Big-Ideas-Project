@@ -532,7 +532,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   const form = document.getElementById('contactForm');
   if (!form) return;
 
-  const FORMSPREE_URL = 'https://formspree.io/f/YOUR_FORM_ID';
+  const FORMSPREE_URL = 'https://formspree.io/f/xljgayzj';
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
