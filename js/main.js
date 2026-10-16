@@ -241,9 +241,8 @@ if ('serviceWorker' in navigator) {
   _supabase.auth.onAuthStateChange((_event, session) => {
     if (session) {
       updateNavForUser(session.user);
-    } else {
-      resetNav();
     }
+    // Don't call resetNav/reload here — causes infinite loop
   });
 })();
 
@@ -283,7 +282,7 @@ function updateNavForUser(user) {
 }
 
 function resetNav() {
-  location.reload();
+  // Called after logout — page reloads handled by the logout button directly
 }
 
 
