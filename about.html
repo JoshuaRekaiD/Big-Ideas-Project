@@ -171,6 +171,7 @@
           <label>Email<input type="email" placeholder="you@example.com" required /></label>
           <label>Password<input type="password" placeholder="••••••••" required /></label>
           <button type="submit" class="btn-primary full-width">Log In</button>
+          <p class="auth-switch"><a href="#" id="forgotPasswordLink">Forgot your password?</a></p>
         </form>
       </div>
       <div class="tab-content" id="tab-signup">
@@ -180,6 +181,15 @@
           <label>Email<input type="email" placeholder="you@example.com" required /></label>
           <label>Password<input type="password" placeholder="Create a password" required /></label>
           <button type="submit" class="btn-primary full-width">Create Account</button>
+        </form>
+      </div>
+      <div class="tab-content" id="tab-forgot">
+        <h3>Reset your password</h3>
+        <p style="font-size:14px;color:var(--gray-mid);margin-bottom:20px;">Enter your email and we'll send you a link to reset your password.</p>
+        <form class="auth-form" id="forgotForm">
+          <label>Email<input type="email" id="forgotEmail" placeholder="you@example.com" required /></label>
+          <button type="submit" class="btn-primary full-width">Send Reset Link</button>
+          <p class="auth-switch"><a href="#" data-switch="login">Back to Log In</a></p>
         </form>
       </div>
     </div>

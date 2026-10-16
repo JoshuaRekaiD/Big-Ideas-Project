@@ -1120,3 +1120,53 @@ document.addEventListener('click', async (e) => {
     }
   }
 }, true); // capture phase so this fires before onclick
+
+
+/* ─────────────────────────────────────────────
+   22. FORGOT PASSWORD
+───────────────────────────────────────────── */
+(function initForgotPassword() {
+  // Wire the "Forgot your password?" link to show the forgot view
+  document.addEventListener('click', (e) => {
+    if (e.target.id === 'forgotPasswordLink') {
+      e.preventDefault();
+      // Hide all tab contents, show forgot
+      document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+      const forgot = document.getElementById('tab-forgot');
+      if (forgot) forgot.classList.add('active');
+      // Deactivate tab buttons
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    }
+  });
+
+  // Handle forgot password form submission
+  document.addEventListener('submit', async (e) => {
+    if (e.target.id !== 'forgotForm') return;
+    e.preventDefault();
+
+    const email = document.getElementById('forgotEmail')?.value;
+    const btn   = e.target.querySelector('button[type="submit"]');
+    if (!email) return;
+
+    btn.textContent = 'Sending…';
+    btn.disabled    = true;
+
+    const redirectTo = window.location.origin + '/Big-Ideas-Project/reset-password.html';
+
+    const { error } = await _supabase.auth.resetPasswordForEmail(email, { redirectTo });
+
+    btn.textContent = 'Send Reset Link';
+    btn.disabled    = false;
+
+    if (error) {
+      showToast(error.message, 'error');
+    } else {
+      showToast('Reset link sent! Check your email.', 'success');
+      // Go back to login view
+      document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+      const login = document.getElementById('tab-login');
+      if (login) login.classList.add('active');
+      document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', i === 0));
+    }
+  });
+})();

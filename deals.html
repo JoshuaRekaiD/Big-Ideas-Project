@@ -98,10 +98,10 @@
   <!-- DEALS GRID -->
   <section class="deals-section">
     <div class="container">
-      <p class="results-count" id="resultsCount">Showing <strong>12</strong> deals</p>
+      <p class="results-count" id="resultsCount"></p>
 
       <!-- EMPTY STATE -->
-      <div class="deals-empty hidden" id="dealsEmpty">
+      <div class="deals-empty" id="dealsEmpty">
         <div class="deals-empty-icon">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M5 8h14l-1 12a2 2 0 01-2 1.8H8A2 2 0 016 20L5 8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
@@ -117,412 +117,11 @@
         </div>
       </div>
 
-      <div class="deals-grid" id="dealsGrid">
+      <!-- Grid populated by Supabase — empty until real partners are added -->
+      <div class="deals-grid hidden" id="dealsGrid"></div>
 
-        <!-- Card 1 -->
-        <div class="deal-card reveal" data-category="bakery" data-area="claremont"
-             data-address="14 Cavendish St, Claremont"
-             data-allergens="Wheat, Gluten, Dairy, Eggs"
-             data-contents="2–4 bread loaves or rolls, 1–3 pastries or croissants"
-             data-bags="3">
-          <div class="deal-badge deal-badge-urgent">Almost Gone</div>
-          <div class="deal-img deal-img-bakery"></div>
-          <div class="deal-body">
-            <div class="deal-meta-top">
-              <span class="deal-cat-tag">Bakery</span>
-              <span class="deal-suburb">Claremont</span>
-            </div>
-            <h3>Heritage Bakery</h3>
-            <p class="deal-desc">End-of-day bread, rolls &amp; pastries. Contents vary — always delicious.</p>
-            <div class="deal-time">
-              <svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Pick up: 4:00 PM – 5:30 PM
-            </div>
-            <div class="deal-footer">
-              <div class="deal-price-block">
-                <span class="price-now">R 25</span>
-                <span class="price-was">R 80</span>
-                <span class="deal-bags-left">3 bags left</span>
-              </div>
-              <div class="deal-actions">
-                <button class="btn-detail" onclick="openDealDetail(this)">Details</button>
-                <button class="btn-reserve" onclick="openReserveModal(this)"
-                  data-store="Heritage Bakery" data-item="End-of-Day Bread Bag" data-price="R25">Reserve</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="deal-card reveal" data-category="restaurant" data-area="gardens"
-             data-address="12 Mill St, Gardens, Cape Town"
-             data-allergens="May contain: Nuts, Dairy, Gluten"
-             data-contents="1 warm main meal + side salad, chef's choice"
-             data-bags="5">
-          <div class="deal-img deal-img-restaurant"></div>
-          <div class="deal-body">
-            <div class="deal-meta-top">
-              <span class="deal-cat-tag">Restaurant</span>
-              <span class="deal-suburb">Gardens</span>
-            </div>
-            <h3>The Green Bowl</h3>
-            <p class="deal-desc">Surprise salad &amp; warm meal bundle — chef's choice from today's menu.</p>
-            <div class="deal-time">
-              <svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Pick up: 7:00 PM – 8:30 PM
-            </div>
-            <div class="deal-footer">
-              <div class="deal-price-block">
-                <span class="price-now">R 35</span>
-                <span class="price-was">R 120</span>
-                <span class="deal-bags-left">5 bags left</span>
-              </div>
-              <div class="deal-actions">
-                <button class="btn-detail" onclick="openDealDetail(this)">Details</button>
-                <button class="btn-reserve" onclick="openReserveModal(this)"
-                  data-store="The Green Bowl" data-item="Surprise Salad Bundle" data-price="R35">Reserve</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="deal-card reveal" data-category="cafe" data-area="seapoint"
-             data-address="88 Main Rd, Sea Point"
-             data-allergens="Wheat, Dairy, Eggs, Soy"
-             data-contents="2–3 pastries or muffins, 1 drink voucher"
-             data-bags="7">
-          <div class="deal-badge deal-badge-new">New</div>
-          <div class="deal-img deal-img-cafe"></div>
-          <div class="deal-body">
-            <div class="deal-meta-top">
-              <span class="deal-cat-tag">Café</span>
-              <span class="deal-suburb">Sea Point</span>
-            </div>
-            <h3>Sunrise Coffee Co.</h3>
-            <p class="deal-desc">Leftover pastries, muffins and a drink voucher. Perfect afternoon snack.</p>
-            <div class="deal-time">
-              <svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Pick up: 3:00 PM – 4:30 PM
-            </div>
-            <div class="deal-footer">
-              <div class="deal-price-block">
-                <span class="price-now">R 30</span>
-                <span class="price-was">R 90</span>
-                <span class="deal-bags-left">7 bags left</span>
-              </div>
-              <div class="deal-actions">
-                <button class="btn-detail" onclick="openDealDetail(this)">Details</button>
-                <button class="btn-reserve" onclick="openReserveModal(this)"
-                  data-store="Sunrise Coffee Co." data-item="Afternoon Snack Bundle" data-price="R30">Reserve</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="deal-card reveal" data-category="grocery" data-area="claremont"
-             data-address="Cavendish Square, Claremont"
-             data-allergens="Varies by product — check labels at collection"
-             data-contents="4–6 near-best-before dry goods, snacks or condiments"
-             data-bags="8">
-          <div class="deal-img deal-img-grocery"></div>
-          <div class="deal-body">
-            <div class="deal-meta-top">
-              <span class="deal-cat-tag">Grocery</span>
-              <span class="deal-suburb">Claremont</span>
-            </div>
-            <h3>FreshMart Newlands</h3>
-            <p class="deal-desc">Near-best-before pantry bundle — dry goods, snacks &amp; condiments.</p>
-            <div class="deal-time">
-              <svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Pick up: 5:00 PM – 7:00 PM
-            </div>
-            <div class="deal-footer">
-              <div class="deal-price-block">
-                <span class="price-now">R 55</span>
-                <span class="price-was">R 160</span>
-                <span class="deal-bags-left">8 bags left</span>
-              </div>
-              <div class="deal-actions">
-                <button class="btn-detail" onclick="openDealDetail(this)">Details</button>
-                <button class="btn-reserve" onclick="openReserveModal(this)"
-                  data-store="FreshMart Newlands" data-item="Pantry Bundle" data-price="R55">Reserve</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 5 -->
-        <div class="deal-card reveal" data-category="deli" data-area="gardens"
-             data-address="Lifestyles on Kloof, Gardens"
-             data-allergens="Dairy, Eggs, Gluten, Sulphites"
-             data-contents="Charcuterie selection, 1–2 cheeses, prepared salad"
-             data-bags="4">
-          <div class="deal-badge deal-badge-popular">Popular</div>
-          <div class="deal-img deal-img-deli"></div>
-          <div class="deal-body">
-            <div class="deal-meta-top">
-              <span class="deal-cat-tag">Deli</span>
-              <span class="deal-suburb">Gardens</span>
-            </div>
-            <h3>The Deli Corner</h3>
-            <p class="deal-desc">Charcuterie, cheese &amp; prepared salads — restaurant quality at half the price.</p>
-            <div class="deal-time">
-              <svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Pick up: 6:00 PM – 7:30 PM
-            </div>
-            <div class="deal-footer">
-              <div class="deal-price-block">
-                <span class="price-now">R 45</span>
-                <span class="price-was">R 130</span>
-                <span class="deal-bags-left">4 bags left</span>
-              </div>
-              <div class="deal-actions">
-                <button class="btn-detail" onclick="openDealDetail(this)">Details</button>
-                <button class="btn-reserve" onclick="openReserveModal(this)"
-                  data-store="The Deli Corner" data-item="Chef's Surplus Pack" data-price="R45">Reserve</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 6 -->
-        <div class="deal-card reveal deal-card-soldout" data-category="restaurant" data-area="claremont"
-             data-address="Vineyard Hotel Rd, Claremont"
-             data-allergens="Gluten, Dairy, Chilli"
-             data-contents="Peri-peri chicken pieces, pita bread, side of choice"
-             data-bags="0">
-          <div class="deal-badge deal-badge-soldout">Sold Out</div>
-          <div class="deal-img deal-img-restaurant2"></div>
-          <div class="deal-body">
-            <div class="deal-meta-top">
-              <span class="deal-cat-tag">Restaurant</span>
-              <span class="deal-suburb">Claremont</span>
-            </div>
-            <h3>The Flame Grill</h3>
-            <p class="deal-desc">End-of-night chicken bundle. Includes sides and pitas.</p>
-            <div class="deal-time">
-              <svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Pick up: 9:00 PM – 10:00 PM
-            </div>
-            <div class="deal-footer">
-              <div class="deal-price-block">
-                <span class="price-now">R 40</span>
-                <span class="price-was">R 140</span>
-                <span class="deal-bags-left deal-bags-none">Sold out</span>
-              </div>
-              <div class="deal-actions">
-                <button class="btn-detail" onclick="openDealDetail(this)">Details</button>
-                <button class="btn-reserve" disabled>Sold Out</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 7 -->
-        <div class="deal-card reveal" data-category="bakery" data-area="observatory"
-             data-address="134 Lower Main Rd, Observatory"
-             data-allergens="Wheat, Gluten, Dairy, Eggs, Sesame"
-             data-contents="1–2 sourdough or ciabatta loaves, 2–3 croissants or pastries"
-             data-bags="6">
-          <div class="deal-img deal-img-bakery2"></div>
-          <div class="deal-body">
-            <div class="deal-meta-top">
-              <span class="deal-cat-tag">Bakery</span>
-              <span class="deal-suburb">Observatory</span>
-            </div>
-            <h3>The Artisan Bakery</h3>
-            <p class="deal-desc">Sourdough, ciabatta and croissants from this morning's bake.</p>
-            <div class="deal-time">
-              <svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Pick up: 4:30 PM – 6:00 PM
-            </div>
-            <div class="deal-footer">
-              <div class="deal-price-block">
-                <span class="price-now">R 30</span>
-                <span class="price-was">R 100</span>
-                <span class="deal-bags-left">6 bags left</span>
-              </div>
-              <div class="deal-actions">
-                <button class="btn-detail" onclick="openDealDetail(this)">Details</button>
-                <button class="btn-reserve" onclick="openReserveModal(this)"
-                  data-store="The Artisan Bakery" data-item="Artisan Bread Bundle" data-price="R30">Reserve</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 8 -->
-        <div class="deal-card reveal" data-category="grocery" data-area="claremont"
-             data-address="Cavendish Square, Claremont"
-             data-allergens="Varies — prepared meals may contain Dairy, Gluten, Eggs"
-             data-contents="2–3 premium prepared meals or salads nearing sell-by date"
-             data-bags="4">
-          <div class="deal-badge deal-badge-new">New</div>
-          <div class="deal-img deal-img-grocery2"></div>
-          <div class="deal-body">
-            <div class="deal-meta-top">
-              <span class="deal-cat-tag">Grocery</span>
-              <span class="deal-suburb">Claremont</span>
-            </div>
-            <h3>The Pantry Store</h3>
-            <p class="deal-desc">Near-best-before premium meals and salads. Quality you can trust.</p>
-            <div class="deal-time">
-              <svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Pick up: 6:00 PM – 8:00 PM
-            </div>
-            <div class="deal-footer">
-              <div class="deal-price-block">
-                <span class="price-now">R 65</span>
-                <span class="price-was">R 200</span>
-                <span class="deal-bags-left">4 bags left</span>
-              </div>
-              <div class="deal-actions">
-                <button class="btn-detail" onclick="openDealDetail(this)">Details</button>
-                <button class="btn-reserve" onclick="openReserveModal(this)"
-                  data-store="The Pantry Store" data-item="Premium Prepared Meals Bundle" data-price="R65">Reserve</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 9 -->
-        <div class="deal-card reveal" data-category="cafe" data-area="woodstock"
-             data-address="36 Buitenkant St, Woodstock"
-             data-allergens="Wheat, Dairy, Eggs, Oats"
-             data-contents="2–3 baked goods, 1 granola jar, cold brew or filter coffee"
-             data-bags="5">
-          <div class="deal-img deal-img-cafe2"></div>
-          <div class="deal-body">
-            <div class="deal-meta-top">
-              <span class="deal-cat-tag">Café</span>
-              <span class="deal-suburb">Woodstock</span>
-            </div>
-            <h3>Workshop Coffee Co.</h3>
-            <p class="deal-desc">Baked goods, granola jars and cold brew surprise pack from the day's leftovers.</p>
-            <div class="deal-time">
-              <svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Pick up: 4:00 PM – 5:00 PM
-            </div>
-            <div class="deal-footer">
-              <div class="deal-price-block">
-                <span class="price-now">R 40</span>
-                <span class="price-was">R 110</span>
-                <span class="deal-bags-left">5 bags left</span>
-              </div>
-              <div class="deal-actions">
-                <button class="btn-detail" onclick="openDealDetail(this)">Details</button>
-                <button class="btn-reserve" onclick="openReserveModal(this)"
-                  data-store="Workshop Coffee Co." data-item="Coffee Shop Bundle" data-price="R40">Reserve</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 10 -->
-        <div class="deal-card reveal" data-category="deli" data-area="gardens"
-             data-address="Lifestyles on Kloof, Gardens"
-             data-allergens="Gluten, Dairy, Eggs, Celery"
-             data-contents="2 sandwich fillings, 1 quiche slice, 1 soup portion"
-             data-bags="3">
-          <div class="deal-img deal-img-deli2"></div>
-          <div class="deal-body">
-            <div class="deal-meta-top">
-              <span class="deal-cat-tag">Deli</span>
-              <span class="deal-suburb">Gardens</span>
-            </div>
-            <h3>The Garden Deli</h3>
-            <p class="deal-desc">Gourmet sandwich fillings, quiches and soups. Take-home dinner sorted.</p>
-            <div class="deal-time">
-              <svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Pick up: 5:30 PM – 7:00 PM
-            </div>
-            <div class="deal-footer">
-              <div class="deal-price-block">
-                <span class="price-now">R 50</span>
-                <span class="price-was">R 145</span>
-                <span class="deal-bags-left">3 bags left</span>
-              </div>
-              <div class="deal-actions">
-                <button class="btn-detail" onclick="openDealDetail(this)">Details</button>
-                <button class="btn-reserve" onclick="openReserveModal(this)"
-                  data-store="The Garden Deli" data-item="Gourmet Deli Bundle" data-price="R50">Reserve</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 11 -->
-        <div class="deal-card reveal" data-category="restaurant" data-area="woodstock"
-             data-address="71 Buitenkant St, Woodstock"
-             data-allergens="Gluten, Dairy, Spices — halaal certified"
-             data-contents="1–2 Cape Malay stews with roti or rice, 1 dessert"
-             data-bags="6">
-          <div class="deal-img deal-img-restaurant3"></div>
-          <div class="deal-body">
-            <div class="deal-meta-top">
-              <span class="deal-cat-tag">Restaurant</span>
-              <span class="deal-suburb">Woodstock</span>
-            </div>
-            <h3>Bo-Kaap Kitchen</h3>
-            <p class="deal-desc">Traditional Cape Malay stews, rotis and desserts. End of service bundle.</p>
-            <div class="deal-time">
-              <svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Pick up: 8:30 PM – 9:30 PM
-            </div>
-            <div class="deal-footer">
-              <div class="deal-price-block">
-                <span class="price-now">R 45</span>
-                <span class="price-was">R 135</span>
-                <span class="deal-bags-left">6 bags left</span>
-              </div>
-              <div class="deal-actions">
-                <button class="btn-detail" onclick="openDealDetail(this)">Details</button>
-                <button class="btn-reserve" onclick="openReserveModal(this)"
-                  data-store="Bo-Kaap Kitchen" data-item="Cape Malay Bundle" data-price="R45">Reserve</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 12 -->
-        <div class="deal-card reveal" data-category="bakery" data-area="woodstock"
-             data-address="450 Albert Rd, Woodstock"
-             data-allergens="Wheat, Gluten, Dairy, Eggs, Seeds"
-             data-contents="2–3 stone-baked breads or rolls, flavoured butter, 1 cake slice"
-             data-bags="9">
-          <div class="deal-img deal-img-bakery3"></div>
-          <div class="deal-body">
-            <div class="deal-meta-top">
-              <span class="deal-cat-tag">Bakery</span>
-              <span class="deal-suburb">Woodstock</span>
-            </div>
-            <h3>The Stone Bakery</h3>
-            <p class="deal-desc">Stone-baked breads, flavoured rolls and cakes. A baker's dozen surprise.</p>
-            <div class="deal-time">
-              <svg class="deal-time-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Pick up: 5:00 PM – 6:30 PM
-            </div>
-            <div class="deal-footer">
-              <div class="deal-price-block">
-                <span class="price-now">R 28</span>
-                <span class="price-was">R 95</span>
-                <span class="deal-bags-left">9 bags left</span>
-              </div>
-              <div class="deal-actions">
-                <button class="btn-detail" onclick="openDealDetail(this)">Details</button>
-                <button class="btn-reserve" onclick="openReserveModal(this)"
-                  data-store="The Stone Bakery" data-item="Baker's Dozen Bundle" data-price="R28">Reserve</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /.deals-grid -->
     </div>
   </section>
-
   <!-- DEAL DETAIL MODAL -->
   <div class="modal-overlay" id="dealDetailModal">
     <div class="modal modal-detail" id="dealDetailBox">
@@ -637,6 +236,7 @@
           <label>Password<input type="password" placeholder="••••••••" required /></label>
           <button type="submit" class="btn-primary full-width">Log In</button>
           <p class="auth-switch">No account? <a href="#" data-switch="signup">Sign up</a></p>
+          <p class="auth-switch"><a href="#" id="forgotPasswordLink">Forgot your password?</a></p>
         </form>
       </div>
       <div class="tab-content" id="tab-signup">
@@ -647,6 +247,15 @@
           <label>Password<input type="password" placeholder="Create a password" required /></label>
           <button type="submit" class="btn-primary full-width">Create Account</button>
           <p class="auth-switch">Have an account? <a href="#" data-switch="login">Log in</a></p>
+        </form>
+      </div>
+      <div class="tab-content" id="tab-forgot">
+        <h3>Reset your password</h3>
+        <p style="font-size:14px;color:var(--gray-mid);margin-bottom:20px;">Enter your email and we'll send you a link to reset your password.</p>
+        <form class="auth-form" id="forgotForm">
+          <label>Email<input type="email" id="forgotEmail" placeholder="you@example.com" required /></label>
+          <button type="submit" class="btn-primary full-width">Send Reset Link</button>
+          <p class="auth-switch"><a href="#" data-switch="login">Back to Log In</a></p>
         </form>
       </div>
     </div>
