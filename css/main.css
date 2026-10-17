@@ -5612,3 +5612,24 @@ h1, h2, h3, h4, h5, h6,
     margin-bottom: 8px;
   }
 }
+
+/* ── Navbar compact on scroll ── */
+.navbar {
+  transition: padding 0.3s ease;
+}
+
+.navbar.scrolled-compact .logo-img {
+  height: 48px !important;
+  transform: scale(1.6) !important;
+  transition: height 0.3s ease, transform 0.3s ease;
+}
+
+.navbar.scrolled-compact .nav-inner {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+/* Smooth transition on logo at all times */
+.logo-img {
+  transition: height 0.3s ease, transform 0.3s ease;
+}

@@ -28,11 +28,12 @@ if ('serviceWorker' in navigator) {
   function onScroll() {
     if (window.scrollY > 20) {
       navbar.classList.add('scrolled');
+      navbar.classList.add('scrolled-compact');
     } else {
-      // Keep scrolled on inner pages that force it
       if (!navbar.classList.contains('scrolled-forced')) {
         navbar.classList.remove('scrolled');
       }
+      navbar.classList.remove('scrolled-compact');
     }
   }
 
