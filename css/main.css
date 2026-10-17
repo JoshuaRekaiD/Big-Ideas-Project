@@ -5397,11 +5397,11 @@ h1, h2, h3, h4, h5, h6,
 @media (max-width: 1024px) {
   /* Shrink logo on mobile so navbar stays compact */
   .logo-img {
-    height: 56px;
+    height: 72px;
   }
 
   .footer .logo-img {
-    height: 48px;
+    height: 60px;
   }
 
   /* Navbar height is now ~72px — fix page top padding */
@@ -5435,11 +5435,11 @@ h1, h2, h3, h4, h5, h6,
 
 @media (max-width: 768px) {
   .logo-img {
-    height: 48px;
+    height: 64px;
   }
 
   .footer .logo-img {
-    height: 40px;
+    height: 52px;
   }
 
   .page-hero,
