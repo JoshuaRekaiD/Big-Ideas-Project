@@ -5178,16 +5178,21 @@ h1, h2, h3, h4, h5, h6,
   width: auto;
   display: block;
   object-fit: contain;
+  transform: scale(2.0);
+  transform-origin: left center;
 }
 
 .logo {
   padding: 0;
+  overflow: visible;
 }
 
 /* Footer logo — blend white background into the purple */
 .footer .logo-img {
   height: 100px;
   mix-blend-mode: screen;
+  transform: scale(2.0);
+  transform-origin: left center;
 }
 
 /* ═══════════════════════════════════════
@@ -5436,10 +5441,14 @@ h1, h2, h3, h4, h5, h6,
 @media (max-width: 768px) {
   .logo-img {
     height: 90px;
+    transform: scale(2.2);
+    transform-origin: left center;
   }
 
   .footer .logo-img {
     height: 72px;
+    transform: scale(2.2);
+    transform-origin: left center;
   }
 
   .page-hero,
