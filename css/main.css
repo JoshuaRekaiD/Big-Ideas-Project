@@ -5178,7 +5178,7 @@ h1, h2, h3, h4, h5, h6,
   width: auto;
   display: block;
   object-fit: contain;
-  transform: scale(2.0);
+  transform: scale(1.6);
   transform-origin: left center;
 }
 
@@ -5441,13 +5441,13 @@ h1, h2, h3, h4, h5, h6,
 @media (max-width: 768px) {
   .logo-img {
     height: 90px;
-    transform: scale(2.2);
+    transform: scale(1.8);
     transform-origin: left center;
   }
 
   .footer .logo-img {
     height: 72px;
-    transform: scale(2.2);
+    transform: scale(2.0);
     transform-origin: left center;
   }
 
