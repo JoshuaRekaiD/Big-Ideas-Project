@@ -5633,3 +5633,10 @@ h1, h2, h3, h4, h5, h6,
 .logo-img {
   transition: height 0.3s ease, transform 0.3s ease;
 }
+
+/* ── Hide hero search on mobile — use Order Online nav instead ── */
+@media (max-width: 768px) {
+  .hero-search {
+    display: none;
+  }
+}
