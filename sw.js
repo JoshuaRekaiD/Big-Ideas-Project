@@ -2,7 +2,7 @@
    BIRP — Service Worker
    ========================================================= */
 
-const CACHE_NAME = 'birp-v2';
+const CACHE_NAME = 'birp-v3';
 
 const PRECACHE_URLS = [
   '/',
