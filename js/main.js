@@ -42,15 +42,15 @@ if ('serviceWorker' in navigator) {
   // Mobile hamburger
   if (hamburger && navLinks) {
     hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      navLinks.classList.toggle('open');
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
     });
 
     // Close nav on link click
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        navLinks.classList.remove('open');
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
       });
     });
   }

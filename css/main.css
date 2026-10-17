@@ -5387,3 +5387,68 @@ h1, h2, h3, h4, h5, h6,
 .reset-success-icon svg { width: 100%; height: 100%; }
 .reset-success h2 { font-size: 26px; color: var(--indigo); }
 .reset-success p  { font-size: 15px; color: var(--gray-mid); }
+
+/* ═══════════════════════════════════════
+   MOBILE FIXES
+   ═══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  /* Shrink logo on mobile so navbar stays compact */
+  .logo-img {
+    height: 56px;
+  }
+
+  .footer .logo-img {
+    height: 48px;
+  }
+
+  /* Navbar height is now ~72px — fix page top padding */
+  .page-hero,
+  .deals-hero,
+  .about-hero,
+  .stores-hero,
+  .terms-hero {
+    padding-top: 100px;
+  }
+
+  .home-hero {
+    padding-top: 100px;
+  }
+
+  /* Sticky search sits below the correct navbar height */
+  .sticky-search {
+    top: 72px;
+  }
+
+  /* Dashboard topbar logo */
+  .dash-topbar .logo-img {
+    height: 36px;
+  }
+
+  /* Dashboard layout stacks properly */
+  .dash-layout {
+    padding-top: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo-img {
+    height: 48px;
+  }
+
+  .footer .logo-img {
+    height: 40px;
+  }
+
+  .page-hero,
+  .deals-hero,
+  .about-hero,
+  .stores-hero,
+  .terms-hero {
+    padding-top: 90px;
+  }
+
+  .home-hero {
+    padding-top: 90px;
+    padding-bottom: 80px;
+  }
+}
