@@ -9,7 +9,7 @@
 ───────────────────────────────────────────── */
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/Big-Ideas-Project/sw.js')
+    navigator.serviceWorker.register('/sw.js')
       .catch(() => { /* silently fail in local file:// context */ });
   });
 }
@@ -1141,7 +1141,7 @@ document.addEventListener('click', async (e) => {
     btn.textContent = 'Sending…';
     btn.disabled    = true;
 
-    const redirectTo = window.location.origin + '/Big-Ideas-Project/reset-password.html';
+    const redirectTo = 'https://birp.co.za/reset-password.html';
 
     const { error } = await _supabase.auth.resetPasswordForEmail(email, { redirectTo });
 
