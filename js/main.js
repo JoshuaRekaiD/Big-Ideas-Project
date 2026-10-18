@@ -448,7 +448,7 @@ function showToast(message, type = 'info') {
     color: ${c.text};
     padding: 14px 20px;
     border-radius: 12px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-size: 0.9rem;
     font-weight: 600;
     box-shadow: 0 8px 24px rgba(0,0,0,0.15);
@@ -788,6 +788,11 @@ function openDealDetail(btn) {
     const modal = document.getElementById('reserveModal');
     if (!modal) return;
 
+    // Store active bag for IIFE 20
+    if (typeof window._setActiveBag === 'function') {
+      window._setActiveBag(btn.dataset.bagId || null, btn.dataset.storeId || null);
+    }
+
     // Show step 1, hide success
     const step1   = document.getElementById('reserveStep1');
     const success = document.getElementById('reserveSuccess');
@@ -978,6 +983,11 @@ function openDealDetail(btn) {
       countEl.innerHTML = `Showing <strong>${bags.length}</strong> deal${bags.length !== 1 ? 's' : ''}`;
     }
 
+    // Show grid, hide empty state, re-run filters
+    const emptyEl = document.getElementById('dealsEmpty');
+    if (emptyEl) emptyEl.classList.add('hidden');
+    grid.classList.remove('hidden');
+
     // Re-run scroll reveal on new cards
     document.querySelectorAll('.reveal').forEach(el => {
       el.classList.add('visible');
@@ -997,18 +1007,29 @@ function openDealDetail(btn) {
        Supabase reservations table
 ───────────────────────────────────────────── */
 (function initRealReserve() {
-  const confirmBtn = document.getElementById('confirmReserve');
-  if (!confirmBtn || typeof _supabase === 'undefined') return;
+  // Store which bag was clicked — set by IIFE 17's patched openReserveModal
+  let _activeBagId   = null;
+  let _activeStoreId = null;
 
-  // Replace the confirm button handler
+  // Expose setters so IIFE 17 can store the active bag
+  window._setActiveBag = function(bagId, storeId) {
+    _activeBagId   = bagId;
+    _activeStoreId = storeId;
+  };
+
+  const confirmBtn = document.getElementById('confirmReserve');
+  if (!confirmBtn) return;
+
+  // Always clone to strip any stale demo handlers
   const newBtn = confirmBtn.cloneNode(true);
   confirmBtn.parentNode.replaceChild(newBtn, confirmBtn);
+
+  if (typeof _supabase === 'undefined') return;
 
   newBtn.addEventListener('click', async () => {
     // Check login
     const { data: { session } } = await _supabase.auth.getSession();
     if (!session) {
-      // Close reserve modal, open login
       const reserveModal = document.getElementById('reserveModal');
       if (reserveModal) { reserveModal.classList.remove('active'); document.body.style.overflow = ''; }
       showToast('Please log in to reserve a bag', 'info');
@@ -1017,12 +1038,7 @@ function openDealDetail(btn) {
       return;
     }
 
-    // Get bag details from the modal's current state
-    const bagId   = document.querySelector('.btn-reserve[data-bag-id]')?.dataset.bagId;
-    const storeId = document.querySelector('.btn-reserve[data-store-id]')?.dataset.storeId;
-
-    if (!bagId || !storeId) {
-      // No Supabase bag ID — demo mode fallback
+    if (!_activeBagId || !_activeStoreId) {
       showDemoReserveSuccess();
       return;
     }
@@ -1030,11 +1046,10 @@ function openDealDetail(btn) {
     newBtn.textContent = 'Reserving…';
     newBtn.disabled    = true;
 
-    // Check quantity still available
     const { data: bag } = await _supabase
       .from('bags')
       .select('quantity_remaining')
-      .eq('id', bagId)
+      .eq('id', _activeBagId)
       .single();
 
     if (!bag || bag.quantity_remaining <= 0) {
@@ -1044,12 +1059,11 @@ function openDealDetail(btn) {
       return;
     }
 
-    // Create reservation
     const { data: reservation, error } = await _supabase
       .from('reservations')
       .insert({
-        bag_id:      bagId,
-        store_id:    storeId,
+        bag_id:      _activeBagId,
+        store_id:    _activeStoreId,
         customer_id: session.user.id,
         status:      'reserved'
       })
@@ -1064,10 +1078,8 @@ function openDealDetail(btn) {
       return;
     }
 
-    // Decrement quantity
-    await _supabase.rpc('decrement_bag_quantity', { bag_id: bagId });
+    await _supabase.rpc('decrement_bag_quantity', { bag_id: _activeBagId });
 
-    // Show success screen
     const code = reservation.pickup_code;
     showReserveSuccess(code);
     newBtn.textContent = 'Confirm Reservation';
@@ -1089,7 +1101,6 @@ function openDealDetail(btn) {
   }
 
   function showDemoReserveSuccess() {
-    // Fallback for hardcoded demo cards with no Supabase bag ID
     const code = 'BIRP-' + Math.floor(1000 + Math.random() * 9000);
     showReserveSuccess(code);
   }
